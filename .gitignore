@@ -1,5 +1,9 @@
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
+## Changed:  added .DS_Store
+
+#System Log
+.DS_Store
 
 ### Node ###
 # Logs
