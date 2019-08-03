@@ -1,0 +1,36 @@
+{
+  "name": "cpdd",
+  "version": "1.0.0",
+  "description": "Basic UI styles and scaffolding for a future dashboard",
+  "main": "cpdd.html",
+  "scripts": {
+    "test": "hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnwcuster/cpdd.git"
+  },
+  "author": "John W. Custer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnwcuster/cpdd/issues"
+  },
+  "homepage": "https://github.com/johnwcuster/cpdd#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "cssnano": "^4.1.10",
+    "del": "^5.0.0",
+    "eslint": "^6.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.12.0",
+    "postcss-scss": "^2.0.0",
+    "stylelint": "^10.1.0",
+    "stylelint-scss": "^3.9.3"
+  },
+  "dependencies": {}
+}
