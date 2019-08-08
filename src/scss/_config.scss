@@ -85,8 +85,8 @@ $cp_gradient--large: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.57) 3
 $footer_gradient--mobile: linear-gradient(0deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%);
 $fooger_gradient--large: linear-gradient(0deg,rgba(0,0,0,1),rgba(0,0,0,.85) 30%,rgba(0,0,0,.2) 75%,transparent);
 
-$main_background_image--mobile: linear-gradient(135deg, rgba(0,0,0,.8), rgba(0,0,0,0)), url("../bg_map.png");
- $main_background_image--large: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.57) 30%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.31) 60%,rgba(0,0,0,0) 100%), url("../bg_map.png");
+$main_background_image--mobile: linear-gradient(135deg, rgba(0,0,0,.8), rgba(0,0,0,0)), url("../China-Dashboard-Map.svg");
+ $main_background_image--large: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.57) 30%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.31) 60%,rgba(0,0,0,0) 100%), url("../China-Dashboard-Map.svg");
 // series colors for graphs
   // read from inside out
   // 1.  "darken" / "lighten" previous color
