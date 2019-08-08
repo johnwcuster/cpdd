@@ -1,0 +1,128 @@
+%icon {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  width: 48px;
+  height: 48px;
+}
+
+%icon--bar-chart {
+  @extend %icon;
+  background-image: url("../icons/icon--bar-chart.svg");
+}
+
+%icon--bubble-map {
+  @extend %icon;
+  background-image: url("../icons/icon--bubble-map.svg");
+}
+
+%icon--from_left {
+  @extend %icon;
+  background-image: url("../icons/icon--from_left.svg");
+}
+
+%icon--from_right {
+  @extend %icon;
+  background-image: url("../icons/icon--from_right.svg");
+}
+
+%icon--funnel {
+  @extend %icon;
+  background-image: url("../icons/icon--funnel.svg");
+}
+
+%icon--line-graph {
+  @extend %icon;
+  background-image: url("../icons/icon--line-graph.svg");
+}
+
+%icon--minus {
+  @extend %icon;
+  background-image: url("../icons/icon--minus.svg");
+}
+
+%icon--plus {
+  @extend %icon;
+  background-image: url("../icons/icon--plus.svg");
+}
+
+%icon--stacked-area {
+  @extend %icon;
+  background-image: url("../icons/icon--stacked-area.svg");
+}
+
+%icon--table {
+  @extend %icon;
+  background-image: url("../icons/icon--table.svg");
+}
+
+%icon--treemap {
+  @extend %icon;
+  background-image: url("../icons/icon--treemap.svg");
+}
+
+%icon--zoom_in {
+  @extend %icon;
+  background-image: url("../icons/icon--zoom_in.svg");
+}
+
+%icon--zoom_out {
+  @extend %icon;
+  background-image: url("../icons/icon--zoom_out.svg");
+}
+
+.icon {
+  @extend %icon;
+}
+
+.icon--bar-chart {
+  @extend %icon--bar-chart;
+}
+
+.icon--bubble-map {
+  @extend %icon--bubble-map;
+}
+
+.icon--from_left {
+  @extend %icon--from_left;
+}
+
+.icon--from_right {
+  @extend %icon--from_right;
+}
+
+.icon--funnel {
+  @extend %icon--funnel;
+}
+
+.icon--line-graph {
+  @extend %icon--line-graph;
+}
+
+.icon--minus {
+  @extend %icon--minus;
+}
+
+.icon--plus {
+  @extend %icon--plus;
+}
+
+.icon--stacked-area {
+  @extend %icon--stacked-area;
+}
+
+.icon--table {
+  @extend %icon--table;
+}
+
+.icon--treemap {
+  @extend %icon--treemap;
+}
+
+.icon--zoom_in {
+  @extend %icon--zoom_in;
+}
+.icon--zoom_out {
+  @extend %icon--zoom_out;
+}

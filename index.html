@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>China Dashboard Concept</title>
+  <link rel="stylesheet" href="dist/style.css?cb=1565212675305">
+
+</head>
+
+<body>
+  <div class="page-wrap">
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <h1 id="site_title" class="site-title">China's Public Diplomacy in East Asia and Pacific</h1>
+        <p class="help-link">Help &amp; Documentation</p>
+      </div>
+    </header>
+    <a id="toggle_control_panel" class="toggle-control-panel" aria-expanded="false" aria-controls="control_panel" role="button" tabindex="0">
+      <span class="text--slideout-primary">Control Panel</span><br/>
+      <span class="text--slideout-secondary">Show</span>
+      <span class="toggle-control-panel__icon icon icon--from_left hide-on-mobile"></span>
+      <span class="toggle-control-panel__icon icon icon--from_right hide-on-desktop"></span>
+    </a>
+    <div id="control_panel" class="control-panel" aria-hidden="false" aria-labelledby="toggle_control_panel">
+      <a id="close_control_panel" href="#toggle_control_panel" class="close-control-panel">
+        <div class="hide-on-mobile">
+          <span class="text--slideout-tertiary hide-on-mobile">Control Panel</span><br/>
+          <span class="text--slideout-secondary hide-on-mobile">Hide</span>
+        </div>
+        <span class="hide-on-desktop text--close-slideout">Close</span>
+
+      </a>
+      <ul class="control-panel__list">
+        <li class="control-panel__item">
+          <a id="toggle_view_select" class="control-panel__link" href="#select_view">
+            <span class="text--link-label">View</span>
+            <span id="view_text" class="text--link-heading">Bubble Map</span>
+            <span id="view_icon" class="icon icon--bubble-map"></span>
+          </a>
+        </li>
+        <li class="control-panel__item">
+          <a id="toggle_type_select" class="control-panel__link" href="#select_types">
+            <span class="text--link-label">Instrument</span>
+            <span id="pd_type_text" class="text--link-heading">Official Finance</span>
+            <span id="pd_type_filter_text" class="text--link-subheading">All Financial Flows</span>
+            <span class="icon icon--funnel"></span>
+          </a>
+        </li>
+        <li class="control-panel__item">
+          <a id="toggle_country_select" class="control-panel__link" href="#select_countries">
+            <span class="text--link-label">Countries</span>
+            <span id="countries_text" class="text--link-heading">All Countries</span>
+            <span class="icon icon--funnel"></span>
+          </a>
+        </li>
+        <li class="control-panel__item">
+          <!-- PROTOTYPE_ONLY -->
+          <div class="control-panel__item__inner">
+            <span class="text--panel-label">Years</span>
+            <div class="year-toggle-wrap">
+              <div id="left_year" class="year-toggle-wrap__inner" href="#">
+                <a id="startyear_decrement" href="#" class="year-toggle">+</a>
+                <a id="startyear_decrement" href="#" class="year-toggle">-</a>
+                <a id="starting_year" href="#" class="text--link-heading text--dynamic">2000</a>
+              </div>
+              <div id="range_wrap" class="range-wrap">
+                <div id="range_scale" class="range-scale">
+                </div>
+                <div id="range_marker" class="range-marker">
+                  <div id="range_highlight" class="range-highlight"></div>
+                </div>
+
+              </div>
+              <div id="right_year" class="year-toggle-wrap__inner" href="">
+                <a id="endyear_increment" href="#" class="year-toggle">+</a>
+                <a id="endyear_decrement" href="#" class="year-toggle">-</a>
+                <a id="ending_year" href="#" class="text--link-heading text--dynamic">2015</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="control-panel__item">
+          <div class="control-panel__item__inner">
+            <span class="text--panel-label">Series</span>
+            <!-- Prototype -->
+            <div class="control-panel__item-divider">
+              <div class="control-panel__series-toggle">
+                <div class="control-panel__toggle-option">
+                  <input id="annualized" type="radio" value="0" name="series1" class="toggle-option__input" checked="">
+                  <label for="annualized" class="toggle-option__label toggle-option--left">Annualized</label>
+                </div>
+                <div class="control-panel__toggle-option">
+                  <input id="cumulative" type="radio" value="1" name="series1" class="toggle-option__input">
+                  <label for="cumulative" class="toggle-option__label toggle-option--right">Cumulative</label>
+                </div>
+              </div>
+            </div>
+            <div class="control-panel__series-toggle">
+              <div class="control-panel__toggle-option">
+                <input id="absolute" type="radio" value="0" name="series2" class="toggle-option__input" checked="">
+                <label for="absolute" class="toggle-option__label toggle-option--left">Absolute</label>
+              </div>
+              <div class="control-panel__toggle-option">
+                <input id="per_capita" type="radio" value="1" name="series2" class="toggle-option__input" >
+                <label for="per_capita" class="toggle-option__label toggle-option--right">Per Capita</label>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="control-panel__item">
+          <div class="control-panel__item__inner">
+            <span class="text--panel-label">Export</span>
+            <div class="control-panel__item__link-wrap">
+              <a id="csv_export" class="inline-link" href="#">CSV</a>
+              <a id="pdf_export" class="inline-link middle-link" href="#">PDF</a>
+              <a id="png_export" class="inline-link" href="#">PNG</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="select_types" class="secondary-panel select-types" aria-hidden="true" aria-labelledby="toggle_type_select">
+      <a id="close_type_select" href="#toggle_type_select" class="button button--close">Close</a>
+      <form class="select-types__form secondary-panel__inner">
+        <fieldset class="select-types__fieldset fieldset--types">
+          <legend class="select-types__legend legend--types text--legend">Type of Public Diplomacy</legend>
+          <ul class="select-types__list list--types">
+            <li class="select-types__item item--types">
+              <input id="24_diplomacy_type" type="radio" value="24" name="pd_type" checked="" class="select-types__input input--main-option">
+              <label for="24_diplomacy_type" class="select-types__label label--main-option">Total Engagement</label>
+            </li>
+            <li id="finance_list_item" class="select-types__item item--types">
+              <input id="21_diplomacy_type" type="radio" value="21" name="pd_type" class="select-types__input input--main-option">
+              <label for="21_diplomacy_type" class="select-types__label label--main-option">Official Finance</label>
+            </li>
+            <li class="select-types__item item--types">
+              <input id="22_diplomacy_type" type="radio" value="22" name="pd_type" class="select-types__input input--main-option">
+              <label for="22_diplomacy_type" class="select-types__label label--main-option">Confucius Institutes (counts only)</label>
+            </li>
+
+            <li class="select-types__item item--types">
+              <input id="23_diplomacy_type" type="radio" value="23" name="pd_type" class="select-types__input input--main-option">
+              <label for="23_diplomacy_type" class="select-types__label label--main-option">Sister Cities (counts only)</label>
+            </li>
+            <li class="select-types__item item--types">
+              <input id="13_diplomacy_type" type="radio" value="13"name="pd_type" class="select-types__input input--main-option">
+              <label for="13_diplomacy_type" class="select-types__label label--main-option">Total Elite Visits (counts only)</label>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset id="finance_subtypes" class="select-types__fieldset fieldset--subtypes">
+          <legend class="select-types__legend legend--subtypes text--legend">Types of Official Finance</legend>
+          <ul class="select-types__list list--subtype">
+            <li class="select-types__item item--subtype">
+              <input id="debt_relief_sector" type="checkbox" value="debt" class="select-types__input input--sub-option" checked="">
+              <label for="debt_relief_sector" class="select-types__label label--sub-option">Debt Relief</label>
+            </li>
+            <li class="select-types__item item--subtype">
+              <input id="budget_support_sector" type="checkbox" value="budget" class="select-types__input input--sub-option" checked="">
+              <label for="budget_support_sector" class="select-types__label label--sub-option">Budget Support</label>
+            </li>
+            <li class="select-types__item item--subtype">
+              <input id="human_assist_sector" type="checkbox" value="assist" class="select-types__input input--sub-option" checked="">
+              <label for="human_assist_sector" class="select-types__label label--sub-option">Humanitarian Assistance</label>
+            </li>
+            <li class="select-types__item item--subtype">
+              <input id="infra_invest_sector" type="checkbox" value="invest" class="select-types__input input--sub-option" checked="">
+              <label for="infra_invest_sector" class="select-types__label label--sub-option">Infrastructure Investment</label>
+            </li>
+          </ul>
+        </fieldset>
+      </form>
+      <aside class="select-types__aside">
+        <h4 class="aside__subheading">Total Engagement</h4>
+        <p class="aside__text">To create a measure of engagement, we normalized the four variables (sister cities, high-level visits, CIs, and financial diplomacy) across time to a scale of 0-10. We then combined their scores, giving equal weight to each type of public diplomacy. To create the diversity score, we took the normalized scores of the four public diplomacy types for each country, and calculated the distance between what we would expect for a well-balanced portfolio, where each type of public diplomacy accounts for 25% of the total engagement.</p>
+      </aside>
+    </div>
+
+    <div id="select_countries" class="secondary-panel select-countries" aria-hidden="true" aria-labelledby="toggle_country_select">
+      <a id="close_country_select" href="#toggle_country_select" class="button button--close">Close</a>
+      <button type="button" class="button button--select">Select All</button>
+      <button type="button" class="button button--deselect">Deselect All</button>
+      <form class="select-countries__form secondary-panel__inner">
+        <fieldset class="select-countries__fieldset">
+          <legend class="select-countries__legend text--legend">East Asia</legend>
+          <ul class="select-countries__list">
+            <li class="select-countries__item">
+              <input id="Brunei_country_checkbox" name="7" type="checkbox" class="select-countries__input"  checked="">
+              <label for="Brunei_country_checkbox" class="select-countries__label">Brunei</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Cambodia_country_checkbox" name="2" type="checkbox" class="select-countries__input" checked="">
+              <label for="Cambodia_country_checkbox" class="select-countries__label">Cambodia</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Indonesia_country_checkbox" name="5" type="checkbox" class="select-countries__input" checked="">
+              <label for="Indonesia_country_checkbox" class="select-countries__label">Indonesia</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Japan_country_checkbox" name="23" type="checkbox" class="select-countries__input" checked="">
+              <label for="Japan_country_checkbox" class="select-countries__label">Japan</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Korea, Dem. Rep._country_checkbox" name="16" type="checkbox" class="select-countries__input"checked="">
+              <label for="Korea, Dem. Rep._country_checkbox" class="select-countries__label">Korea, Dem. Rep.</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Korea, Rep._country_checkbox" name="25" type="checkbox" class="select-countries__input" checked="">
+              <label for="Korea, Rep._country_checkbox" class="select-countries__label">Korea, Rep.</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Laos_country_checkbox" name="6" type="checkbox" class="select-countries__input" checked="">
+              <label for="Laos_country_checkbox" class="select-countries__label">Laos</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Malaysia_country_checkbox" name="11" type="checkbox" class="select-countries__input" checked="">
+              <label for="Malaysia_country_checkbox" class="select-countries__label">Malaysia</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Mongolia_country_checkbox" name="10" type="checkbox" class="select-countries__input" checked="">
+              <label for="Mongolia_country_checkbox" class="select-countries__label">Mongolia</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Myanmar_country_checkbox" name="9" type="checkbox" class="select-countries__input" checked="">
+              <label for="Myanmar_country_checkbox" class="select-countries__label">Myanmar</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Philippines_country_checkbox" name="14" type="checkbox" class="select-countries__input" checked="">
+              <label for="Philippines_country_checkbox" class="select-countries__label">Philippines</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Singapore_country_checkbox" name="27" type="checkbox" class="select-countries__input" checked="">
+              <label for="Singapore_country_checkbox" class="select-countries__label">Singapore</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Thailand_country_checkbox" name="17" type="checkbox" class="select-countries__input" checked="">
+              <label for="Thailand_country_checkbox" class="select-countries__label">Thailand</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Vietnam_country_checkbox" name="19" type="checkbox" class="select-countries__input" checked="">
+              <label for="Vietnam_country_checkbox" class="select-countries__label">Vietnam</label>
+            </li>
+          </ul>
+        </fieldset>
+        <fieldset class="select-countries__fieldset">
+          <legend class="select-countries__legend text--legend">Pacific</legend>
+          <ul class="select-countries__list">
+            <li class="select-countries__item">
+              <input id="Australia_country_checkbox" name="22" type="checkbox" class="select-countries__input" checked="">
+              <label for="Australia_country_checkbox" class="select-countries__label">Australia</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Cook Islands_country_checkbox" name="3" type="checkbox" class="select-countries__input" checked="">
+              <label for="Cook Islands_country_checkbox" class="select-countries__label">Cook Islands</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Fiji_country_checkbox" name="4" type="checkbox" class="select-countries__input" checked="">
+              <label for="Fiji_country_checkbox" class="select-countries__label">Fiji</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Kiribati_country_checkbox" name="24" type="checkbox" class="select-countries__input" checked="">
+              <label for="Kiribati_country_checkbox" class="select-countries__label">Kiribati</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Micronesia, Federated States of_country_checkbox" name="26" type="checkbox" class="select-countries__input" checked="">
+              <label for="Micronesia, Federated States of_country_checkbox" class="select-countries__label">Micronesia, Federated States of</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Nauru_country_checkbox" name="12" type="checkbox" class="select-countries__input" checked="">
+              <label for="Nauru_country_checkbox" class="select-countries__label">Nauru</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="New Zealand_country_checkbox" name="13" type="checkbox" class="select-countries__input" checked="">
+              <label for="New Zealand_country_checkbox" class="select-countries__label">New Zealand</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Papua New Guinea_country_checkbox" name="15" type="checkbox" class="select-countries__input" checked="">
+              <label for="Papua New Guinea_country_checkbox" class="select-countries__label">Papua New Guinea</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Samoa_country_checkbox" name="21" type="checkbox" class="select-countries__input" checked="">
+              <label for="Samoa_country_checkbox" class="select-countries__label">Samoa</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Timor-Leste_country_checkbox" name="8" type="checkbox" class="select-countries__input" checked="">
+              <label for="Timor-Leste_country_checkbox" class="select-countries__label">Timor-Leste</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Tonga_country_checkbox" name="18" type="checkbox" class="select-countries__input" checked="">
+              <label for="Tonga_country_checkbox" class="select-countries__label">Tonga</label>
+            </li>
+            <li class="select-countries__item">
+              <input id="Vanuatu_country_checkbox" name="20" type="checkbox" class="select-countries__input" checked="">
+              <label for="Vanuatu_country_checkbox" class="select-countries__label">Vanuatu</label>
+            </li>
+          </ul>
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="select_view" class="secondary-panel select-view">
+      <a id="close_view_select" href="#toggle_view_select" class="button button--close">Close</a>
+
+      <form class="select-view__form secondary-panel__inner">
+        <fieldset class="select-view__fieldset">
+          <legend class="select-view__legend text--legend">View</legend>
+          <ul class="select-view__list">
+            <li class="select-view__item">
+              <input id="map_toggle" type="radio" value="map" name="views" class="select-view__input" checked="">
+              <label for="map_toggle" class="select-view__label">
+                <span class="select-view__text line1">Bubble Map</span>
+                <span class="select-view__text line2">Countries</span>
+                <span class="select-view__icon icon icon--bubble-map"></span>
+              </label>
+            </li>
+            <li class="select-view__item">
+              <input id="line_toggle" type="radio" value="line" name="views" class="select-view__input">
+              <label for="line_toggle" class="select-view__label">
+                <span class="select-view__text line1">Line Graph</span>
+                <span class="select-view__text line2">Countries</span>
+                <span class="select-view__icon icon icon--line-graph"></span>
+              </label>
+            </li>
+            <li class="select-view__item">
+              <input id="area_toggle" type="radio" value="area" name="views" class="select-view__input">
+              <label for="area_toggle" class="select-view__label">
+                <span class="select-view__text line1">Stacked Area</span>
+                <span class="select-view__text line2">Countries</span>
+                <span class="select-view__icon icon icon--stacked-area"></span>
+              </label>
+            </li>
+            <li class="select-view__item">
+              <input id="treemap_toggle" type="radio" value="tree" name="views" class="select-view__input">
+              <label for="treemap_toggle" class="select-view__label">
+                <span class="select-view__text line1">Treemap</span>
+                <span class="select-view__text line2">Sectors</span>
+                <span class="select-view__icon icon icon--treemap"></span>
+              </label>
+            </li>
+            <li class="select-view__item">
+              <input id="table_toggle" type="radio" value="table" name="views" class="select-view__input">
+              <label for="table_toggle" class="select-view__label">
+                <span class="select-view__text line1">Table</span>
+                <span class="select-view__text line2">Project Details</span>
+                <span class="select-view__icon icon icon--table"></span>
+              </label>
+            </li>
+          </ul>
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="chart_header" class="chart-header">
+      <h3 id="chart_title" class="chart-header__heading">Official Finance</h3>
+      <h4 id="chart_subtitle" class="chart-header__subheading">2000-2015</h4>
+      <p id="chart_label" class="chart-header__label">(USD 2014)</p>
+    </div>
+    <!--
+    <div class="icons">
+      <div class="icon-wrap">
+        <img src="icons2/icon--from_left.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--from_right.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--funnel.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--bubble-map.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--line-graph.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--stacked-area.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--bar-chart.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--treemap.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--table.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--zoom_in.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--zoom_out.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--plus.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons2/icon--minus.svg">
+      </div>
+    </div>
+    <div class="icons">
+      <div class="icon-wrap">
+        <img src="icons/icon--from_left.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--from_right.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--funnel.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--bubble-map.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--line-graph.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--stacked-area.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--bar-graph.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--treemap.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--table.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--zoom_in.svg">
+      </div>
+      <div class="icon-wrap">
+        <img src="icons/icon--zoom_out.svg">
+      </div>
+    </div> -->
+    <footer class="site-footer">
+      <div id="site_footer_logos" class="site-footer__logos">
+        <!-- State Dept Logo -->
+        <div class="state-logo-wrap">
+          <img src="State_seal_white.png">
+        </div>
+        <!-- AidData Logo -->
+        <div class="ad-logo-wrap">
+          <img src="AidData_Logo--white.svg">
+        </div>
+      </div>
+      <div class="fine-print">
+        <p>Source: <a href="https://www.aiddata.org/china-public-diplomacy">AidData</a>
+        </p>
+      </div>
+    </footer>
+    <!--- demonstration only  -->
+    <div class="background-map">
+      <div class="prototype-preview">
+        <div id="line_graph_wrap" class="prototype_view"></div>
+        <div id="area_chart_wrap" class="prototype_view"></div>
+        <div id="bar_chart_wrap" class="prototype_view"></div>
+        <div id="bubble_chart_wrap" class="prototype_view"></div>
+        <div id="table_wrap" class="prototype_view"></div>
+        <div id="treemap_wrap" class="prototype_view"></div>
+      </div>
+    </div>
+    <div id="control_panel_overlay" class="mobile-nav-overlay"></div>
+  </div>
+
+  <script src="dist/all.js?cb=1565212675305"></script>
+</body>
+
+</html>

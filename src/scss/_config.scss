@@ -1,0 +1,126 @@
+// Break Points (mobile up)
+$sm_bp: 576px; // tweak point only
+$md_bp:  768px;
+$desktop_min: 992px;
+$mobile_max: 991px;
+$xl_bp:  1400px;
+
+$grid: 64;
+$cols: 16;
+
+// Font Sizes
+  // Assume 16px base font for _base
+    // Base font size is set in each media query (i.e. _medium.scss, etc.)
+  // @function "unitSet" converts into rem
+
+$type_scale: 1.44;
+
+// Font sizes are in rem but must be numbers
+$f1:  1;
+$f0: ($f1 / $type_scale);
+$f2: $f1 * $type_scale;
+$f3: $f2 * $type_scale;
+
+
+
+$font_size_0: #{$f0}rem;
+$font_size_1: #{$f1}rem;
+$font_size_2: #{$f2}rem;
+$font_size_3: #{$f3}rem;
+
+
+$cp_width--bp: 383px;
+$cp_width--mobile: 384px; // affects animation
+$cp_width--large: calcVW(4,$cols);
+$cp_width--xl: calcVW(3,$cols);
+
+$h_pad_mobile: calcVW(4, $grid);
+$v_pad_mobile: calcVH(2,$grid);
+$h_pad_desktop: calcVW(2, $grid);
+
+$cp_pad--large: calcVW(1,$grid);
+
+$button_h_padding--mobile: calcRem($f1,1);
+$button_v_padding--mobile: calcRem($f1, 0.5);
+
+$panel_top_space--mobile: calcRem($f3, 2);
+$main_heading_top--mobile: calcRem($f3, 3);
+$toggle-cp_top_space--large: calcRem($f3, 6);
+
+$radio_height--mobile: calcRem($f1,3);
+$radio_horizontal_padding--mobile: calcVW(8, $grid);
+$subtype_horizontal_padding--mobile: calcVW(6.08, $grid); // see animate.scss
+$radio_vertical_padding--mobile: calcRem($f1, 1);
+
+// $font_size_0: unitSet($f0);
+// $font_size_1: unitSet($f1);
+// $font_size_2: unitSet($f2);
+// $font_size_3: unitSet($f3);
+
+// Colors
+$white: #FFFFFF;
+$ui: #E81736; // B3122A
+$light: #BBBBBB;
+$gray: #777777;
+$dark: #111111;
+$black:  #000000;
+
+$ui:  #E81736; // 4.6 contrast ratio with black or white;
+$red: #B3122A;
+$red1: #59001D;
+$red2: #73001B;
+$red3: #8C1527;
+$red4: #B24757;
+$red5: #B2626E;
+$red6: #BF7C86;
+$red7: #CC99A1;
+$red8: #E5B8BE;
+$red9: #F2CED3;
+$red10: #FFE5E9;
+
+$overlay--dark:  rgba(0,0,0,0.6);
+$overlay--black:  rgba(0,0,0,0.8);
+
+$cp_gradient--large: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.57) 30%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.31) 60%,rgba(0,0,0,0) 100%);
+$footer_gradient--mobile: linear-gradient(0deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%);
+$fooger_gradient--large: linear-gradient(0deg,rgba(0,0,0,1),rgba(0,0,0,.85) 30%,rgba(0,0,0,.2) 75%,transparent);
+
+$main_background_image--mobile: linear-gradient(135deg, rgba(0,0,0,.8), rgba(0,0,0,0)), url("../bg_map.png");
+ $main_background_image--large: linear-gradient(135deg, rgba(0,0,0,1) 0%,rgba(0,0,0,0.57) 30%,rgba(0,0,0,0.5) 35%,rgba(0,0,0,0.31) 60%,rgba(0,0,0,0) 100%), url("../bg_map.png");
+// series colors for graphs
+  // read from inside out
+  // 1.  "darken" / "lighten" previous color
+  // 2.  adjust-hue
+  // 3.  "desaturate" / "saturate"
+$s1: desaturate(adjust-hue(darken($ui, 10%), 10%), 10%);
+$s2: desaturate(adjust-hue(darken($s1, 10%), 10%), 10%);
+$s3: desaturate(adjust-hue(darken($s2, 10%), 10%), 10%);
+$s4: desaturate(adjust-hue(darken($s3, 10%), 10%), 10%);
+$s5: desaturate(adjust-hue(darken($s4, 10%), 10%), 10%);
+
+
+// other configs
+
+  // line widths
+  // grid widths
+
+
+
+
+
+
+
+// z indices
+
+  // bg_layers
+  // active_layer
+  // main_ui
+  // control_panel
+  // secondary_panel
+
+  // bg_map
+  // data_viz
+    // data_vis_category (i.e. viz1 viz2)
+
+
+  // secondary-panel

@@ -1,0 +1,1127 @@
+// COMPLIING
+  // File loading / selector order
+    // Before:
+      //  _reset.scss,
+      //  _placeholders.scss
+    // THIS FILE
+    // After:
+      //  _small.scss,
+      //  _medium.scss,
+      //  _large.scss,
+      //  _xl.scss,
+      //  _.animated.scss
+  // SCSS Nesting (nested selectors)
+    // .some-parent
+      // .some-child
+    // compiles to ".some-parent .some-child"
+
+
+// THIS FILE:  SECTIONS / STRUCTURE
+
+  // HELPERS (type & color)
+    // functional ("font-size-0") rather than bem style ("map__legend--small")
+    // helpful for prototyping.  consider refactoring into scss %placeholder classes
+
+  // ELEMENTS (type & color)
+    // Custom Form Elements (checkbox & radio buttons)
+
+  // COMPONENTS (blocks)
+    // Naming convention
+      // .some-block__some-element--some-modifier
+      // .is_toggled_by_javascript
+
+    // Selector Order
+      // Order in which they first appear in the DOM
+
+///////////////////////////////
+// HELPERS
+.font-size-0 {
+  font-size: $font_size_0;
+}
+.font-size-1 {
+  font-size: $font_size_1;
+}
+.font-size-2 {
+  font-size: $font_size_2;
+}
+.font-size-3 {
+  font-size: $font_size_3;
+}
+
+.italic {
+  font-style: italic;
+}
+
+a,
+input,
+label,
+.white-text {
+  color: $white;
+}
+.red-text {
+  color: $ui;
+}
+
+h1,h2,h3,h4,h5,h6,p,div,span,
+.light-text {
+  color: $light;
+}
+
+.gray-text {
+  color: $gray;
+}
+
+.hide-on-mobile {
+  @include mobile-only {
+    display: none;
+  }
+}
+.hide-on-desktop {
+  @include desktop-only {
+    display: none;
+  }
+}
+
+.show-on-tablet {
+  @media (min-width: $md_bp) {
+    display: block;
+  }
+}
+
+
+
+// END_HELPERS
+///////////////////////////////
+
+///////////////////////////////
+// ELEMENTS
+.button {
+  @extend %button;
+}
+
+.button--close {
+  @extend %button--close-panel;
+}
+
+.button--deselect {
+  @extend %button--select;
+}
+
+.button--select {
+  @extend %button--select;
+}
+
+.close-panel {
+
+}
+
+.inline-link {
+  display: inline-block;
+}
+
+.inline-link.middle-link {
+
+}
+
+.text--slideout-primary {
+  @extend %cp_primary;
+}
+
+.text--slideout-secondary {
+  @extend %cp_secondary;
+}
+
+.text--slideout-tertiary {
+  @extend %cp_tertiary;
+}
+
+.text--panel-label,
+.text--link-label {
+  @extend %ui_label;
+  display: block;
+}
+.text--panel-label {
+  color: $gray;
+}
+
+.text--link-heading {
+  @extend %ui_dynamic;
+  display: block;
+}
+
+.text--link-subheading {
+  @extend %ui_tertiary;
+  display: block;
+}
+
+.text--dynamic {
+  @extend %ui_dynamic;
+}
+
+// FORM ELEMENTS
+input,
+label,
+a,
+button,
+a span,
+a div {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+// input:hover,
+// label:hover,
+// button:hover,
+// a:hover span,
+// a:hover div {
+//   text-decoration: underline;
+// }
+
+input[type="checkbox"],
+input[type="radio"] {
+  @extend %hide_input;
+  // position & size will be set by specific classes
+}
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+      @extend %label_text;
+}
+
+input[type="checkbox"] + label::before,
+input[type="radio"] + label::before {
+  @extend %before_label;
+  // position & size will be set by specific classes
+}
+
+input[type="checkbox"] + label::after,
+input[type="radio"] + label::after {
+  @extend %after_label;
+}
+
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+  @extend %label_text--checked;
+}
+
+input[type="checkbox"]:checked + label::after,
+input[type="radio"]:checked + label::after {
+    @extend %after_label--checked;
+}
+
+input[type="checkbox"]:hover + label::before,
+input[type="radio"]:hover + label::before {
+  @extend %before_label--hover;
+}
+
+// js listens for keyboard input and adds .show_keyboard_focus class
+a.focus,
+button.focus,
+input.focus,
+label.focus,
+input.focus + label {
+  box-shadow: none;
+  outline: none;
+}
+
+a.show_keyboard_focus:focus,
+button.show_keyboard_focus:focus {
+  @extend %link--focus;
+}
+button:focus,
+input.show_keyboard_focus[type="checkbox"]:focus + label.show_keyboard_focus::before,
+input.show_keyboard_focus[type="radio"]:focus + label.show_keyboard_focus::before {
+  @extend %before_label--focus;
+}
+
+input[type="radio"] + label:after {
+  @extend %empty_radio;
+}
+
+input[type="radio"]:checked + label:after {
+  @extend %radio_dot;
+}
+
+input[type="checkbox"] + label:after {
+  @extend %empty_checkbox;
+}
+
+input[type="checkbox"]:checked + label:after {
+  @extend %checkmark;
+}
+
+input[type="radio"] + label:hover:after,
+input[type="checkbox"] + label:hover:after {
+  @extend %pseudo_mark--hover;
+}
+
+
+
+
+
+// END_ELEMENTS
+///////////////////////////////
+
+///////////////////////////////
+// COMPONENTS
+.page-wrap {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// All of the outermost items are absolutely positioned
+.site-header {
+  position: absolute;
+  width: 100%;
+  padding: $v_pad_mobile $h_pad_mobile;
+  background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%);
+
+  @include desktop-only {
+    background: linear-gradient(180deg,rgba(0,0,0,1),rgba(0,0,0,.85) 30%,rgba(0,0,0,.2) 75%,transparent);
+    padding: $font_size_1 $h_pad_desktop;
+    z-index: 4;
+    height: 8rem;
+  }
+
+  .site-header__inner {
+    border-bottom: 1px solid $white;
+    padding-bottom: 1.5rem;
+
+    @media (min-width: $desktop_min) {
+      padding-top: $font_size_1;
+      padding-bottom: $font_size_1;
+      border-color: $gray;
+    }
+
+  }
+  .site-title {
+    @extend %headline;
+    max-width: calcVW(9,$cols);
+  }
+  // displayed only on large screens
+  .help-link {
+    display: none;
+  }
+}
+
+.toggle-control-panel {
+  position: absolute;
+  display: inline-block;;
+  right: $h_pad_mobile;
+  max-width: calcVW(5,$cols);
+  text-align: right;
+  text-transform: none;
+  box-shadow: none;
+  outline: none;
+  overflow: visible;
+
+  @include mobile-only {
+    top: $v_pad_mobile;
+    padding-right: calcRem($f1,4);
+  }
+
+  @include desktop-only {
+    left: $h_pad_desktop;
+    width: calcVW(3,$cols);
+    border-top: 2px solid $gray;
+    padding-top: $font_size_1;
+
+    top: $toggle-cp_top_space--large;
+    padding-right: calcRem($f1,4);
+
+    .icon--from_left {
+      position: absolute;
+      top: 7px;
+      right: 0;
+    }
+  }
+
+  .text--slideout-primary,
+  .text--slideout-secondary {
+    @media(max-width: 767px) {
+      display: none;
+    }
+  }
+
+  .icon--from_right {
+    position: absolute;
+    top: -6px;
+    right: 0;
+  }
+
+
+}
+
+.control-panel {
+  // see _animated.scss for positioning & size
+  background-color: $black;
+  padding: $v_pad_mobile $h_pad_mobile;
+
+  @include desktop-only {
+    background: $cp_gradient--large;
+    padding: 6rem $cp_pad--large 10rem 0;
+    top: 0;
+  }
+
+
+  .close-control-panel {
+    @extend %button--close-panel;
+    text-align: right;
+
+    @media (min-width: $desktop_min) {
+      top: $main_heading_top--mobile;
+      right: $cp_pad--large;
+      border-width: 0;
+      padding: 0;
+      text-transform: none;
+    }
+
+  }
+
+  .close-control-panel:hover {
+    border-color: $white;
+
+  }
+
+  .text--close-slideout {
+    @extend %panel-button;
+  }
+
+  .control-panel__list {
+    margin-top: $panel_top_space--mobile;
+  }
+  .control-panel__item {
+    padding-bottom: $font_size_1;
+  }
+
+  .control-panel__item__inner,
+  .control-panel__link {
+    width: 100%;
+    display: block;
+    border-top: 1px solid $dark;
+    padding: $font_size_1 0 0;
+
+    // special case
+    @include desktop-only {
+      .text--link-label,
+      .text--link-heading,
+      .text--link-subheading,
+      .text--panel-label {
+        left: $h_pad_desktop;
+      }
+    }
+
+  }
+  .control-panel__link:after {
+    content: "";
+    display: block;
+    width: 0;
+    position: absolute;
+    top: 0;
+    border-top: 1px solid $white;
+  }
+
+  .control-panel__link:hover {
+    border-color: $black;
+    text-decoration: none;
+  }
+
+  .control-panel__link:hover:after {
+    width: 100%;
+    transition: width 200ms ease-in-out;
+  }
+
+  .control-panel__link .icon {
+    position: absolute;
+    top: 6px;
+    right: 0;
+  }
+
+  /* PROTOTYPE ONLY */
+  .year-toggle-wrap {
+    @extend %flex-wrap;
+    @extend %flex-justify-between;
+    @extend %flex-align-center;
+
+    @include desktop-only {
+      padding-left: $h_pad_desktop;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    /* PROTOTYPE ONLY */
+    .year-toggle-wrap__inner {
+      text-align: center;
+      width: 54px;
+
+      @include desktop-only {
+        .text--link-heading {
+          left: 0;
+        }
+      }
+
+    }
+    /* PROTOTYPE ONLY */
+    .year-toggle {
+      border: 1px solid $white;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      vertical-align: middle;
+      margin: $font_size_0 2px;
+      font-size: $font_size_1;
+    }
+
+    /* PROTOTYPE ONLY */
+    .range-wrap {
+      display: block;
+      width: calc(100% - 144px);
+      margin-left: 72px;
+      margin-right: 72px;
+      height: 32px;
+      position: absolute;
+      vertical-align: middle;
+
+      @media (min-width: $desktop_min) {
+        width: calc(100% - 182px)
+      }
+
+    }
+    /* PROTOTYPE ONLY */
+    .range-scale {
+      width: 100%;
+      height: 4px;
+      background-color: $gray;
+      position: absolute;
+      left: 0;
+      top: 14px;
+    }
+
+    /* PROTOTYPE ONLY */
+    .range-marker {
+      display: block;
+      width: 100% * 14/15;
+      border-left :2px solid $ui;
+      border-right :2px solid $ui;
+      height: 20px;
+      position: absolute;
+      left: 0;
+      top: 6px; // 32-20
+      padding-top: 6px;
+      padding-bottom: 6px;
+      vertical-align: middle;
+    }
+    /* PROTOTYPE ONLY */
+    .range-highlight {
+      background-color: $white;
+      height: 100%;
+      width: 100%;
+      display: block;
+    }
+  }
+  .control-panel__item-divider {
+    border-bottom: 4px solid $dark;
+
+    @media (min-width: $desktop_min) {
+      border-width: 1px;
+    }
+
+  }
+
+  .control-panel__series-toggle {
+    @extend %flex-wrap;
+    @extend %flex-justify-between;
+    @extend %flex-align-center;
+    width: 100%;
+    padding: $font_size_1;
+
+    @media (min-width: $desktop_min) {
+      padding-left: $h_pad_desktop;
+    }
+
+  }
+
+  .control-panel__toggle-option {
+    width: 50%;
+    display: block;
+    height: 2.5rem;
+  }
+
+  .toggle-option__input {
+    opacity: 0;
+    border: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .toggle-option__label {
+    padding: 0.5rem;
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .toggle-option__label:before {
+    border: 2px solid $gray;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .toggle-option--left,
+  .toggle-option--left:before {
+    border-radius: 8px 0 0 8px;
+  }
+  .toggle-option--right,
+  .toggle-option--right:before {
+    border-radius: 0 8px 8px 0;
+  }
+
+  .toggle-option__input:checked + .toggle-option__label:before {
+    border-color: $ui;
+    color: $ui;
+  }
+
+  // don't put the dot in these sections
+  input[type=radio]+.toggle-option__label:after,
+  input[type=radio]:checked+ .toggle-option__label:after {
+    display: none;
+  }
+
+
+  .control-panel__item__link-wrap {
+    width: 100%;
+    @media (min-width: $desktop_min) {
+      padding-left: $h_pad_desktop;
+    }
+  }
+
+  .inline-link {
+    display: inline-block;
+    margin-top: 16px;
+    @extend %ui_dynamic;
+  }
+  .inline-link:hover {
+    text-decoration: underline;
+  }
+
+  .middle-link {
+    border-left: 1px solid $gray;
+    border-right: 1px solid $gray;
+    margin-left: 12px;
+    margin-right: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
+
+}
+
+.secondary-panel {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  background-color: $dark;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  padding: $v_pad_mobile $v_pad_mobile;
+
+  .secondary-panel__inner {
+    margin-top: $panel_top_space--mobile;
+    border-top: 1px solid $gray;
+    padding-top: $v_pad_mobile;
+  }
+  .text--legend {
+    @extend %headline;
+    font-size: $font_size_2;
+    padding-bottom: $font_size_3;
+  }
+
+  .icon {
+    position: absolute;
+    @include mobile-only {
+      top: 6px;
+      right: 0;
+    }
+  }
+}
+
+
+.secondary-panel.select-types {
+
+}
+
+.secondary-panel.select-countries {
+
+}
+
+.secondary-panel.select-view {
+
+}
+
+.select-types {
+
+  .select-types__aside {
+    h1,h2,h3,h4,h5,h6 {
+      @extend %headline;
+    }
+    p {
+      @extend %ui_tertiary;
+    }
+
+    @include mobile-only {
+      padding-top: calcRem($f1,1);
+    }
+
+    @include desktop-only {
+      width: calcVW(4,$cols);
+      position: absolute;
+      top: calcRem($f1,9);
+      left: $h_pad_desktop;
+    }
+
+  }
+
+  .select-types__form {
+    @include desktop-only {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-left: calcVW(5,$cols);
+      // padding-right: $h_pad_desktop;
+    }
+  }
+
+  .select-types__fieldset {
+    @include desktop-only {
+      flex-basis: calcVW(5,$cols);
+      flex-grow: 0;
+    }
+  }
+
+  .fieldset--types {
+
+  }
+  .fieldset--subtypes {
+    @include desktop-only {
+      margin-top: calcRem($f1,4.6);
+      margin-left: calcVW(0.5,$cols);
+      padding-top: 0;
+      flex-basis: calcVW(4,$cols);
+    }
+  }
+
+  .select-types__legend {
+    &.legend--subtypes {
+      @include desktop-only {
+        font-size: $font_size_1;
+        font-weight: 500;
+        color: $white;
+        padding-bottom: calcRem($f1,1);
+      }
+    }
+
+  }
+
+  .legend--types {
+
+  }
+
+  .legend--subtypes {
+
+  }
+
+  .select-types__list {
+
+  }
+
+  .list--types {
+
+  }
+
+  .list--subtypes {
+
+  }
+
+  .select-types__item {
+    @extend %custom_radio_wrap;
+  }
+
+  .item--types {
+
+  }
+
+  .item--subtypes {
+
+  }
+
+  .select-types__input {
+    @extend %custom_radio_input;
+  }
+
+  .select-types__label {
+    @extend %custom_radio_label--mobile;
+    @include desktop-only {
+      padding-left: calcVW(4,$grid);
+    }
+  }
+  .select-types__label:hover,
+  .select-types__label:hover:before {
+    @extend %custom_radio_label--mobile--hover;
+  }
+
+  .input--main-option {
+
+  }
+
+  .input--sub-option {
+
+  }
+
+  .label--main-option {
+
+  }
+  .label--sub-option {
+
+  }
+}
+
+.select-countries {
+  .button--select,
+  .button--deselect {
+    position: relative;
+    margin-top: $panel_top_space--mobile;
+  }
+
+  .select-countries__form {
+    margin-top: $font_size_1;
+    border-top: none;
+  }
+
+  .select-countries__fieldset {
+    padding-bottom: $font_size_3;
+
+  }
+
+  .select-countries__legend {
+    padding-bottom: $font_size_1;
+  }
+
+  .select-countries__list {
+    @include desktop-only {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .select-countries__item {
+    @extend %custom_radio_wrap;
+    @include desktop-only {
+      // flex-basis: calcVW(3.75,$cols);
+      flex-basis: calcRem($f1,16);
+      flex-grow: 0;
+      // margin-right: calcRem($f1,2);
+      margin-right: calcVW(2,$grid);
+    }
+  }
+  .select-countries__input {
+    @extend %custom_radio_input;
+  }
+  .select-countries__label {
+    @extend %custom_radio_label--mobile;
+    @include desktop-only {
+      padding-left: calcVW(3,$grid);
+      vertical-align: middle;
+    }
+  }
+  .select-countries__label:hover,
+  .select-countries__label:hover:before {
+    @extend %custom_radio_label--mobile--hover;
+  }
+}
+
+.select-view {
+    .button--close {
+      @include desktop-only {
+        border-color: $gray;
+        &:hover {
+          border-color: $white;
+        }
+      }
+    }
+
+  .select-view__form {
+
+  }
+
+  .select-view__fieldset {
+
+  }
+
+  .text--legend {
+    @include desktop-only {
+        margin-left: $h_pad_desktop;
+    }
+  }
+
+  .select-view__list {
+
+    @include desktop-only {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      padding-left: $h_pad_desktop;
+      padding-right: $h_pad_desktop;
+    }
+  }
+
+  .select-view__item {
+    @extend %custom_radio_wrap;
+    height: calcRem($f1, 5);
+    @include desktop-only {
+      flex-basis: calcVW(4,$cols);
+      flex-grow: 1;
+      margin-right: calcVW(0.5,$cols);
+      margin-bottom: calcVH(1,$cols);
+      height: calcVW(10,$grid);
+    }
+  }
+
+  .select-view__input {
+    @extend %custom_radio_input;
+
+    @include desktop-only {
+
+    }
+
+  }
+  .select-view__label {
+    @extend %custom_radio_label--mobile;
+    @include desktop-only {
+      border: 2px solid $gray;
+      height: 100%;
+      // background-color: $ui;
+    }
+
+  }
+
+  .select-view__label:hover {
+    @extend %custom_radio_label--mobile--hover;
+
+    @include mobile-only {
+      height: auto;
+    }
+    @include desktop-only {
+
+    }
+  }
+
+  // input[type="radio"]:checked + .select-view__label:before,
+  // input[type="radio"]:checked + .select-view__label:after,
+  // .select-view__label:before,
+  // .select-view__label:after {
+  //     opacity: 0;
+  //     border: none;
+  //     background: none;
+  // }
+
+  input[type="radio"]:checked + .select-view__label {
+    @include desktop-only {
+      border-color: $ui;
+    }
+  input[type="radio"]:checked + .select-view__label:before {
+    @include desktop-only {
+      display: none;
+    }
+  }
+
+  }
+
+  input[type="radio"]:checked + .select-view__label:after,
+  .select-view__label:after {
+    top: 18px;
+
+    @include desktop-only {
+      display: none;
+    }
+  }
+
+  .select-view__text {
+    display: block;
+    font-size: $font_size_1;
+    position: relative;
+    @include desktop-only {
+      position: absolute;
+      left: calcVW(2,$grid);
+    }
+  }
+  .select-view__text.line1 {
+    @extend %ui_primary;
+    @extend %headline;
+    @include desktop-only {
+      top: $font_size_1;
+    }
+  }
+  .select-view__text.line2 {
+    @extend %ui_tertiary;
+    @include desktop-only {
+      top: calcRem($f1, 2);
+    }
+  }
+  .select-view__icon {
+    @include desktop-only {
+      bottom: 0;
+      right: 0;
+      min-width: calcVW(7,$grid);
+      min-height: calcVW(7,$grid);
+    }
+
+  }
+  .icon--bubble-map {
+
+  }
+  .icon--line-graph {
+
+  }
+  .icon--stacked-area {
+
+  }
+  .icon--treemap {
+
+  }
+  .icon--table {
+
+  }
+}
+
+
+.chart-header {
+  position: absolute;
+  top: $main_heading_top--mobile;
+  left: $h_pad_mobile;
+
+  @include desktop-only {
+    top: 6rem;
+    left: $h_pad_desktop;
+    padding-left: $cp_pad--large;
+  }
+
+  .chart-header__heading {
+    @extend %ui_primary;
+    font-size: $font_size_2;
+  }
+
+  .chart-header__subheading {
+    @extend %ui_primary;
+    font-size: $font_size_1;
+  }
+
+  .chart-header__label {
+    @extend %ui_tertiary;
+    font-size: $font_size_1;
+  }
+
+
+}
+
+.site-footer {
+  @extend %flex-wrap;
+  @extend %flex-justify-between;
+  @extend %flex-align-center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: $v_pad_mobile $h_pad_mobile;
+  background: $footer_gradient--mobile;
+
+  @media (min-width: $desktop_min) {
+    z-index: 3;
+    padding: $font_size_1 $h_pad_desktop;
+    background: $fooger_gradient--large;
+  }
+
+  .site-footer__logos {
+  }
+  .state-logo-wrap,
+  .ad-logo-wrap {
+    vertical-align: middle;
+    display:table-cell;
+    position: relative;
+  }
+
+  .state-logo-wrap {
+    height: 3rem;
+    // margin-left: 3rem;
+    @media (min-width: $desktop_min) {
+      height: 4rem;
+    }
+  }
+  .ad-logo-wrap {
+    width: 12rem;
+    @include desktop-only {
+      width: 18rem;
+    }
+  }
+
+  .fine-print {
+    font-size: $font_size_0;
+  }
+
+}
+
+
+
+.background-map {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-image: $main_background_image--mobile;
+  background-position: right 30%;
+  background-size: auto, cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  @media (min-width: $desktop_min) {
+      background-image: $main_background_image--large;
+  }
+
+}
+// END_COMPONENTS
+///////////////////////////////
+
+
+/////////////TEMP
+
+.icons {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 400px;
+  padding-top: 12rem;
+}
+
+.icon-wrap {
+  width: 48px;
+  margin-right: 16px;
+}
+
+.icon-wrap > img {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: block;
+  color: $white;
+  stroke-width: 2;
+  stroke: $ui;
+}

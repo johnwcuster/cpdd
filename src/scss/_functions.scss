@@ -1,0 +1,11 @@
+@function calcVW($some-number, $another-number){
+  @return 100 * $some-number / $another-number + vw;
+}
+
+@function calcVH($some-number, $another-number){
+  @return 100 * $some-number / $another-number + vh;
+}
+
+@function calcRem($num1, $num2) {
+  @return $num1 * $num2 + rem;
+}

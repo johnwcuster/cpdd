@@ -1,0 +1,147 @@
+.mobile-nav-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  background: $dark;
+  opacity: 0.8;
+  display: none;
+}
+.mobile-nav-overlay.js_visible {
+  display: block;
+}
+
+.control-panel {
+  z-index: 3;
+  width: $cp_width--mobile;
+  height: 100vh;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  will-change: scroll-position;
+  overflow-y: scroll;
+  position: absolute;
+
+
+  // tweak for really small mobile
+  @include mobile-only {
+    max-width: 100vw;
+    right: -100vw;
+  }
+  @include desktop-only {
+    left:-$cp_width--large;
+    width: $cp_width--large;
+    overflow-x: hidden;
+  }
+  @media(min-width: $xl_bp) {
+    width: $cp_width--xl;
+  }
+}
+
+.control-panel.js_visible {
+
+  transition: transform 200ms ease-in-out;
+  transform-style: preserve-3d;
+
+  @media (max-width: $mobile_max) {
+    transform: translate3d(-100vw, 0, 0);
+
+  }
+  @media (max-width: $cp_width--bp) {
+    width: 100vw;
+    transform: translate3d(-100vw, 0, 0);
+  }
+  @media (min-width: $desktop_min) {
+    transform: translate3d($cp_width--large, 0, 0);
+  }
+}
+
+@media (min-width: $desktop_min) {
+  // .site-title,
+  .chart-header,
+  .site-footer__logos {
+    transform: translate3d(0,0,0);
+    will-change: transform;
+  }
+  // .site-title.is_animated,
+  .chart-header.is_animated,
+  .site-footer__logos.is_animated {
+    transform: translate3d($cp_width--large,0,0);
+    transition: transform 200ms ease-in-out;
+  }
+
+  .toggle-control-panel.is_animated {
+    display: none;
+  }
+}
+@media (min-width: $xl_bp) {
+  // .site-title.is_animated,
+  .chart-header.is_animated,
+  .site-footer__logos.is_animated {
+    transform: translate3d($cp_width--xl,0,0);
+    transition: transform 200ms ease-in-out;
+  }
+}
+
+
+
+.secondary-panel.select-types.js_visible {
+  display: block;
+}
+
+.secondary-panel.select-countries.js_visible {
+  display: block;
+}
+
+.secondary-panel.select-view.js_visible {
+  display: block;
+}
+
+// this is an exception to the no-id selector convention
+#finance_list_item {
+  @include mobile-only {
+      will-change: height;
+  }
+
+}
+
+#finance_list_item.js_toggled {
+  @include mobile-only {
+    height: calcRem($f1,22);
+    transition: height 200ms ease-in-out;
+    background-color: rgba(50,50,50,0.5);
+  }
+}
+
+#finance_subtypes {
+  visibility: hidden;
+  opacity: 0;
+
+    @include mobile-only {
+      position: absolute;
+      top: calcRem($f1,12);
+      z-index: 2;
+      padding: calcRem($f1,1);
+      background-color: rgba(50,50,50,0.5);
+      width: 100%;
+      border: 1px solid $white;
+
+      .legend--subtypes {
+        font-size: $font_size_1;
+        margin-left: $subtype_horizontal_padding--mobile;
+      }
+
+    }
+}
+
+#finance_subtypes.js_toggled {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+  @include mobile-only {
+
+
+  }
+}
