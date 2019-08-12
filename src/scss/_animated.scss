@@ -15,6 +15,7 @@
 }
 
 .control-panel {
+  top: 0;
   z-index: 3;
   width: $cp_width--mobile;
   height: 100vh;
@@ -42,7 +43,7 @@
 
 .control-panel.js_visible {
 
-  transition: transform 200ms ease-in-out;
+  transition: transform 300ms ease-in-out;
   transform-style: preserve-3d;
 
   @media (max-width: $mobile_max) {
@@ -60,28 +61,66 @@
 
 @media (min-width: $desktop_min) {
   // .site-title,
-  .chart-header,
-  .site-footer__logos {
+  .site-header,
+  .site-footer {
     transform: translate3d(0,0,0);
     will-change: transform;
   }
   // .site-title.is_animated,
-  .chart-header.is_animated,
-  .site-footer__logos.is_animated {
+  .site-header.is_animated,
+  .site-footer.is_animated {
     transform: translate3d($cp_width--large,0,0);
-    transition: transform 200ms ease-in-out;
+    transition: transform 300ms ease-in-out;
+  }
+
+  .toggle-control-panel {
+    will-change: background;
+    @include desktop-only {
+      padding-bottom: 1rem;
+    }
+
+    .icon--from_right,
+    .text--hide {
+      display: none;
+    }
+  }
+
+  .toggle-control-panel:hover {
+    @include desktop-only {
+      background: rgba(100,100,100,0.3);
+      transition: background 300ms ease-in-out;
+    }
   }
 
   .toggle-control-panel.is_animated {
-    display: none;
+    transition: background 300ms ease-in-out;
+
+    text-align: left;
+    padding-left: 5rem;
+    padding-right: 0;
+    background: rgba(100,100,100,0.3);
+
+    border-radius: 2px;
+
+    .text--hide {
+      display: inline;
+    }
+    .icon--from_right {
+      display: block;
+      left: 1rem;
+    }
+    .text--show,
+    .icon--from_left {
+      display: none;
+    }
   }
 }
 @media (min-width: $xl_bp) {
   // .site-title.is_animated,
   .chart-header.is_animated,
-  .site-footer__logos.is_animated {
+  .site-footer.is_animated {
     transform: translate3d($cp_width--xl,0,0);
-    transition: transform 200ms ease-in-out;
+    transition: transform 300ms ease-in-out;
   }
 }
 
@@ -110,7 +149,7 @@
 #finance_list_item.js_toggled {
   @include mobile-only {
     height: calcRem($f1,22);
-    transition: height 200ms ease-in-out;
+    transition: height 300ms ease-in-out;
     background-color: rgba(50,50,50,0.5);
   }
 }

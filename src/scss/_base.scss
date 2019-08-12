@@ -223,6 +223,7 @@ input.focus + label {
   outline: none;
 }
 
+
 a.show_keyboard_focus:focus,
 button.show_keyboard_focus:focus {
   @extend %link--focus;
@@ -272,85 +273,131 @@ input[type="checkbox"] + label:hover:after {
 
 // All of the outermost items are absolutely positioned
 .site-header {
-  position: absolute;
-  width: 100%;
-  padding: $v_pad_mobile $h_pad_mobile;
-  background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%);
-
-  @include desktop-only {
-    background: linear-gradient(180deg,rgba(0,0,0,1),rgba(0,0,0,.85) 30%,rgba(0,0,0,.2) 75%,transparent);
-    padding: $font_size_1 $h_pad_desktop;
-    z-index: 4;
-    height: 8rem;
+  @include mobile-only {
+    padding-left: $h_pad_mobile;
+    padding-right: $h_pad_mobile;
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .site-header__inner {
-    border-bottom: 1px solid $white;
-    padding-bottom: 1.5rem;
+  @include desktop-only {
+      max-width: $cp_width--large;
+      left: $h_pad_desktop;
+  }
 
-    @media (min-width: $desktop_min) {
-      padding-top: $font_size_1;
-      padding-bottom: $font_size_1;
-      border-color: $gray;
+  .site-title {
+
+    @extend %headline;
+    font-size: $font_size_2;
+    color: $light;
+    padding-top: calcRem(1,$f1);
+    padding-bottom: calcRem(1,$f1);
+    margin-bottom: calcRem(1,$f1);
+
+    @include mobile-only {
+      border: none;
+      max-width: calcVW(12,$cols);
+    }
+    @include desktop-only {
+      border-bottom: 2px solid $gray;
+    }
+  }
+  .chart-header {
+    padding-bottom: calcRem(1,$f1);
+    @include mobile-only {
+      order: 2;
+      margin-top: calcRem($f2,1);
+    }
+  }
+  .chart-header__heading {
+    @extend %ui_primary;
+    font-size: $font_size_2;
+  }
+
+  .chart-header__subheading {
+    @extend %ui_primary;
+    font-size: $font_size_1;
+  }
+
+  .chart-header__label {
+    @extend %ui_tertiary;
+    font-size: $font_size_1;
+  }
+
+  .fine-print-wrap {
+    @extend %flex-wrap;
+    @extend %flex-justify-between;
+    @include mobile-only {
+      width: 100%;
+    }
+    @include desktop-only {
+      width: calcVW(3,$cols);
+      margin-top: calcRem($f2,1);
+      padding-bottom:  calcRem($f1,0.25); // to match up borders
     }
 
   }
-  .site-title {
-    @extend %headline;
-    max-width: calcVW(9,$cols);
-  }
-  // displayed only on large screens
-  .help-link {
-    display: none;
-  }
-}
 
-.toggle-control-panel {
-  position: absolute;
-  display: inline-block;;
-  right: $h_pad_mobile;
-  max-width: calcVW(5,$cols);
-  text-align: right;
-  text-transform: none;
-  box-shadow: none;
-  outline: none;
-  overflow: visible;
+  .fine-print {
+    font-size: $font_size_0;
+    line-height: $font_size_1;
 
-  @include mobile-only {
-    top: $v_pad_mobile;
-    padding-right: calcRem($f1,4);
+    a {
+      text-transform: uppercase;
+    }
   }
 
-  @include desktop-only {
-    left: $h_pad_desktop;
-    width: calcVW(3,$cols);
-    border-top: 2px solid $gray;
-    padding-top: $font_size_1;
+  .toggle-control-panel {
+    box-shadow: none;
+    outline: none;
+    overflow: visible;
 
-    top: $toggle-cp_top_space--large;
-    padding-right: calcRem($f1,4);
+    @include mobile-only {
+      padding-right: calcRem($f1,4);
+      position: absolute;
+      top: 0;
+      right: 0;
+      .icon--from_left {
+        display: none;
+      }
 
-    .icon--from_left {
+
+    }
+
+    @include desktop-only {
+      display: inline-block;
+      text-align: right;
+      text-transform: none;
+      margin-top: calcRem(1,$f1);
+      width: calcVW(3,$cols);
+      border-top: 2px solid $gray;
+      padding-top: $font_size_1;
+
+
+      padding-right: calcRem($f1,5);
+
+      .icon--from_left {
+        position: absolute;
+        top: 7px;
+        right: 1rem;
+      }
+    }
+
+    .text--slideout-primary,
+    .text--slideout-secondary {
+      @media(max-width: 767px) {
+        display: none;
+      }
+    }
+
+    .icon--from_right {
       position: absolute;
       top: 7px;
-      right: 0;
+      left: 0;
     }
+
+
   }
-
-  .text--slideout-primary,
-  .text--slideout-secondary {
-    @media(max-width: 767px) {
-      display: none;
-    }
-  }
-
-  .icon--from_right {
-    position: absolute;
-    top: -6px;
-    right: 0;
-  }
-
-
 }
 
 .control-panel {
@@ -360,7 +407,7 @@ input[type="checkbox"] + label:hover:after {
 
   @include desktop-only {
     background: $cp_gradient--large;
-    padding: 6rem $cp_pad--large 10rem 0;
+    padding: 1rem $cp_pad--large 10rem 0;
     top: 0;
   }
 
@@ -388,8 +435,25 @@ input[type="checkbox"] + label:hover:after {
     @extend %panel-button;
   }
 
+  .control_panel__heading {
+    font-size: $font_size_2;
+    @extend %ui_tertiary;
+    text-transform: uppercase;
+    @include mobile-only {
+      top: 4rem;
+    }
+    @include desktop-only {
+      left: $h_pad_desktop;
+      padding-top: calcRem($f2,1);
+      padding-bottom: 2px; // to make the border line up
+      margin-bottom: calcRem($f1,1);
+    }
+  }
+
   .control-panel__list {
-    margin-top: $panel_top_space--mobile;
+    @include mobile-only {
+      margin-top: $panel_top_space--mobile;
+    }
   }
   .control-panel__item {
     padding-bottom: $font_size_1;
@@ -423,13 +487,19 @@ input[type="checkbox"] + label:hover:after {
   }
 
   .control-panel__link:hover {
-    border-color: $black;
-    text-decoration: none;
+    @include desktop-only {
+      border-color: $black;
+      text-decoration: none;
+    }
+
   }
 
   .control-panel__link:hover:after {
-    width: 100%;
-    transition: width 200ms ease-in-out;
+    @include desktop-only {
+      width: 100%;
+      transition: width 200ms ease-in-out;
+    }
+
   }
 
   .control-panel__link .icon {
@@ -549,6 +619,8 @@ input[type="checkbox"] + label:hover:after {
     height: 2.5rem;
   }
 
+
+
   .toggle-option__input {
     opacity: 0;
     border: 0;
@@ -562,6 +634,11 @@ input[type="checkbox"] + label:hover:after {
     top: 0;
     width: 100%;
     text-align: center;
+    &:hover {
+      @include desktop-only {
+        text-decoration: underline;
+      }
+    }
   }
   .toggle-option__label:before {
     border: 2px solid $gray;
@@ -582,7 +659,7 @@ input[type="checkbox"] + label:hover:after {
   }
 
   .toggle-option__input:checked + .toggle-option__label:before {
-    border-color: $ui;
+    border-color: $white;
     color: $ui;
   }
 
@@ -606,6 +683,7 @@ input[type="checkbox"] + label:hover:after {
     @extend %ui_dynamic;
   }
   .inline-link:hover {
+
     text-decoration: underline;
   }
 
@@ -625,6 +703,7 @@ input[type="checkbox"] + label:hover:after {
 .secondary-panel {
   display: none;
   position: fixed;
+  top: 0;
   z-index: 5;
   background-color: $dark;
   width: 100vw;
@@ -1002,49 +1081,28 @@ input[type="checkbox"] + label:hover:after {
 }
 
 
-.chart-header {
-  position: absolute;
-  top: $main_heading_top--mobile;
-  left: $h_pad_mobile;
-
-  @include desktop-only {
-    top: 6rem;
-    left: $h_pad_desktop;
-    padding-left: $cp_pad--large;
-  }
-
-  .chart-header__heading {
-    @extend %ui_primary;
-    font-size: $font_size_2;
-  }
-
-  .chart-header__subheading {
-    @extend %ui_primary;
-    font-size: $font_size_1;
-  }
-
-  .chart-header__label {
-    @extend %ui_tertiary;
-    font-size: $font_size_1;
-  }
-
-
-}
-
 .site-footer {
   @extend %flex-wrap;
   @extend %flex-justify-between;
   @extend %flex-align-center;
   position: absolute;
   bottom: 0;
-  width: 100%;
-  padding: $v_pad_mobile $h_pad_mobile;
-  background: $footer_gradient--mobile;
+  @include mobile-only {
+      padding: $v_pad_mobile $h_pad_mobile;
+  }
 
-  @media (min-width: $desktop_min) {
+  // background: $footer_gradient--mobile;
+
+  @include mobile-only {
+    width: 100%;
+  }
+
+  @include desktop-only {
+    width: $cp_width--large;
+    left: $h_pad_desktop;
     z-index: 3;
-    padding: $font_size_1 $h_pad_desktop;
-    background: $fooger_gradient--large;
+    padding-bottom: $font_size_1;
+    // background: $fooger_gradient--large;
   }
 
   .site-footer__logos {
@@ -1057,23 +1115,22 @@ input[type="checkbox"] + label:hover:after {
   }
 
   .state-logo-wrap {
-    height: 3rem;
-    // margin-left: 3rem;
-    @media (min-width: $desktop_min) {
-      height: 4rem;
+    @include mobile-only {
+      height: 3rem;
+    }
+    @include desktop-only {
+      height: 3.5rem;
     }
   }
   .ad-logo-wrap {
-    width: 12rem;
+    @include mobile-only {
+      width: 12rem;
+    }
+
     @include desktop-only {
-      width: 18rem;
+      width: 16.5rem;
     }
   }
-
-  .fine-print {
-    font-size: $font_size_0;
-  }
-
 }
 
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>China Dashboard Concept</title>
-  <link rel="stylesheet" href="dist/style.css?cb=1565294122384">
+  <link rel="stylesheet" href="dist/style.css?cb=1565549299882">
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
 </head>
@@ -12,27 +12,38 @@
 <body>
   <div class="page-wrap">
 
-    <header class="site-header">
-      <div class="site-header__inner">
+    <header id="site_header" class="site-header">
         <h1 id="site_title" class="site-title">China's Public Diplomacy in East Asia and Pacific</h1>
-        <p class="help-link">Help &amp; Documentation</p>
-      </div>
+
+        <div id="chart_header" class="chart-header">
+          <h2 id="chart_title" class="chart-header__heading">Official Finance With Diplomatic Intent</h2>
+          <p id="chart_subtitle" class="chart-header__subheading">2000-2015</p>
+          <p id="chart_label" class="chart-header__label">(USD 2014)</p>
+        </div>
+        <div class="fine-print-wrap">
+          <p class="fine-print">Source: <a href="https://www.aiddata.org/china-public-diplomacy">AidData</a>
+          <p class="fine-print"><a href="https://www.aiddata.org/china-public-diplomacy">Documentation</a></p>
+        </div>
+        </p>
+        <a id="toggle_control_panel" class="toggle-control-panel" aria-expanded="false" aria-controls="control_panel" role="button" tabindex="0">
+          <span class="text--slideout-primary">Control Panel</span><br/>
+          <span class="text--slideout-secondary text--show">Show</span>
+          <span class="text--slideout-secondary text--hide">Hide</span>
+          <span class="toggle-control-panel__icon icon icon--from_left"></span>
+          <span class="toggle-control-panel__icon icon icon--from_right"></span>
+        </a>
     </header>
-    <a id="toggle_control_panel" class="toggle-control-panel" aria-expanded="false" aria-controls="control_panel" role="button" tabindex="0">
-      <span class="text--slideout-primary">Control Panel</span><br/>
-      <span class="text--slideout-secondary">Show</span>
-      <span class="toggle-control-panel__icon icon icon--from_left hide-on-mobile"></span>
-      <span class="toggle-control-panel__icon icon icon--from_right hide-on-desktop"></span>
-    </a>
+
     <div id="control_panel" class="control-panel" aria-hidden="false" aria-labelledby="toggle_control_panel">
       <a id="close_control_panel" href="#toggle_control_panel" class="close-control-panel">
-        <div class="hide-on-mobile">
+        <!-- <div class="hide-on-mobile">
           <span class="text--slideout-tertiary hide-on-mobile">Control Panel</span><br/>
           <span class="text--slideout-secondary hide-on-mobile">Hide</span>
-        </div>
+        </div> -->
         <span class="hide-on-desktop text--close-slideout">Close</span>
 
       </a>
+      <h3 class="control_panel__heading">Control Panel</h3>
       <ul class="control-panel__list">
         <li class="control-panel__item">
           <a id="toggle_view_select" class="control-panel__link" href="#select_view">
@@ -352,92 +363,7 @@
         </fieldset>
       </form>
     </div>
-
-    <div id="chart_header" class="chart-header">
-      <h3 id="chart_title" class="chart-header__heading">Official Finance</h3>
-      <h4 id="chart_subtitle" class="chart-header__subheading">2000-2015</h4>
-      <p id="chart_label" class="chart-header__label">(USD 2014)</p>
-    </div>
-    <!--
-    <div class="icons">
-      <div class="icon-wrap">
-        <img src="icons2/icon--from_left.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--from_right.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--funnel.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--bubble-map.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--line-graph.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--stacked-area.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--bar-chart.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--treemap.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--table.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--zoom_in.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--zoom_out.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--plus.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons2/icon--minus.svg">
-      </div>
-    </div>
-    <div class="icons">
-      <div class="icon-wrap">
-        <img src="icons/icon--from_left.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--from_right.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--funnel.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--bubble-map.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--line-graph.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--stacked-area.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--bar-graph.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--treemap.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--table.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--zoom_in.svg">
-      </div>
-      <div class="icon-wrap">
-        <img src="icons/icon--zoom_out.svg">
-      </div>
-    </div> -->
-    <footer class="site-footer">
-      <div id="site_footer_logos" class="site-footer__logos">
-        <!-- State Dept Logo -->
+    <footer id="site_footer_logos" class="site-footer">
         <div class="state-logo-wrap">
           <img src="State_seal_white.png">
         </div>
@@ -445,11 +371,6 @@
         <div class="ad-logo-wrap">
           <img src="AidData_Logo--white.svg">
         </div>
-      </div>
-      <div class="fine-print">
-        <p>Source: <a href="https://www.aiddata.org/china-public-diplomacy">AidData</a>
-        </p>
-      </div>
     </footer>
     <!--- demonstration only  -->
     <div class="background-map">
@@ -465,7 +386,7 @@
     <div id="control_panel_overlay" class="mobile-nav-overlay"></div>
   </div>
 
-  <script src="dist/all.js?cb=1565294122384"></script>
+  <script src="dist/all.js?cb=1565549299882"></script>
 </body>
 
 </html>

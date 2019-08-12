@@ -95,8 +95,10 @@
 
 // for keyboard input
 %link--focus {
-  box-shadow: 0 0 0 3px $white !important;
-  outline: 3px solid transparent !important; /* For Windows high contrast mode. */
+  @include desktop-only {
+    box-shadow: 0 0 0 3px $white !important;
+    outline: 3px solid transparent !important; /* For Windows high contrast mode. */
+  }
 }
 
 
@@ -135,14 +137,19 @@
   transition: opacity 0.2s ease-in-out;
 }
 %before_label--hover {
-  text-decoration: none; // placeholder
+  @include desktop-only {
+      text-decoration: none; // placeholder
+  }
+
   // box-shadow: 0 0 0 3px $white;
   // outline: 3px solid transparent; /* For Windows high contrast mode. */
 }
 
 // for keyboard input
 %before_label--focus {
-  @include show-outline;
+  @include desktop-only {
+    @include show-outline;
+  }
 }
 
 
@@ -182,7 +189,9 @@
 }
 
 %custom_radio_label--mobile--hover {
+  @include desktop-only {
     border-color: $white;
+  }
 }
 
 %custom_radio_label--mobile:before {
@@ -236,5 +245,7 @@
 }
 
 %pseudo_mark--hover {
-  border-color: $white;
+  @include desktop-only {
+    border-color: $white;
+  }
 }

@@ -9,7 +9,7 @@ const $sm_bp = 576,
 
 
 const docBody = document.body;
-  siteTitle = document.getElementById("site_title"),
+  siteHeader = document.getElementById("site_header"),
   controlsToggle = document.getElementById("toggle_control_panel"),
   controlsClose = document.getElementById("close_control_panel"),
   controlsCloseOverlay = document.getElementById("control_panel_overlay"),
@@ -90,9 +90,9 @@ function closeControlPanel() {
     controlsCloseOverlay.classList.remove("js_visible");
 
     if(document.body.clientWidth >= $l_bp) {
-      controlsToggle.classList.remove("is_animated");
-      siteTitle.classList.remove("is_animated");
-      chartHeader.classList.remove("is_animated");
+      // controlsToggle.classList.remove("is_animated");
+      siteHeader.classList.remove("is_animated");
+      // chartHeader.classList.remove("is_animated");
       siteFooterLogos.classList.remove("is_animated");
     }
 
@@ -107,8 +107,8 @@ function toggleControlPanel(e) {
   }
   if(document.body.clientWidth >= $l_bp) {
     controlsToggle.classList.toggle("is_animated");
-    siteTitle.classList.toggle("is_animated");
-    chartHeader.classList.toggle("is_animated");
+    siteHeader.classList.toggle("is_animated");
+    // chartHeader.classList.toggle("is_animated");
     siteFooterLogos.classList.toggle("is_animated");
   }
 }
