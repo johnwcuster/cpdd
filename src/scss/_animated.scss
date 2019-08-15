@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
+  z-index: 11;
   cursor: pointer;
   background: $dark;
   opacity: 0.8;
@@ -16,7 +16,7 @@
 
 .control-panel {
   top: 0;
-  z-index: 3;
+  z-index: 12;
   width: $cp_width--mobile;
   height: 100vh;
   will-change: transform;
@@ -150,7 +150,7 @@
 .details-panel {
   position: absolute;
   top: 0;
-  z-index: 4;
+  z-index: 12;
   transform: translate3d(0,0,0);
   will-change: transform;
   height: 100vh;
@@ -315,7 +315,6 @@
   transition: visibility 0s, opacity 0.5s ease-in-out;
   height: auto;
 }
-
 
 // themes
 @include mobile-only {

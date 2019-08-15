@@ -128,17 +128,6 @@ h1,h2,h3,h4,h5,h6,p,div,span {
 
 ///////////////////////////////
 .theme--dark {
-  // @extend %dark-background;
-
-  // FOR TESTING ONLY
-  background: rgba(50,50,50,0.6);
-
-
-  // FOR TESTING ONLY
-  .site-header {
-    background: rgba(0,0,0,0.4)
-  }
-
   a,
   input,
   label {
@@ -270,15 +259,6 @@ h1,h2,h3,h4,h5,h6,p,div,span {
 ///////////////////////////////
 
 .theme--light {
-  // @extend %lighter-background;
-
-  // FOR TESTING ONLY
-  background: rgba(200,200,200,0.6);
-
-  // FOR TESTING ONLY
-  .site-header {
-    background: rgba(255,255,255,0.6);
-  }
 
   a,
   input,
@@ -532,6 +512,7 @@ input[type="checkbox"] + label:hover:after {
 
 // All of the outermost items are absolutely positioned
 .site-header {
+  z-index: 10;
   @include mobile-only {
     padding-left: $h_pad_mobile;
     padding-right: $h_pad_mobile;
@@ -641,7 +622,7 @@ input[type="checkbox"] + label:hover:after {
       }
     }
     @include xl-only {
-
+      min-width: calcRem($f1,12);
       width: calcVW(2,$cols);
     }
 
@@ -760,6 +741,7 @@ input[type="checkbox"] + label:hover:after {
   // @include bright-red-border;
   padding-left: calcRem($f1,2);
   padding-right: calcRem($f1,5);
+  z-index: 10;
   @include desktop-only {
     position: absolute;
     top: $v_pad_desktop;
@@ -994,8 +976,9 @@ input[type="checkbox"] + label:hover:after {
     padding: $font_size_1;
     padding-bottom: 0;
 
-    @media (min-width: $desktop_min) {
+    @include desktop-only {
       padding-left: $h_pad_desktop;
+      padding-right: 0;
     }
 
   }
@@ -1065,7 +1048,7 @@ input[type="checkbox"] + label:hover:after {
   display: none;
   position: fixed;
   top: 0;
-  z-index: 5;
+  z-index: 13;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
@@ -1583,7 +1566,7 @@ input[type="checkbox"] + label:hover:after {
 
   .button--close {
     position: fixed;
-    z-index: 2;
+    z-index: 12;
     right: calcVW(1,$grid);
   }
 
@@ -1701,12 +1684,13 @@ input[type="checkbox"] + label:hover:after {
 
   @include mobile-only {
     width: 100%;
+    z-index: 10;
   }
 
   @include desktop-only {
     width: $cp_width--large;
     left: $h_pad_desktop;
-    z-index: 3;
+    z-index: 12;
     min-width: 320px;
   }
 
@@ -1724,7 +1708,7 @@ input[type="checkbox"] + label:hover:after {
       height: 3rem;
     }
     @include desktop-only {
-      height: 3.5rem;
+      height: 3rem;
     }
   }
   .ad-logo-wrap {
@@ -1733,7 +1717,7 @@ input[type="checkbox"] + label:hover:after {
     }
 
     @include desktop-only {
-      width: 16.5rem;
+      width: 15rem;
     }
   }
   .fine-print,
@@ -1744,5 +1728,3 @@ input[type="checkbox"] + label:hover:after {
     font-style: italic;
   }
 }
-
-///////////////////////////////
