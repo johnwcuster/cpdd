@@ -406,7 +406,7 @@
         </fieldset
       </form>
     </div>
-    <a id="open_right_panel" style="position: absolute; left: 50%; top: 50%; color: #E81736;" href="#">table toggle</a>
+
 
 
     <div id="export_options" class="details-panel export-options">
@@ -637,23 +637,17 @@
     <div id="map_layer" class="map-layer">
       <span>This will be full width & height, and go under all of the (left and right) menus</span>
       <span>It will wrap both the country borders and the bubbles</span>
+      <span>Ideally, the country borders will continue to be visible even for other chart views. (The chart div below will have an overlay that makes this unselectable.)</span>
     </div>
     <div id="chart_layer" class="chart-layer">
-      <div id="chart_background_map" class="chart-layer__background">
-        <span>This will be full width & height, and go under the menus</span>
-        <span>Ideally, the background for the map (i.e. country borders) will continue to be visible.</span>
-        <span>Alternatively, the map could be an image.</span>
-      </div>
       <div id="chart_background_overlay" class="chart-layer__overlay">
-        <span>This layer will add a gradient over the map 1) to make it unselectable, and 2) to make it fade into the background. </span>
+        <span>This layer will add a gradient over a map or background image</span>
         <span>This layer will sit on top of the map, but will still fit under the menus.</span>
       </div>
-      <div id="chart_wrapwrap" class="chart-layer__wrap">
-        <div id="chart_layer1" class="chart-wrap no_scroll">
-          <span>Put line graphs, area charts, column charts and treemaps in this div (or a div with the same auxiliary class for scroll).</span>
-        </div>
-        <div id="chart_layer2" class="chart-wrap has_scroll">
+      <div id="chart_wrap" class="chart-layer__wrap">
+        <div id="chart_layer" class="chart-layer">
           <span>Put bar charts and tables in this div (or a div with the same auxiliary class for scroll).</span>
+          <a id="open_right_panel" style="position: absolute; left: 50%; top: 50%; color: #E81736;" href="#">table toggle</a>
         </div>
         </div>
       </div>

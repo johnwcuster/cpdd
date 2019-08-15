@@ -544,6 +544,10 @@ input[type="checkbox"] + label:hover:after {
       left: $h_pad_desktop;
   }
 
+  @include xl-only {
+    max-width: $cp_width--xl;
+  }
+
   .site-title {
     @extend %bold;
     font-size: $font_size_2;
@@ -635,6 +639,10 @@ input[type="checkbox"] + label:hover:after {
         top: 7px;
         right: 1rem;
       }
+    }
+    @include xl-only {
+
+      width: calcVW(2,$cols);
     }
 
     .text--slideout-primary,
@@ -1313,7 +1321,7 @@ input[type="checkbox"] + label:hover:after {
   .select-countries__fieldset {
     padding-bottom: $font_size_3;
     @include desktop-only {
-      width: 46.875vw; // NEW
+      width: 45vw; // NEW
       margin: 0; // NEW
       padding: 0; // NEW
     }
