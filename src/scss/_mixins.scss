@@ -6,7 +6,6 @@
   @media (min-width: $desktop_min) { @content; }
 }
 
-@mixin show-outline {
-  box-shadow: 0 0 0 3px $ui !important;
-  outline: 3px solid transparent !important; /* For Windows high contrast mode. */
+@mixin xl-only {
+  @media (min-width: $xl) { @content; }
 }

@@ -1,51 +1,19 @@
-%ui_primary {
-  color: $white;
+
+%uppercase {
+  text-transform: uppercase;
 }
 
-%ui_secondary {
-  color: $light
-}
-
-%ui_tertiary {
-  color: $gray;
-}
-
-%ui_dynamic {
-  color: $ui;
+%bold {
+  font-weight: bold;
+  font-weight: 500;
 }
 
 %ui_label {
-  text-transform: uppercase;
-  @extend %ui_primary;
   font-size: $font_size_1;
 }
 
-%slideout-toggle {
+%italic {
   font-style: italic;
-}
-%panel-button {
-  @extend %ui_label;
-  @extend %ui_primary;
-}
-
-%cp_primary {
-  @extend %ui_primary;
-  @extend %slideout-toggle;
-}
-
-%cp_secondary {
-  @extend %ui_dynamic;
-  @extend %slideout-toggle;
-}
-
-%cp_tertiary {
-  @extend %ui_secondary;
-  @extend %slideout-toggle;
-}
-
-%headline {
-  font-weight: 500;
-  @extend %ui_secondary;
 }
 
 %flex-wrap {
@@ -65,30 +33,28 @@
 %button {
   text-transform: uppercase;
   padding: $button_v_padding--mobile $button_h_padding--mobile;
-  border: 2px solid $gray;
+  border: 2px solid;
 }
 
 %button:hover {
   text-decoration: underline;
-  border-color: $white;
 }
 
 %button--close-panel {
   @extend %button;
   position: absolute;
-  top: $v_pad_mobile;
-  right: $h_pad_mobile;
   z-index: 2;
-  border-color: $gray;
+  @include mobile-only {
+    top: $v_pad_mobile;
+    right: $h_pad_mobile;
+  }
   @include desktop-only {
+    top: $v_pad_desktop;
     right: $h_pad_desktop;
   }
 }
 
 %button--select {
-  @extend %button;
-  background-color: rgba(0,0,0,0.1);
-  color: $white;
   font-size: $font_size_0;
 }
 
@@ -96,7 +62,7 @@
 // for keyboard input
 %link--focus {
   @include desktop-only {
-    box-shadow: 0 0 0 3px $white !important;
+    // see themese for border color
     outline: 3px solid transparent !important; /* For Windows high contrast mode. */
   }
 }
@@ -106,14 +72,6 @@
 %hide_input {
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
-}
-
-%label_text {
-  color: $white;
-}
-
-%label_text:hover {
-  color: $white;
 }
 
 %before_label {
@@ -127,10 +85,10 @@
   background-repeat: no-repeat;
   transition: opacity 0.2s ease-in-out;
 }
-
-%label_text--checked {
-  color: $white;
-}
+//
+// %label_text--checked {
+//   color: $white;
+// }
 
 %after_label--checked {
   opacity: 1 !important;
@@ -140,34 +98,20 @@
   @include desktop-only {
       text-decoration: none; // placeholder
   }
-
-  // box-shadow: 0 0 0 3px $white;
-  // outline: 3px solid transparent; /* For Windows high contrast mode. */
 }
 
 // for keyboard input
 %before_label--focus {
   @include desktop-only {
-    @include show-outline;
+    // see theme for box shadow color
+    outline: 3px solid transparent !important; /* For Windows high contrast mode. */
+
   }
-}
-
-
-%custom_checkbox_input {
-  color: red;
-}
-
-%custom_radio_input {
-  color: red;
 }
 
 %custom_radio_wrap {
   width: 100%;
   height: $radio_height--mobile;
-}
-
-%custom_checkbox_label {
-  color: red;
 }
 
 %custom_radio_label--mobile {
@@ -185,13 +129,7 @@
   padding-top: $radio_vertical_padding--mobile;
   padding-bottom: $radio_vertical_padding--mobile;
   margin-bottom: $font_size_1;
-  border-top: 1px solid $gray;
-}
-
-%custom_radio_label--mobile--hover {
-  @include desktop-only {
-    border-color: $white;
-  }
+  border-top: 1px solid;
 }
 
 %custom_radio_label--mobile:before {
@@ -207,7 +145,7 @@
   content: "";
   width: 20px;
   height: 20px;
-  border: 2px solid $gray;
+  border: 2px solid;
 }
 
 %empty_checkbox {
@@ -217,7 +155,7 @@
   top: 14px;
   left: 14px;
   background-color: transparent;
-  border: 2px solid $gray;
+  border: 2px solid;
   content: "";
   display: block;
   opacity: 1;
@@ -232,7 +170,6 @@
 %radio_dot {
   @extend %empty_checkbox;
   border-radius: 10px;
-  background-color: $ui;
 }
 
 %checkmark {
@@ -241,11 +178,118 @@
   display: table;
   text-align: center;
   vertical-align: middle;
-  background-color: $ui;
 }
 
-%pseudo_mark--hover {
-  @include desktop-only {
-    border-color: $white;
+.theme--dark {
+  %label_text {
+    @extend %light-text;
   }
+
+  %button--select,
+  %label_text--checked {
+    @extend %white-text;
+  }
+
+  %custom_checkbox_input,
+  %custom_radio_input,
+  %custom_checkbox_label {
+    @extend %bright-red-text;
+  }
+  // %before_label {
+  //   @extend %light-border;
+  // }
+
+  %button,
+  %before_label,
+  %custom_radio_label--mobile,
+  %empty_checkbox,
+  %pseudo_box_outline {
+    @extend %gray-border;
+  }
+  %button:hover {
+    @extend %white-border;
+  }
+
+  %radio_dot,
+  %checkmark {
+    @extend %bright-red-background;
+  }
+
+
+  @include desktop-only {
+    %label_text:hover {
+      @include white-text;
+    }
+    %pseudo_mark--hover,
+    %custom_radio_label--mobile:hover {
+      @include white-border;
+    }
+    %link--focus {
+      box-shadow: 0 0 0 3px $white !important;
+    }
+    %before_label--focus {
+      box-shadow: 0 0 0 3px $red6 !important;
+    }
+  }
+}
+
+.theme--light {
+  %button--select,
+  %label_text,
+  %label_text:hover,
+  %label_text--checked {
+    @extend %black-text;
+  }
+  %custom_checkbox_input,
+  %custom_radio_input,
+  %custom_checkbox_label {
+    @extend %red-text;
+  }
+
+  %button--select,
+  %before_label,
+  %empty_checkbox,
+  %pseudo_box_outline,
+  %custom_radio_label--mobile {
+      @extend %gray-border;
+  }
+
+  %button {
+    @extend %bright-red-border;
+  }
+
+
+  %button:hover {
+    @extend %red-border;
+  }
+
+  %radio_dot,
+  %checkmark {
+    @extend %red-background;
+  }
+
+  @include desktop-only {
+    %button--close-panel {
+      @include bright-red-text;
+      @include gray-border;
+    }
+    %button--close-panel:hover {
+      @include red-border;
+      @include black-text;
+    }
+
+    %pseudo_mark--hover {
+      @include black-border;
+    }
+    %link--focus {
+      box-shadow: 0 0 0 3px $black !important;
+    }
+    %before_label--focus {
+      box-shadow: 0 0 0 3px $red5 !important;
+    }
+    %custom_radio_label--mobile:hover {
+      @include black-border;
+    }
+  }
+
 }

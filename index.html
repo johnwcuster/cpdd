@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8"/>
   <title>China Dashboard Concept</title>
-  <link rel="stylesheet" href="dist/style.css?cb=1565549299882">
+  <link rel="stylesheet" href="dist/style.css?cb=1565875950348">
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
 </head>
 
 <body>
-  <div class="page-wrap">
+  <div id="page_wrap" class="page-wrap theme--dark">
 
     <header id="site_header" class="site-header">
         <h1 id="site_title" class="site-title">China's Public Diplomacy in East Asia and Pacific</h1>
@@ -20,31 +20,50 @@
           <p id="chart_subtitle" class="chart-header__subheading">2000-2015</p>
           <p id="chart_label" class="chart-header__label">(USD 2014)</p>
         </div>
-        <div class="fine-print-wrap">
-          <p class="fine-print">Source: <a href="https://www.aiddata.org/china-public-diplomacy">AidData</a>
-          <p class="fine-print"><a href="https://www.aiddata.org/china-public-diplomacy">Documentation</a></p>
+
+        <div class="theme-toggle hide-on-mobile">
+          <div class="theme-toggle__option">
+            <input id="dark" type="radio" value="0" name="theme" class="theme-toggle__input" checked="">
+            <label for="dark" class="theme-toggle__label theme-toggle--left">Dark</label>
+          </div>
+          <div class="theme-toggle__option second-option">
+            <input id="light" type="radio" value="1" name="theme" class="theme-toggle__input">
+            <label for="light" class="theme-toggle__label theme-toggle--right">Light</label>
+          </div>
         </div>
-        </p>
+
         <a id="toggle_control_panel" class="toggle-control-panel" aria-expanded="false" aria-controls="control_panel" role="button" tabindex="0">
-          <span class="text--slideout-primary">Control Panel</span><br/>
-          <span class="text--slideout-secondary text--show">Show</span>
-          <span class="text--slideout-secondary text--hide">Hide</span>
+          <span class="text--slideout-primary hide-on-mobile">Control Panel</span><br/>
+          <span class="text--slideout-secondary text--show hide-on-mobile">Show</span>
+          <span class="text--slideout-secondary text--hide hide-on-mobile">Hide</span>
           <span class="toggle-control-panel__icon icon icon--from_left"></span>
           <span class="toggle-control-panel__icon icon icon--from_right"></span>
         </a>
     </header>
 
+    <a id="toggle_export" class="button button--cta align--top-right hide-on-mobile" href="#export_options">
+      <span class="text--cta">Export</span>
+      <span class="icon icon--from_right"></span>
+    </a>
     <div id="control_panel" class="control-panel" aria-hidden="false" aria-labelledby="toggle_control_panel">
       <a id="close_control_panel" href="#toggle_control_panel" class="close-control-panel">
-        <!-- <div class="hide-on-mobile">
-          <span class="text--slideout-tertiary hide-on-mobile">Control Panel</span><br/>
-          <span class="text--slideout-secondary hide-on-mobile">Hide</span>
-        </div> -->
         <span class="hide-on-desktop text--close-slideout">Close</span>
 
       </a>
       <h3 class="control_panel__heading">Control Panel</h3>
       <ul class="control-panel__list">
+        <li class="control-panel__item hide-on-desktop has_theme_toggle">
+          <div class="theme-toggle theme-toggle--mobile hide-on-desktop">
+            <div class="theme-toggle__option">
+              <input id="dark2" type="radio" value="0" name="theme2" class="theme-toggle__input" checked="">
+              <label for="dark2" class="theme-toggle__label theme-toggle--left">Dark</label>
+            </div>
+            <div class="theme-toggle__option second-option">
+              <input id="light2" type="radio" value="1" name="theme2" class="theme-toggle__input">
+              <label for="light2" class="theme-toggle__label theme-toggle--right">Light</label>
+            </div>
+          </div>
+        </li>
         <li class="control-panel__item">
           <a id="toggle_view_select" class="control-panel__link" href="#select_view">
             <span class="text--link-label">View</span>
@@ -68,47 +87,27 @@
           </a>
         </li>
         <li class="control-panel__item">
-          <!-- PROTOTYPE_ONLY -->
+          <!-- ADD SPNNER / RANGE PICKER -->
           <div class="control-panel__item__inner">
             <span class="text--panel-label">Years</span>
-            <div class="year-toggle-wrap">
-              <div id="left_year" class="year-toggle-wrap__inner" href="#">
-                <a id="startyear_decrement" href="#" class="year-toggle">+</a>
-                <a id="startyear_decrement" href="#" class="year-toggle">-</a>
-                <a id="starting_year" href="#" class="text--link-heading text--dynamic">2000</a>
-              </div>
-              <div id="range_wrap" class="range-wrap">
-                <div id="range_scale" class="range-scale">
-                </div>
-                <div id="range_marker" class="range-marker">
-                  <div id="range_highlight" class="range-highlight"></div>
-                </div>
-
-              </div>
-              <div id="right_year" class="year-toggle-wrap__inner" href="">
-                <a id="endyear_increment" href="#" class="year-toggle">+</a>
-                <a id="endyear_decrement" href="#" class="year-toggle">-</a>
-                <a id="ending_year" href="#" class="text--link-heading text--dynamic">2015</a>
-              </div>
-            </div>
+            <span style="display: block; width: 100%; text-align: center;">Hold for UI widget </span>
           </div>
         </li>
         <li class="control-panel__item">
           <div class="control-panel__item__inner">
             <span class="text--panel-label">Series</span>
-            <!-- Prototype -->
-            <div class="control-panel__item-divider">
-              <div class="control-panel__series-toggle">
-                <div class="control-panel__toggle-option">
-                  <input id="annualized" type="radio" value="0" name="series1" class="toggle-option__input" checked="">
-                  <label for="annualized" class="toggle-option__label toggle-option--left">Annualized</label>
-                </div>
-                <div class="control-panel__toggle-option">
-                  <input id="cumulative" type="radio" value="1" name="series1" class="toggle-option__input">
-                  <label for="cumulative" class="toggle-option__label toggle-option--right">Cumulative</label>
-                </div>
+
+            <div class="control-panel__series-toggle">
+              <div class="control-panel__toggle-option">
+                <input id="annualized" type="radio" value="0" name="series1" class="toggle-option__input" checked="">
+                <label for="annualized" class="toggle-option__label toggle-option--left">Annualized</label>
+              </div>
+              <div class="control-panel__toggle-option">
+                <input id="cumulative" type="radio" value="1" name="series1" class="toggle-option__input">
+                <label for="cumulative" class="toggle-option__label toggle-option--right">Cumulative</label>
               </div>
             </div>
+
             <div class="control-panel__series-toggle">
               <div class="control-panel__toggle-option">
                 <input id="absolute" type="radio" value="0" name="series2" class="toggle-option__input" checked="">
@@ -121,18 +120,19 @@
             </div>
           </div>
         </li>
-        <li class="control-panel__item">
+        <li class="control-panel__item hide-on-desktop">
           <div class="control-panel__item__inner">
             <span class="text--panel-label">Export</span>
-            <div class="control-panel__item__link-wrap">
-              <a id="csv_export" class="inline-link" href="#">CSV</a>
-              <a id="pdf_export" class="inline-link middle-link" href="#">PDF</a>
-              <a id="png_export" class="inline-link" href="#">PNG</a>
-            </div>
+            <a id="toggle_export_mobile" class="button button--cta align--top-right hide-on-desktop" href="#export_options">
+              <span class="text--cta">Export Options</span>
+              <span class="icon icon--from_right"></span>
+            </a>
           </div>
         </li>
+
       </ul>
     </div>
+
     <div id="select_types" class="secondary-panel select-types" aria-hidden="true" aria-labelledby="toggle_type_select">
       <a id="close_type_select" href="#toggle_type_select" class="button button--close">Close</a>
       <form class="select-types__form secondary-panel__inner">
@@ -156,7 +156,7 @@
               <input id="23_diplomacy_type" type="radio" value="23" name="pd_type" class="select-types__input input--main-option">
               <label for="23_diplomacy_type" class="select-types__label label--main-option">Sister Cities (counts only)</label>
             </li>
-            <li class="select-types__item item--types">
+            <li id="visits_list_item" class="select-types__item item--types">
               <input id="13_diplomacy_type" type="radio" value="13"name="pd_type" class="select-types__input input--main-option">
               <label for="13_diplomacy_type" class="select-types__label label--main-option">Total Elite Visits (counts only)</label>
             </li>
@@ -183,6 +183,19 @@
             </li>
           </ul>
         </fieldset>
+        <fieldset id="visits_subtypes" class="select-types__fieldset fieldset--subtypes">
+          <legend class="select-types__legend legend--subtypes text--legend">Types of Visits</legend>
+          <ul class="select-types__list list--subtype">
+            <li class="select-types__item item--subtype">
+              <input id="11_diplomacy_type" type="checkbox" name="diplomacy-type-sub-option" value="11" class="select-types__input input--sub-option" checked="">
+              <label class="select-types__label label--sub-option" for="11_diplomacy_type">Government Visits</label>
+            </li>
+            <li class="select-types__item item--subtype">
+              <input id="12_diplomacy_type" type="checkbox" name="diplomacy-type-sub-option" value="12" class="select-types__input input--sub-option" checked="">
+              <label class="select-types__label label--sub-option" for="12_diplomacy_type">Military Visits</label>
+            </li>
+          </ul>
+        </fieldset>
       </form>
       <aside class="select-types__aside">
         <h4 class="aside__subheading">Total Engagement</h4>
@@ -195,8 +208,12 @@
       <button type="button" class="button button--select">Select All</button>
       <button type="button" class="button button--deselect">Deselect All</button>
       <form class="select-countries__form secondary-panel__inner">
-        <fieldset class="select-countries__fieldset">
+        <fieldset class="select-countries__fieldset region--one">
           <legend class="select-countries__legend text--legend">East Asia</legend>
+          <div class="section-buttons">
+            <button type="button" class="button button--select">Select All</button>
+            <button type="button" class="button button--deselect">Deselect All</button>
+          </div>
           <ul class="select-countries__list">
             <li class="select-countries__item">
               <input id="Brunei_country_checkbox" name="7" type="checkbox" class="select-countries__input"  checked="">
@@ -216,11 +233,11 @@
             </li>
             <li class="select-countries__item">
               <input id="Korea, Dem. Rep._country_checkbox" name="16" type="checkbox" class="select-countries__input"checked="">
-              <label for="Korea, Dem. Rep._country_checkbox" class="select-countries__label">Korea, Dem. Rep.</label>
+              <label for="Korea, Dem. Rep._country_checkbox" class="select-countries__label">Korea (North)</label>
             </li>
             <li class="select-countries__item">
               <input id="Korea, Rep._country_checkbox" name="25" type="checkbox" class="select-countries__input" checked="">
-              <label for="Korea, Rep._country_checkbox" class="select-countries__label">Korea, Rep.</label>
+              <label for="Korea, Rep._country_checkbox" class="select-countries__label">Korea (South)</label>
             </li>
             <li class="select-countries__item">
               <input id="Laos_country_checkbox" name="6" type="checkbox" class="select-countries__input" checked="">
@@ -236,7 +253,7 @@
             </li>
             <li class="select-countries__item">
               <input id="Myanmar_country_checkbox" name="9" type="checkbox" class="select-countries__input" checked="">
-              <label for="Myanmar_country_checkbox" class="select-countries__label">Myanmar</label>
+              <label for="Myanmar_country_checkbox" class="select-countries__label">Myanmar (Burma)</label>
             </li>
             <li class="select-countries__item">
               <input id="Philippines_country_checkbox" name="14" type="checkbox" class="select-countries__input" checked="">
@@ -256,8 +273,12 @@
             </li>
           </ul>
         </fieldset>
-        <fieldset class="select-countries__fieldset">
+        <fieldset class="select-countries__fieldset region--two">
           <legend class="select-countries__legend text--legend">Pacific</legend>
+          <div class="section-buttons">
+            <button type="button" class="button button--select">Select All</button>
+            <button type="button" class="button button--deselect">Deselect All</button>
+          </div>
           <ul class="select-countries__list">
             <li class="select-countries__item">
               <input id="Australia_country_checkbox" name="22" type="checkbox" class="select-countries__input" checked="">
@@ -277,7 +298,7 @@
             </li>
             <li class="select-countries__item">
               <input id="Micronesia, Federated States of_country_checkbox" name="26" type="checkbox" class="select-countries__input" checked="">
-              <label for="Micronesia, Federated States of_country_checkbox" class="select-countries__label">Micronesia, Federated States of</label>
+              <label for="Micronesia, Federated States of_country_checkbox" class="select-countries__label">Micronesia</label>
             </li>
             <li class="select-countries__item">
               <input id="Nauru_country_checkbox" name="12" type="checkbox" class="select-countries__input" checked="">
@@ -316,15 +337,31 @@
       <a id="close_view_select" href="#toggle_view_select" class="button button--close">Close</a>
 
       <form class="select-view__form secondary-panel__inner">
-        <fieldset class="select-view__fieldset">
-          <legend class="select-view__legend text--legend">View</legend>
-          <ul class="select-view__list">
+        <fieldset class="select-view__fieldset fieldset--main-views">
+          <legend class="select-view__legend text--legend">Global View</legend>
+          <ul class="select-view__list list--main-views">
             <li class="select-view__item">
               <input id="map_toggle" type="radio" value="map" name="views" class="select-view__input" checked="">
               <label for="map_toggle" class="select-view__label">
                 <span class="select-view__text line1">Bubble Map</span>
                 <span class="select-view__text line2">Countries</span>
                 <span class="select-view__icon icon icon--bubble-map"></span>
+              </label>
+            </li>
+            <li class="select-view__item">
+              <input id="bar_toggle" type="radio" value="bar" name="views" class="select-view__input">
+              <label for="bar_toggle" class="select-view__label">
+                <span class="select-view__text line1">Bar Chart</span>
+                <span class="select-view__text line2">Countries</span>
+                <span class="select-view__icon icon icon--bar-chart"></span>
+              </label>
+            </li>
+            <li class="select-view__item">
+              <input id="column_toggle" type="radio" value="bar" name="views" class="select-view__input">
+              <label for="column_toggle" class="select-view__label">
+                <span class="select-view__text line1">Column Chart</span>
+                <span class="select-view__text line2">Countries</span>
+                <span class="select-view__icon icon icon--column-chart"></span>
               </label>
             </li>
             <li class="select-view__item">
@@ -344,14 +381,6 @@
               </label>
             </li>
             <li class="select-view__item">
-              <input id="treemap_toggle" type="radio" value="tree" name="views" class="select-view__input">
-              <label for="treemap_toggle" class="select-view__label">
-                <span class="select-view__text line1">Treemap</span>
-                <span class="select-view__text line2">Sectors</span>
-                <span class="select-view__icon icon icon--treemap"></span>
-              </label>
-            </li>
-            <li class="select-view__item">
               <input id="table_toggle" type="radio" value="table" name="views" class="select-view__input">
               <label for="table_toggle" class="select-view__label">
                 <span class="select-view__text line1">Table</span>
@@ -361,32 +390,280 @@
             </li>
           </ul>
         </fieldset>
+        <fieldset class="select-view__fieldset fieldset--more-views">
+          <legend class="select-view__legend text--legend">Detail View</legend>
+          <ul class="select-view__list list--more-views">
+            <li class="select-view__item">
+              <input id="treemap_toggle" type="radio" value="tree" name="views" class="select-view__input">
+              <label for="treemap_toggle" class="select-view__label">
+                <span class="select-view__text line1">Treemap</span>
+                <span class="select-view__text line2">Financial Sectors</span>
+                <span class="select-view__text text--warning">This view is only available for Official Finance.  Selecting this chart will update the type of public diplomacy you have selected as well.</span>
+                <span class="select-view__icon icon icon--treemap"></span>
+              </label>
+            </li>
+          </ul>
+        </fieldset
       </form>
     </div>
+    <a id="open_right_panel" style="position: absolute; left: 50%; top: 50%; color: #E81736;" href="#">table toggle</a>
+
+
+    <div id="export_options" class="details-panel export-options">
+      <a id="close_export_options" class="button button--close button--icon">
+        <span class="icon-text">Close</span>
+        <span class="icon icon--close"></span>
+      </a>
+      <div class="details-panel__fade">
+        <div class="details-panel__scroll">
+
+          <h4 class="export-options__heading">Export Options</h4>
+          <ul class="export-options__list">
+            <li class="export-options__item">
+              <fieldset class="export-options__fieldset">
+                <legend class="export-options__legend">Type</legend>
+                <ul class="export-options__sub-list">
+                  <li class="export-options__sub-item">
+                    <input id="export_image" type="radio" value="0" name="export_type" class="export-options__input" checked="">
+                    <label for="export_image" class="export-options__label">Image (PNG)</label>
+                  </li>
+                  <li class="export-options__sub-item">
+                    <input id="export_dataset" type="radio" value="1" name="export_type" class="export-options__input">
+                    <label for="export_dataset" class="export-options__label">Dataset</label>
+                  </li>
+                </ul>
+              </fieldset>
+            </li>
+            <li id="export_data_options" class="export-options__item has_subtypes">
+              <fieldset class="export-options__fieldset fieldset--subtypes">
+                <legend class="export-options__legend legend--subtypes text--legend">Which Data?</legend>
+                <ul class="export-options__sub-list">
+
+                  <li class="export-options__sub-item">
+                    <input id="export_all" type="radio" value="0" name="data_scope" checked="" class="export-options__input">
+                    <label for="export_all" class="export-options__label">All</label>
+                  </li>
+                  <li class="export-options__sub-item">
+                    <input id="export_filtered" type="radio" value="1" name="data_scope" class="export-options__input">
+                    <label for="export_filtered" class="export-options__label">Filtered</label>
+                  </li>
+
+
+                </ul>
+              </fieldset>
+
+              <fieldset class="export-options__fieldset fieldset--subtypes">
+                <legend class="export-options__legend legend--subtypes text--legend">In which format?</legend>
+                <ul class="export-options__sub-list">
+                  <li class="export-options__sub-item">
+                    <input id="export_csv" type="radio" value="0" name="file_format" checked="" class="export-options__input">
+                    <label for="export_csv" class="export-options__label">CSV</label>
+                  </li>
+                  <li class="export-options__sub-item">
+                    <input id="export_xlsx" type="radio" value="1" name="file_format" class="export-options__input">
+                    <label for="export_xlsx" class="export-options__label">XLSX</label>
+                  </li>
+                </ul>
+              </fieldset>
+            </li>
+          </ul>
+          <button type="button" class="button button--download">Download Now</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="table_details_panel" class="details-panel ">
+      <a id="close_right_panel" class="button button--close button--icon">
+        <span class="icon-text">Close</span>
+        <span class="icon icon--close"></span>
+      </a>
+      <div class="details-panel__fade">
+        <div id="details_wrap" class="details-panel__scroll">
+          <h4 class="details-panel__heading">Project Id:</h4>
+          <p class="details-panel__text text--table-details">32016</p>
+
+          <h4 class="details-panel__heading">Category:</h4>
+          <p class="details-panel__text text--table-details">Infrastructure Investments</p>
+
+          <h4 class="details-panel__heading">Title:</h4>
+          <p class="details-panel__text text--table-details">Low-interest loan from Chinese bank to finance plywood factory in Cambodia (Linked to Project ID#32071)</p>
+
+          <h4 class="details-panel__heading">Description:</h4>
+          <p class="details-panel__text text--table-details">On July 26, 2000, Keat Chhon, state minister and minister of economy and finance, and Yang Zilin, president of the Chinese Export-Import Bank signed an agreement under which the China Export-Import Bank agreed to provide the Cambodian government with a low-interest loan of 99.6 million CNY or about US$11.85m dollars to build a plywood factory. The loan with an annual 3 per cent interest rate is to be repaid in 12 years, including a four-year grace period. The Cambodian government would lend this money to a Chinese-Cambodian joint venture, Kampuchea-Chinese International Cooperation Co Ltd, which is behind the project to build a factory producing plywood from rubber trees and scraps in Chup and Memot plantations, Kompong Cham Province (See Project ID#32071 for the follow-up of this agreement) STAFF_NOTE: Unsure regarding the kind of product that will be produced by the factory. While the Cambodian newspaper `Reaksmei Kampuchea' reported that the factory will produce plywood , Xinhua News Agency reported that the factory will produce Medium Density Fibreboard (MDF) (recorded in Project ID#32071). Although both plywood and MDF are made of the same material (rubber wood), they are of different density, hence different kind of material. It may be a reporting error on the part of either one of the publisher or the factory would be producing both plywood and MDF. Despite this issue, I am confident that this project (ID#32016) and Project ID#32071 are referring to the same event. As such, the transaction amount has been temporarily removed from this project to prevent potential double-counting of Chinese financing.</p>
+
+          <h4 class="details-panel__heading">Donor:</h4>
+          <p class="details-panel__text text--table-details">China</p>
+
+          <h4 class="details-panel__heading">Recipient:</h4>
+          <p class="details-panel__text text--table-details">Cambodia</p>
+
+          <h4 class="details-panel__heading">Year:</h4>
+          <p class="details-panel__text text--table-details">2000</p>
+
+          <h4 class="details-panel__heading">Year Uncertain:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Funding Agencies:</h4>
+          <p class="details-panel__text text--table-details">Export-Import Bank of China, Government Agency</p>
+
+          <h4 class="details-panel__heading">Implementing Agencies:</h4>
+          <p class="details-panel__text text--table-details"></p>
+
+          <h4 class="details-panel__heading">Donor Agencies:</h4>
+          <p class="details-panel__text text--table-details">Export-Import Bank of China, Government Agency</p>
+
+          <h4 class="details-panel__heading">Recipient Agencies:</h4>
+          <p class="details-panel__text text--table-details"></p>
+
+          <h4 class="details-panel__heading">Original Amount:</h4>
+          <p class="details-panel__text text--table-details">$0 (-2000)</p>
+
+          <h4 class="details-panel__heading">Nominal Amount:</h4>
+          <p class="details-panel__text text--table-details">$0 (USD-2000)</p>
+
+          <h4 class="details-panel__heading">Constant Amount:</h4>
+          <p class="details-panel__text text--table-details">$0 (USD-2014)</p>
+
+          <h4 class="details-panel__heading">Project Status:</h4>
+          <p class="details-panel__text text--table-details">Implementation</p>
+
+          <h4 class="details-panel__heading">CRS Sector:</h4>
+          <p class="details-panel__text text--table-details">320 - Industry, Mining, Construction</p>
+
+          <h4 class="details-panel__heading">Start Planned:</h4>
+          <p class="details-panel__text text--table-details"></p>
+
+          <h4 class="details-panel__heading">End Planned:</h4>
+          <p class="details-panel__text text--table-details"></p>
+
+          <h4 class="details-panel__heading">Start Actual:</h4>
+          <p class="details-panel__text text--table-details">2000-08-09T04:00:00.000Z</p>
+
+          <h4 class="details-panel__heading">End Actual:</h4>
+          <p class="details-panel__text text--table-details"></p>
+
+          <h4 class="details-panel__heading">Flow Type:</h4>
+          <p class="details-panel__text text--table-details">Loan (excluding debt rescheduling)</p>
+
+          <h4 class="details-panel__heading">Line of Credit:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Loan Type:</h4>
+          <p class="details-panel__text text--table-details">Concessional</p>
+
+          <h4 class="details-panel__heading">Interest Rate:</h4>
+          <p class="details-panel__text text--table-details">3%</p>
+
+          <h4 class="details-panel__heading">Maturity:</h4>
+          <p class="details-panel__text text--table-details">12 years</p>
+
+          <h4 class="details-panel__heading">Grace Period:</h4>
+          <p class="details-panel__text text--table-details">4 years</p>
+
+          <h4 class="details-panel__heading">Grant Element:</h4>
+          <p class="details-panel__text text--table-details">null%</p>
+
+          <h4 class="details-panel__heading">Is Co-financed?:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Is Ground Truthed?:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Is Debt Uncertain?:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Intent:</h4>
+          <p class="details-panel__text text--table-details">Mixed</p>
+
+          <h4 class="details-panel__heading">Flow Class:</h4>
+          <p class="details-panel__text text--table-details">OOF-like</p>
+
+          <h4 class="details-panel__heading">Recommend For Research:</h4>
+          <p class="details-panel__text text--table-details">Yes</p>
+
+          <h4 class="details-panel__heading">Umbrella:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Visible Sector:</h4>
+          <p class="details-panel__text text--table-details">No</p>
+
+          <h4 class="details-panel__heading">Location Details:</h4>
+          <p class="details-panel__text text--table-details">Chup and Memot plantations, Kompong Cham Province</p>
+
+          <h4 class="details-panel__heading">Contacts:</h4>
+          <p class="details-panel__text text--table-details">Sok An, Cabinet Minister; Keat Chhon, state minister and minister of economy and finance</p>
+
+          <h4 class="details-panel__heading"></h4>
+          <p class="details-panel__text text--table-details"></p>
+
+          <h4 class="details-panel__heading">Sources:</h4>
+          <p class="details-panel__text text--table-details is_long_url">https://global-factiva-com.libproxy1.nus.edu.sg/redir/default.aspx?P=sa&an=bbcfe00020010804dw89004bq&cat=a&ep=ASE, Media Report, including Wikileaks; https://global.factiva.com/aa/?ref=bbcfe00020010804dwai000a7&pp=1&fcpil=en&napc=S&sa_from=, Media Report, including Wikileaks</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="graph_details_panel" class="details-panel ">
+      <a id="close_graph_details" class="button button--close button--icon">
+        <span class="icon-text">Close</span>
+        <span class="icon icon--close"></span>
+      </a>
+      <div class="graph-details__header">
+        <span>Hold for graph selection summary</span>
+      </div>
+      <div class="details-panel__fade">
+        <div id="details_wrap" class="details-panel__scroll">
+          <span>Hold for graph selection table</span>
+        </div>
+      </div>
+    </div>
+
     <footer id="site_footer_logos" class="site-footer">
         <div class="state-logo-wrap">
-          <img src="State_seal_white.png">
+          <img class="logo--dark-theme" src="State_seal_white.png">
+          <img class="logo--light-theme" src="Seal-White-Type.png">
         </div>
         <!-- AidData Logo -->
         <div class="ad-logo-wrap">
-          <img src="AidData_Logo--white.svg">
+          <img class="logo--dark-theme" src="AidData_Logo--white.svg">
+          <img class="logo--light-theme" src="AidData_Logo--full_color.svg">
         </div>
+
+        <p class="fine-print">Source:  <a class="source-link" href="https://www.aiddata.org/china-public-diplomacy">AidData.org/china-public-diplomacy</a></p>
+
     </footer>
-    <!--- demonstration only  -->
-    <div class="background-map">
-      <div class="prototype-preview">
-        <div id="line_graph_wrap" class="prototype_view"></div>
-        <div id="area_chart_wrap" class="prototype_view"></div>
-        <div id="bar_chart_wrap" class="prototype_view"></div>
-        <div id="bubble_chart_wrap" class="prototype_view"></div>
-        <div id="table_wrap" class="prototype_view"></div>
-        <div id="treemap_wrap" class="prototype_view"></div>
+
+    <div id="map_layer" class="map-layer">
+      <span>This will be full width & height, and go under all of the (left and right) menus</span>
+      <span>It will wrap both the country borders and the bubbles</span>
+    </div>
+    <div id="chart_layer" class="chart-layer">
+      <div id="chart_background_map" class="chart-layer__background">
+        <span>This will be full width & height, and go under the menus</span>
+        <span>Ideally, the background for the map (i.e. country borders) will continue to be visible.</span>
+        <span>Alternatively, the map could be an image.</span>
+      </div>
+      <div id="chart_background_overlay" class="chart-layer__overlay">
+        <span>This layer will add a gradient over the map 1) to make it unselectable, and 2) to make it fade into the background. </span>
+        <span>This layer will sit on top of the map, but will still fit under the menus.</span>
+      </div>
+      <div id="chart_wrapwrap" class="chart-layer__wrap">
+        <div id="chart_layer1" class="chart-wrap no_scroll">
+          <span>Put line graphs, area charts, column charts and treemaps in this div (or a div with the same auxiliary class for scroll).</span>
+        </div>
+        <div id="chart_layer2" class="chart-wrap has_scroll">
+          <span>Put bar charts and tables in this div (or a div with the same auxiliary class for scroll).</span>
+        </div>
+        </div>
       </div>
     </div>
+
+
     <div id="control_panel_overlay" class="mobile-nav-overlay"></div>
   </div>
 
-  <script src="dist/all.js?cb=1565549299882"></script>
+  <script src="dist/all.js?cb=1565875950348"></script>
 </body>
 
 </html>

@@ -1,0 +1,252 @@
+$red1: #59001D;
+$red2: #690A20;
+$red3: #73001B;
+$red4: #8C1527;
+$red5: #B32432; // ui--light-theme;
+$red6: #E81736; // ui--dark-theme; ui--hover--light-theme
+$red7: #E64353; // ui-hover--dark
+$red8: #ED5F68;
+$red9: #FF8088;
+
+
+
+$black: #000000;
+$gray1: #222222;
+$gray2: #333333;
+$gray3: #444444;
+$gray4: #555555;
+$gray5: #777777;
+$gray6: #AAAAAA;
+$gray7: #BBBBBB;
+$gray8: #CCCCCC;
+$gray9: #DDDDDD;
+$white: #FFFFFF;
+
+
+@mixin white-text {
+  color: $white;
+}
+
+@mixin light-text {
+  color: $gray9;
+}
+
+@mixin gray-text {
+  color: $gray5;
+}
+
+@mixin dark-text {
+  color: $gray4;
+}
+
+@mixin black-text {
+  color: $black;
+}
+
+@mixin red-text {
+  color: $red5;
+}
+
+@mixin bright-red-text {
+  color: $red6;
+}
+
+@mixin light-red-text {
+  color: $red7;
+}
+
+
+
+@mixin white-border {
+  border-color: $white !important;
+}
+
+@mixin light-border {
+  border-color: $gray9 !important;
+}
+
+@mixin light-gray-border {
+  border-color: $gray8 !important;
+}
+
+@mixin gray-border {
+  border-color: $gray5 !important;
+}
+
+@mixin dark-border {
+  border-color: $gray4 !important;
+}
+
+@mixin black-border {
+  border-color: $black !important;
+}
+
+@mixin red-border {
+  border-color: $red5 !important;
+}
+
+@mixin bright-red-border {
+  border-color: $red6 !important;
+}
+
+@mixin light-red-border {
+  border-color: $red7 !important;
+}
+
+
+
+@mixin white-background {
+  background-color: $white;
+}
+
+@mixin lighter-background {
+  background-color: $gray9;
+}
+
+@mixin light-background {
+  background-color: $gray8;
+}
+
+@mixin gray-background {
+  background-color: $gray5;
+}
+
+@mixin dark-background {
+  background-color: $gray2;
+}
+
+@mixin darker-background {
+  background-color: $gray1;
+}
+
+@mixin black-background {
+  background-color: $black;
+}
+
+@mixin red-background {
+  background-color: $red5;
+}
+
+@mixin bright-red-background {
+  background-color: $red6;
+}
+
+@mixin light-red-background {
+  background-color: $red7;
+}
+
+
+
+
+////////////////////////////////
+%white-text {
+  @include white-text;
+}
+
+%light-text {
+  @include light-text;
+}
+
+%gray-text {
+  @include gray-text;
+}
+
+%dark-text {
+  @include dark-text;
+}
+
+%black-text {
+  @include black-text;
+}
+
+%red-text {
+  @include red-text;
+}
+
+%bright-red-text {
+  @include bright-red-text
+}
+
+%light-red-text {
+  @include light-red-text;
+}
+
+
+
+%white-border {
+  @include white-border;
+}
+
+%light-border {
+  @include light-border;
+}
+
+%light-gray-border {
+  @include light-gray-border;
+}
+
+%gray-border {
+  @include gray-border;
+}
+
+%dark-border {
+  @include dark-border;
+}
+
+%black-border {
+  @include black-border;
+}
+
+%red-border {
+  @include red-border;
+}
+
+%bright-red-border {
+  @include bright-red-border;
+}
+
+%light-red-border {
+  @include light-red-border;
+}
+
+
+
+%white-background {
+  @include white-background;
+}
+
+%lighter-background {
+  @include lighter-background;
+}
+
+%light-background {
+  @include light-background;
+}
+
+%gray-background {
+  @include gray-background;
+}
+
+%dark-background {
+  @include dark-background;
+}
+
+%darker-background {
+  @include darker-background;
+}
+
+%black-background {
+  @include black-background;
+}
+
+%red-background {
+  @include red-background;
+}
+
+%bright-red-background {
+  @include bright-red-background;
+}
+
+%light-red-background {
+  @include light-red-background;
+}

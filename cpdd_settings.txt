@@ -1,0 +1,64 @@
+// font-family
+  Helvetica,Helvetica Neue,Arial,Roboto,sans serif
+
+
+// font sizes
+$base: 1rem;
+
+$small-text: 0.69444rem;
+
+$large-text: 1.44rem
+
+// font-weights
+$default: 300
+$bold: 500
+
+
+
+// Colors
+
+
+  // Dark theme
+    // Grays
+      // $brightest:  #FFFFFF;
+      // $bright: #BBBBBB;
+      // $disabled:  #777777
+    Reds
+      // Interactivity
+        // Links: #e71836;
+        // Hover #B32432
+
+  // Light theme
+    // Grays
+      // $darkest: #000000
+      // $dark:  #555555
+      // $disabled:  #777777
+
+    // Reds
+      // Interactivity
+        // Links:  #B32432
+        // Hover:  #E81736
+     
+
+// Additional Unused Colors for Graphs
+
+  // On light backgrounds
+
+    // Series 3:  #ED5F68
+    // Series 4:  #690A20
+    // Series 5:  #4D000B
+    
+
+  // On dark backgrounds
+
+    // Series 3:  #E64353
+    // Series 4:  #ED5F68
+    // Series 5:  #FF8088
+
+
+
+// opacity levels for map bubbles
+  $default: 50%
+  $hovered:  80%
+  $sibling_hovered:  30%
+  

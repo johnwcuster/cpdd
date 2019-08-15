@@ -1,19 +1,10 @@
 // COMPLIING
   // File loading / selector order
-    // Before:
-      //  _reset.scss,
-      //  _placeholders.scss
+    //  _reset.scss,
+    //  _color.scss,
+    //  _placeholders.scss,
     // THIS FILE
-    // After:
-      //  _small.scss,
-      //  _medium.scss,
-      //  _large.scss,
-      //  _xl.scss,
-      //  _.animated.scss
-  // SCSS Nesting (nested selectors)
-    // .some-parent
-      // .some-child
-    // compiles to ".some-parent .some-child"
+    //  _.animated.scss
 
 
 // THIS FILE:  SECTIONS / STRUCTURE
@@ -35,41 +26,18 @@
 
 ///////////////////////////////
 // HELPERS
-.font-size-0 {
-  font-size: $font_size_0;
-}
-.font-size-1 {
-  font-size: $font_size_1;
-}
-.font-size-2 {
-  font-size: $font_size_2;
-}
-.font-size-3 {
-  font-size: $font_size_3;
-}
-
-.italic {
-  font-style: italic;
-}
 
 a,
 input,
-label,
-.white-text {
+label {
   color: $white;
 }
-.red-text {
-  color: $ui;
-}
 
-h1,h2,h3,h4,h5,h6,p,div,span,
-.light-text {
+h1,h2,h3,h4,h5,h6,p,div,span {
   color: $light;
 }
 
-.gray-text {
-  color: $gray;
-}
+
 
 .hide-on-mobile {
   @include mobile-only {
@@ -79,12 +47,6 @@ h1,h2,h3,h4,h5,h6,p,div,span,
 .hide-on-desktop {
   @include desktop-only {
     display: none;
-  }
-}
-
-.show-on-tablet {
-  @media (min-width: $md_bp) {
-    display: block;
   }
 }
 
@@ -111,6 +73,16 @@ h1,h2,h3,h4,h5,h6,p,div,span,
   @extend %button--select;
 }
 
+.button--download {
+  @extend %bright-red-background;
+  border: none;
+  margin-left: calcVW(1,$grid);
+  margin-right: calcVW(1,$grid);
+  padding-left: calcVW(1,$grid);
+  padding-right: calcVW(1,$grid);
+}
+
+
 .close-panel {
 
 }
@@ -124,39 +96,326 @@ h1,h2,h3,h4,h5,h6,p,div,span,
 }
 
 .text--slideout-primary {
-  @extend %cp_primary;
+  @extend %italic;
 }
 
 .text--slideout-secondary {
-  @extend %cp_secondary;
+  @extend %italic;
 }
 
 .text--slideout-tertiary {
-  @extend %cp_tertiary;
+  @extend %italic;
 }
 
 .text--panel-label,
 .text--link-label {
-  @extend %ui_label;
   display: block;
 }
 .text--panel-label {
-  color: $gray;
+
 }
 
 .text--link-heading {
-  @extend %ui_dynamic;
   display: block;
 }
 
 .text--link-subheading {
-  @extend %ui_tertiary;
   display: block;
 }
 
-.text--dynamic {
-  @extend %ui_dynamic;
+
+
+
+///////////////////////////////
+.theme--dark {
+  // @extend %dark-background;
+
+  // FOR TESTING ONLY
+  background: rgba(50,50,50,0.6);
+
+
+  // FOR TESTING ONLY
+  .site-header {
+    background: rgba(0,0,0,0.4)
+  }
+
+  a,
+  input,
+  label {
+    color: $white;
+  }
+
+  h1,h2,h3,h4,h5,h6,p,div,span {
+    color: $light;
+  }
+
+  .logo--light-theme {
+    display: none;
+  }
+
+  .chart-header__heading,
+  .chart-header__subheading,
+  .text--panel-label,
+  .text--link-label,
+  .text--close-slideout,
+  .text--slideout-primary,
+  .text--cta,
+  .select-view__text.line1,
+   {
+    @extend %white-text;
+  }
+
+  .site-title,
+  .text--legend,
+  .text--slideout-tertiary,
+  .details-panel__heading {
+    @extend %light-text;
+  }
+
+  .control_panel__heading,
+  .text--link-subheading,
+  .text--panel-label,
+  .select-types p,
+  .select-view__text.line2 {
+    @extend %gray-text;
+  }
+  .select-view__text.text--warning {
+    @extend %light-red-text;
+  }
+
+  .text--dynamic,
+  .text--slideout-secondary,
+  .text--link-heading,
+  .inline-link,
+  .toggle-option__input:checked + .toggle-option__label:before {
+    @extend %bright-red-text;
+  }
+
+
+
+  .details-panel {
+    @extend %black-background;
+  }
+
+  .control-panel,
+  .secondary-panel,
+  .select-countries .button--select,
+  .select-countries .button--deselect {
+    @extend %darker-background;
+  }
+
+
+
+  .control-panel__link:after,
+  .select-countries__label,
+  .toggle-option__input:checked + .toggle-option__label:before {
+    @extend %white-border;
+  }
+
+  .middle-link,
+  div.control-panel__item__inner,
+  a.control-panel__link,
+  .toggle-option__label:before {
+    @extend %gray-border;
+  }
+  input[type="radio"]:checked + .select-view__label {
+    @extend %bright-red-border;
+  }
+
+  .details-panel__fade::before {
+    background: $gradient--top--black;
+  }
+  .details-panel__fade::after {
+    background: $gradient--bottom--black;
+  }
+
+  @include desktop-only {
+
+    // .text--dynamic:hover,
+    // .text--close-slideout:hover,
+    // .text--slideout-secondary:hover,
+    // .text--link-heading:hover,
+    // .inline-link:hover {
+    //   @include light-red-text;
+    // }
+    .close-control-panel:hover,
+    .select-countries__label:hover,
+    .select-countries__label:hover:before,
+    .select-view__label:hover {
+      @include white-border
+    }
+
+
+
+    .control-panel__link:hover {
+      @include black-border;
+    }
+    .select-view .button-close,
+    .select-view__label {
+      @include gray-border;
+    }
+
+    .select-view .button-close:hover {
+      @include white-border;
+    }
+
+    .select-types__legend {
+      &.legend--subtypes {
+        @include white-text;
+      }
+    }
+  }
 }
+
+///////////////////////////////
+
+.theme--light {
+  // @extend %lighter-background;
+
+  // FOR TESTING ONLY
+  background: rgba(200,200,200,0.6);
+
+  // FOR TESTING ONLY
+  .site-header {
+    background: rgba(255,255,255,0.6);
+  }
+
+  a,
+  input,
+  label {
+    color: $black;
+  }
+
+  h1,h2,h3,h4,h5,h6,p,div,span {
+    @extend %dark-text;
+  }
+  .logo--dark-theme {
+    display: none;
+  }
+
+
+
+  .chart-header__heading,
+  .chart-header__subheading,
+  .text--panel-label,
+  .text--link-label,
+  .text--close-slideout,
+  .text--slideout-primary,
+  .text--cta,
+  .select-view__text.line1 {
+    @extend %black-text;
+  }
+
+  .site-title,
+  .text--legend,
+  .text--slideout-tertiary,
+  .details-panel__heading {
+    @extend %dark-text;
+  }
+
+  .control_panel__heading,
+  .text--link-subheading,
+  .text--panel-label,
+  .select-types p,
+  .select-view__text.line2 {
+    @extend %gray-text;
+  }
+
+
+  .text--dynamic,
+  .select-view__text.text--warning,
+  .text--slideout-secondary,
+  .inline-link,
+  .source-link {
+    @extend %bright-red-text;
+  }
+
+
+  .text--dynamic:hover,
+  .text--close-slideout:hover,
+  .text--slideout-secondary:hover,
+  .inline-link,
+  .control-panel__link .text--link-heading,
+  .toggle-option__input:checked + .toggle-option__label:before {
+    @extend %red-text;
+  }
+
+  .details-panel {
+    @extend %white-background;
+  }
+
+  .control-panel {
+    @extend %light-background;
+  }
+  .secondary-panel {
+    @extend %lighter-background;
+  }
+
+  .close-control-panel:hover,
+  .select-countries__label,
+  .select-countries__label:hover,
+  .select-countries__label:hover:before,
+  .select-view__label:hover {
+    @extend %black-border;
+  }
+
+  .icon--close,
+  .toggle-option__input:checked + .toggle-option__label:before  {
+    @extend %red-border;
+  }
+
+  .icon--close:hover,
+  input[type="radio"]:checked + .select-view__label {
+    @extend %bright-red-border;
+  }
+
+  .middle-link,
+  .toggle-option__label:before,
+  .button--select,
+  .button--deselect {
+    @extend %gray-border;
+  }
+  .control-panel__link,
+  .control-panel__item__inner {
+    @extend %light-border;
+  }
+
+  .details-panel__fade::before {
+    background: $gradient--top--white;
+  }
+  .details-panel__fade::after {
+    background: $gradient--bottom--white;
+  }
+
+  @include desktop-only {
+    .select-view__label {
+      @include gray-border;
+    }
+    a.control-panel__link,
+    a.control-panel__link:after,
+    a.control-panel__link:hover {
+      @include light-border;
+    }
+    .control-panel__link:hover .text--link-heading {
+      @include bright-red-text;
+    }
+
+    .control-panel__link:hover:after {
+      @include white-border;
+    }
+    .select-view .button-close:hover {
+      @include bright-red-border;
+    }
+
+    .select-types__legend {
+      &.legend--subtypes {
+        @include black-text;
+      }
+    }
+  }
+}
+///////////////////////////////
+
 
 // FORM ELEMENTS
 input,
@@ -286,10 +545,8 @@ input[type="checkbox"] + label:hover:after {
   }
 
   .site-title {
-
-    @extend %headline;
+    @extend %bold;
     font-size: $font_size_2;
-    color: $light;
     padding-top: calcRem(1,$f1);
     padding-bottom: calcRem(1,$f1);
     margin-bottom: calcRem(1,$f1);
@@ -299,7 +556,8 @@ input[type="checkbox"] + label:hover:after {
       max-width: calcVW(12,$cols);
     }
     @include desktop-only {
-      border-bottom: 2px solid $gray;
+      border-bottom: 2px solid;
+      @include gray-border;
     }
   }
   .chart-header {
@@ -310,42 +568,40 @@ input[type="checkbox"] + label:hover:after {
     }
   }
   .chart-header__heading {
-    @extend %ui_primary;
     font-size: $font_size_2;
   }
 
   .chart-header__subheading {
-    @extend %ui_primary;
     font-size: $font_size_1;
   }
 
   .chart-header__label {
-    @extend %ui_tertiary;
+    @extend %gray-text;
     font-size: $font_size_1;
   }
 
-  .fine-print-wrap {
-    @extend %flex-wrap;
-    @extend %flex-justify-between;
-    @include mobile-only {
-      width: 100%;
-    }
-    @include desktop-only {
-      width: calcVW(3,$cols);
-      margin-top: calcRem($f2,1);
-      padding-bottom:  calcRem($f1,0.25); // to match up borders
-    }
-
-  }
-
-  .fine-print {
-    font-size: $font_size_0;
-    line-height: $font_size_1;
-
-    a {
-      text-transform: uppercase;
-    }
-  }
+  // .fine-print-wrap {
+  //   @extend %flex-wrap;
+  //   @extend %flex-justify-between;
+  //   @include mobile-only {
+  //     width: 100%;
+  //   }
+  //   @include desktop-only {
+  //     width: calcVW(3,$cols);
+  //     margin-top: calcRem($f2,1);
+  //     padding-bottom:  calcRem($f1,0.25); // to match up borders
+  //   }
+  //
+  // }
+  //
+  // .fine-print {
+  //   font-size: $font_size_0;
+  //   line-height: $font_size_1;
+  //
+  //   a {
+  //     text-transform: uppercase;
+  //   }
+  // }
 
   .toggle-control-panel {
     box-shadow: none;
@@ -370,10 +626,8 @@ input[type="checkbox"] + label:hover:after {
       text-transform: none;
       margin-top: calcRem(1,$f1);
       width: calcVW(3,$cols);
-      border-top: 2px solid $gray;
+      border-top: 2px solid $gray5;
       padding-top: $font_size_1;
-
-
       padding-right: calcRem($f1,5);
 
       .icon--from_left {
@@ -400,13 +654,124 @@ input[type="checkbox"] + label:hover:after {
   }
 }
 
+.theme-toggle {
+  width: 8rem;
+  margin-top: calcRem(1,$f1);
+  margin-bottom: calcRem(2,$f1);
+  right: 0;
+
+  .theme-toggle__option {
+    width: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    &.second-option {
+      left: 50%;
+    }
+  }
+  .theme-toggle__input {
+    opacity: 0;
+    border: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .theme-toggle__label {
+    // padding: 0.5rem 2rem;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    font-size: $font_size_0;
+    @extend %uppercase;
+    &:hover {
+      @include desktop-only {
+        text-decoration: underline;
+      }
+    }
+  }
+  .theme-toggle__label:before {
+    border: 2px solid;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .theme-toggle--left {
+    left: 0;
+    top: 0;
+  }
+
+  .theme-toggle--left,
+  .theme-toggle--left:before {
+    border-radius: 8px 0 0 8px;
+  }
+
+  .theme-toggle--right{
+    right: 0;
+    top: 0;
+  }
+
+  .theme-toggle--right,
+  .theme-toggle--right:before {
+    border-radius: 0 8px 8px 0;
+  }
+  // don't put the dot in these sections
+  input[type=radio] + .theme-toggle__label:after,
+  input[type=radio]:checked + .theme-toggle__label:after {
+    display: none;
+  }
+
+  input[type=radio]:checked + .theme-toggle__label.theme-toggle--left {
+    @extend %black-background;
+
+    @extend %white-text;
+  }
+  input[type=radio]:checked + .theme-toggle__label.theme-toggle--left:before {
+    // @extend %white-border;
+  }
+
+  input[type=radio]:checked + .theme-toggle__label.theme-toggle--right:before {
+    // @extend %black-border;
+  }
+
+
+  input[type=radio]:checked + .theme-toggle__label.theme-toggle--right {
+    @extend %white-background;
+    @extend %bright-red-border;
+    @extend %black-text;
+  }
+
+}
+
+.button--cta.align--top-right {
+  // @include bright-red-border;
+  padding-left: calcRem($f1,2);
+  padding-right: calcRem($f1,5);
+  @include desktop-only {
+    position: absolute;
+    top: $v_pad_desktop;
+    right: $h_pad_desktop;
+  }
+  .icon--from_right {
+    position: absolute;
+    top: -7px;
+    right: calcRem(1,$f1);
+  }
+}
+
 .control-panel {
   // see _animated.scss for positioning & size
-  background-color: $black;
   padding: $v_pad_mobile $h_pad_mobile;
+  @include mobile-only {
+    padding-bottom: calcVH(16,$grid);
+  }
 
   @include desktop-only {
-    background: $cp_gradient--large;
     padding: 1rem $cp_pad--large 10rem 0;
     top: 0;
   }
@@ -427,18 +792,17 @@ input[type="checkbox"] + label:hover:after {
   }
 
   .close-control-panel:hover {
-    border-color: $white;
+
 
   }
 
   .text--close-slideout {
-    @extend %panel-button;
+    @extend %uppercase;
   }
 
   .control_panel__heading {
     font-size: $font_size_2;
-    @extend %ui_tertiary;
-    text-transform: uppercase;
+    @extend %uppercase;
     @include mobile-only {
       top: 4rem;
     }
@@ -456,15 +820,26 @@ input[type="checkbox"] + label:hover:after {
     }
   }
   .control-panel__item {
-    padding-bottom: $font_size_1;
+    @include mobile-only {
+      min-height: calcRem($f1,3);
+    }
+
+    &.has_theme_toggle {
+      height: calcRem($f1,6);
+      padding-top: calcRem($f1,3);
+    }
+  }
+  .theme-toggle--mobile {
+    display: table;
+    vertical-align: middle;
   }
 
   .control-panel__item__inner,
   .control-panel__link {
     width: 100%;
     display: block;
-    border-top: 1px solid $dark;
-    padding: $font_size_1 0 0;
+    border-top: 1px solid;
+    padding: $font_size_1 0;
 
     // special case
     @include desktop-only {
@@ -477,18 +852,21 @@ input[type="checkbox"] + label:hover:after {
     }
 
   }
+  // .control-panel__link {
+  //   padding-bottom: $font_size_1;
+  // }
+
   .control-panel__link:after {
     content: "";
     display: block;
     width: 0;
     position: absolute;
     top: 0;
-    border-top: 1px solid $white;
+    border-top: 1px solid;
   }
 
   .control-panel__link:hover {
     @include desktop-only {
-      border-color: $black;
       text-decoration: none;
     }
 
@@ -563,7 +941,7 @@ input[type="checkbox"] + label:hover:after {
     .range-scale {
       width: 100%;
       height: 4px;
-      background-color: $gray;
+      background-color: $gray5;
       position: absolute;
       left: 0;
       top: 14px;
@@ -573,8 +951,8 @@ input[type="checkbox"] + label:hover:after {
     .range-marker {
       display: block;
       width: 100% * 14/15;
-      border-left :2px solid $ui;
-      border-right :2px solid $ui;
+      border-left :2px solid $red6;
+      border-right :2px solid $red6;
       height: 20px;
       position: absolute;
       left: 0;
@@ -592,7 +970,7 @@ input[type="checkbox"] + label:hover:after {
     }
   }
   .control-panel__item-divider {
-    border-bottom: 4px solid $dark;
+    border-bottom: 4px solid $gray1;
 
     @media (min-width: $desktop_min) {
       border-width: 1px;
@@ -606,6 +984,7 @@ input[type="checkbox"] + label:hover:after {
     @extend %flex-align-center;
     width: 100%;
     padding: $font_size_1;
+    padding-bottom: 0;
 
     @media (min-width: $desktop_min) {
       padding-left: $h_pad_desktop;
@@ -641,7 +1020,7 @@ input[type="checkbox"] + label:hover:after {
     }
   }
   .toggle-option__label:before {
-    border: 2px solid $gray;
+    border: 2px solid;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -658,45 +1037,19 @@ input[type="checkbox"] + label:hover:after {
     border-radius: 0 8px 8px 0;
   }
 
-  .toggle-option__input:checked + .toggle-option__label:before {
-    border-color: $white;
-    color: $ui;
-  }
 
   // don't put the dot in these sections
-  input[type=radio]+.toggle-option__label:after,
-  input[type=radio]:checked+ .toggle-option__label:after {
+  input[type=radio] + .toggle-option__label:after,
+  input[type=radio]:checked + .toggle-option__label:after {
     display: none;
   }
 
-
-  .control-panel__item__link-wrap {
-    width: 100%;
-    @media (min-width: $desktop_min) {
-      padding-left: $h_pad_desktop;
+  .button--cta {
+    @include mobile-only {
+      position: absolute;
+      top: calcRem($f1,3);
     }
   }
-
-  .inline-link {
-    display: inline-block;
-    margin-top: 16px;
-    @extend %ui_dynamic;
-  }
-  .inline-link:hover {
-
-    text-decoration: underline;
-  }
-
-  .middle-link {
-    border-left: 1px solid $gray;
-    border-right: 1px solid $gray;
-    margin-left: 12px;
-    margin-right: 12px;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-
 
 }
 
@@ -705,21 +1058,38 @@ input[type="checkbox"] + label:hover:after {
   position: fixed;
   top: 0;
   z-index: 5;
-  background-color: $dark;
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
-  padding: $v_pad_mobile $v_pad_mobile;
+  @include mobile-only {
+    padding: $v_pad_mobile $h_pad_mobile;
+  }
+  @include desktop-only {
+    padding: $v_pad_desktop $h_pad_desktop;
+  }
+
 
   .secondary-panel__inner {
-    margin-top: $panel_top_space--mobile;
-    border-top: 1px solid $gray;
-    padding-top: $v_pad_mobile;
+    border-top: 1px solid $gray5;
+
+    @include mobile-only {
+      margin-top: $panel_top_space--mobile;
+      padding-top: $v_pad_mobile;
+    }
+    @include desktop-only {
+      margin-top: calcRem($f1,4);
+      padding-top: $v_pad_desktop;
+    }
   }
   .text--legend {
-    @extend %headline;
+    @extend %bold;
     font-size: $font_size_2;
-    padding-bottom: $font_size_3;
+    padding-bottom: calcRem($f1,2);
+    @include desktop-only {
+      padding-top: calcRem(1,$f1);
+      line-height: calcRem(2,$f1);
+      padding-bottom: calcRem(2,$f1);
+    }
   }
 
   .icon {
@@ -748,10 +1118,10 @@ input[type="checkbox"] + label:hover:after {
 
   .select-types__aside {
     h1,h2,h3,h4,h5,h6 {
-      @extend %headline;
+      @extend %bold;
     }
     p {
-      @extend %ui_tertiary;
+      line-height: 1.25;
     }
 
     @include mobile-only {
@@ -761,7 +1131,7 @@ input[type="checkbox"] + label:hover:after {
     @include desktop-only {
       width: calcVW(4,$cols);
       position: absolute;
-      top: calcRem($f1,9);
+      top: calcRem($f1,13);
       left: $h_pad_desktop;
     }
 
@@ -769,19 +1139,21 @@ input[type="checkbox"] + label:hover:after {
 
   .select-types__form {
     @include desktop-only {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: flex-start;
+      // display: flex;
+      // flex-wrap: wrap;
+      // justify-content: flex-start;
+      // align-items: flex-start;
       padding-left: calcVW(5,$cols);
-      // padding-right: $h_pad_desktop;
+      position: absolute;
+      width: $h_width_desktop;
     }
   }
 
   .select-types__fieldset {
     @include desktop-only {
-      flex-basis: calcVW(5,$cols);
-      flex-grow: 0;
+      width: calcVW(5, $cols);
+      // flex-basis: calcVW(5,$cols);
+      // flex-grow: 0;
     }
   }
 
@@ -790,10 +1162,11 @@ input[type="checkbox"] + label:hover:after {
   }
   .fieldset--subtypes {
     @include desktop-only {
-      margin-top: calcRem($f1,4.6);
-      margin-left: calcVW(0.5,$cols);
-      padding-top: 0;
-      flex-basis: calcVW(4,$cols);
+      width: calcVW(4,$cols);
+      // margin-top: calcRem($f1,4.6);
+      // margin-left: calcVW(0.5,$cols);
+      // padding-top: 0;
+      // flex-basis: calcVW(4,$cols);
     }
   }
 
@@ -802,8 +1175,8 @@ input[type="checkbox"] + label:hover:after {
       @include desktop-only {
         font-size: $font_size_1;
         font-weight: 500;
-        color: $white;
-        padding-bottom: calcRem($f1,1);
+        padding-top: calcRem($f1,1.5);
+        padding-bottom: calcRem($f1,0.5);
       }
     }
 
@@ -853,7 +1226,7 @@ input[type="checkbox"] + label:hover:after {
   }
   .select-types__label:hover,
   .select-types__label:hover:before {
-    @extend %custom_radio_label--mobile--hover;
+
   }
 
   .input--main-option {
@@ -879,35 +1252,113 @@ input[type="checkbox"] + label:hover:after {
     margin-top: $panel_top_space--mobile;
   }
 
+  .section-buttons {
+    // position: absolute;
+    @include mobile-only {
+      // top: calcRem(0.25,$f1);
+      // left: calcRem(7,$f1);
+      // position: absolute;
+    }
+    @include desktop-only {
+      // top: calcRem(1.25,$f1);
+      // left: calcRem(9,$f1);
+    }
+
+    .button--select,
+    .button--deselect {
+      margin-top: 0;
+      border: none;
+      @include mobile-only {
+        display: inline-block;
+        padding-top: calcRem(0.5, $f1);
+        padding-bottom: calcRem(0.5, $f1);
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: calcRem(1,$f1);
+        margin-top: calcRem(1,$f1);
+        margin-right: calcRem(2,$f1);
+      }
+      @include desktop-only {
+        padding: 0.25rem 0;
+        margin-top: calcRem(1,$f1);
+        margin-bottom: calcRem(1,$f1);
+        margin-right: calcRem(2,$f1);
+        background-color: transparent;
+        &.show_keyboard_focus {
+          padding-top: calcRem(0.5,$f1);
+          padding-bottom: calcRem(0.5,$f1);
+          padding-left: calcRem(1,$f1);
+          padding-right: calcRem(1,$f1);
+          border: 2px solid;
+        }
+      }
+      .button--select {
+
+      }
+
+    }
+  }
+
+
+
   .select-countries__form {
-    margin-top: $font_size_1;
+    margin-top: 0;
     border-top: none;
+    @include desktop-only {
+      display: flex; // NEW
+      flex-wrap: wrap; // NEW
+    }
   }
 
   .select-countries__fieldset {
     padding-bottom: $font_size_3;
-
+    @include desktop-only {
+      width: 46.875vw; // NEW
+      margin: 0; // NEW
+      padding: 0; // NEW
+    }
+  }
+  // NEW
+  .select-countries__fieldset.region--one {
+    @include desktop-only {
+        padding-right: calcVW(2,$grid);
+    }
+  }
+  // NEW
+  .select-countries__fieldset.region--two {
+    @include desktop-only {
+        padding-left: calcVW(2,$grid);
+    }
   }
 
+
   .select-countries__legend {
-    padding-bottom: $font_size_1;
+    padding-bottom: 0;
   }
 
   .select-countries__list {
     @include desktop-only {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column; // NEW
+      height: calcRem($f1,24); // NEW
     }
+
   }
 
   .select-countries__item {
     @extend %custom_radio_wrap;
     @include desktop-only {
       // flex-basis: calcVW(3.75,$cols);
-      flex-basis: calcRem($f1,16);
+//NEW      // flex-basis: calcRem($f1,16);
       flex-grow: 0;
       // margin-right: calcRem($f1,2);
       margin-right: calcVW(2,$grid);
+    }
+
+    // NEW
+    @include desktop-only {
+      width: calcVW(12,$grid);
     }
   }
   .select-countries__input {
@@ -922,19 +1373,11 @@ input[type="checkbox"] + label:hover:after {
   }
   .select-countries__label:hover,
   .select-countries__label:hover:before {
-    @extend %custom_radio_label--mobile--hover;
+
   }
 }
 
 .select-view {
-    .button--close {
-      @include desktop-only {
-        border-color: $gray;
-        &:hover {
-          border-color: $white;
-        }
-      }
-    }
 
   .select-view__form {
 
@@ -971,6 +1414,9 @@ input[type="checkbox"] + label:hover:after {
       margin-bottom: calcVH(1,$cols);
       height: calcVW(10,$grid);
     }
+    &.has_warning {
+      min-height: calcRem(6,$f1);
+    }
   }
 
   .select-view__input {
@@ -984,15 +1430,14 @@ input[type="checkbox"] + label:hover:after {
   .select-view__label {
     @extend %custom_radio_label--mobile;
     @include desktop-only {
-      border: 2px solid $gray;
+      border: 2px solid;
       height: 100%;
-      // background-color: $ui;
+
     }
 
   }
 
   .select-view__label:hover {
-    @extend %custom_radio_label--mobile--hover;
 
     @include mobile-only {
       height: auto;
@@ -1002,27 +1447,11 @@ input[type="checkbox"] + label:hover:after {
     }
   }
 
-  // input[type="radio"]:checked + .select-view__label:before,
-  // input[type="radio"]:checked + .select-view__label:after,
-  // .select-view__label:before,
-  // .select-view__label:after {
-  //     opacity: 0;
-  //     border: none;
-  //     background: none;
-  // }
-
-  input[type="radio"]:checked + .select-view__label {
-    @include desktop-only {
-      border-color: $ui;
-    }
   input[type="radio"]:checked + .select-view__label:before {
     @include desktop-only {
       display: none;
     }
   }
-
-  }
-
   input[type="radio"]:checked + .select-view__label:after,
   .select-view__label:after {
     top: 18px;
@@ -1042,18 +1471,26 @@ input[type="checkbox"] + label:hover:after {
     }
   }
   .select-view__text.line1 {
-    @extend %ui_primary;
-    @extend %headline;
+    @extend %bold;
     @include desktop-only {
       top: $font_size_1;
     }
   }
   .select-view__text.line2 {
-    @extend %ui_tertiary;
     @include desktop-only {
       top: calcRem($f1, 2);
     }
   }
+
+  .select-view__text.text--warning {
+    @extend %italic;
+    @include desktop-only {
+      top: calcRem($f1, 3);
+      max-width: calcVW(7,$cols);
+    }
+  }
+
+
   .select-view__icon {
     @include desktop-only {
       bottom: 0;
@@ -1080,18 +1517,179 @@ input[type="checkbox"] + label:hover:after {
   }
 }
 
+.export-options {
+  .export-options__heading {
+    @extend %bold;
+    font-size: $font_size_2;
+    margin-top: calcRem($f1,-2);
+    margin-bottom: calcRem($f1,1);
+    padding-left: calcVW(1,$grid);
+    padding-right: calcVW(1,$grid);
+  }
+
+  .export-options__list {
+    padding-left: calcVW(1,$grid);
+    padding-right: calcVW(1,$grid);
+
+  }
+
+  .export-options__item {
+    margin-bottom: calcRem(1,$f1);
+  }
+
+  .export-options__fieldset {
+    margin-bottom: calcRem(1,$f1);
+  }
+
+  .export-options__legend {
+
+  }
+
+  .export-options__sub-list {
+      width: 100%;
+  }
+
+  .export-options__sub-item {
+    @extend %custom_radio_wrap;
+  }
+
+  .export-options__input {
+    @extend %custom_radio_input;
+  }
+
+  .export-options__label {
+    @extend %custom_radio_label--mobile;
+    @include desktop-only {
+      padding-left: calcVW(3,$grid);
+      vertical-align: middle;
+    }
+  }
+}
+
+
+.details-panel {
+  height: 100%;
+  min-height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+
+  .button--close {
+    position: fixed;
+    z-index: 2;
+    right: calcVW(1,$grid);
+  }
+
+  .button--icon {
+    border: none;
+    width: 36px;
+    height: 36px
+  }
+
+  .icon-text {
+    display: none;
+  }
+
+  // .icon--close {
+  //   display: none;
+  // }
+
+  .icon--close {
+    display: block;
+    border: 2px solid;
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+
+
+
+  .details-panel__fade {
+    height: 100%;
+    padding-top: calcRem(6,$f2);
+    // padding-left: calcVW(1,$grid);
+    // padding-right: calcVW(1,$grid);
+    position: fixed;
+    overflow-y: scroll;
+    will-change: scroll-position;
+    width: 100%;
+  }
+
+  .details-panel__fade::before,
+  .details-panel__fade::after {
+    content: "";
+    height: calcRem(6,$f2);
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+  .details-panel__fade::before {
+    top: 0;
+    position: fixed;
+  }
+
+  .details-panel__fade::after {
+    bottom: 0;
+    position: fixed;
+  }
+
+  .details-panel__scroll {
+    padding-bottom: calcVH(16,$grid);
+  }
+
+  .details-panel__heading,
+  .details-panel__text {
+    padding-left: calcVW(1,$grid);
+    padding-right: calcVW(1,$grid);
+  }
+
+  .details-panel__heading {
+    @extend %bold;
+  }
+
+  .details-panel__text {
+    font-size: $font_size_1;
+    margin-bottom: $font_size_1;
+  }
+
+  .text--table-details {
+    font-size: $font_size_0;
+    margin-bottom: $font_size_0;
+    line-height: 1.4;
+
+    &.is_long_url {
+      hyphens: auto;
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+
+  @include mobile-only {
+    // width: $cp_width--mobile; see _animated.scss
+    padding: $h_pad_mobile;
+    padding-bottom: calcRem(10,$f1);
+  }
+  @include desktop-only {
+    // width: $cp_width--large; // see _animated.scss
+    padding-bottom: calcRem(10,$f1);
+  }
+  @include xl-only {
+    // width: $cp_width--xl;
+  }
+}
+
 
 .site-footer {
   @extend %flex-wrap;
-  @extend %flex-justify-between;
   @extend %flex-align-center;
   position: absolute;
-  bottom: 0;
+  bottom: calcRem(1,$f1);
   @include mobile-only {
       padding: $v_pad_mobile $h_pad_mobile;
   }
 
-  // background: $footer_gradient--mobile;
 
   @include mobile-only {
     width: 100%;
@@ -1101,8 +1699,7 @@ input[type="checkbox"] + label:hover:after {
     width: $cp_width--large;
     left: $h_pad_desktop;
     z-index: 3;
-    padding-bottom: $font_size_1;
-    // background: $fooger_gradient--large;
+    min-width: 320px;
   }
 
   .site-footer__logos {
@@ -1131,54 +1728,13 @@ input[type="checkbox"] + label:hover:after {
       width: 16.5rem;
     }
   }
-}
-
-
-
-.background-map {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  background-image: $main_background_image--mobile;
-  background-position: right 30%;
-  background-size: auto, cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  @media (min-width: $desktop_min) {
-      background-image: $main_background_image--large;
+  .fine-print,
+  .source-link {
+    font-size: $font_size_0;
   }
-
+  .source-link {
+    font-style: italic;
+  }
 }
-// END_COMPONENTS
+
 ///////////////////////////////
-
-
-/////////////TEMP
-
-.icons {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 400px;
-  padding-top: 12rem;
-}
-
-.icon-wrap {
-  width: 48px;
-  margin-right: 16px;
-}
-
-.icon-wrap > img {
-  width: 48px;
-  height: 48px;
-  position: relative;
-  display: block;
-  color: $white;
-  stroke-width: 2;
-  stroke: $ui;
-}

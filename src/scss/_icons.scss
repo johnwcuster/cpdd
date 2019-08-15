@@ -1,4 +1,6 @@
-%icon {
+
+
+@mixin icon {
   display: block;
   position: absolute;
   z-index: 1;
@@ -7,122 +9,491 @@
   height: 48px;
 }
 
-%icon--bar-chart {
-  @extend %icon;
-  background-image: url("../icons/icon--bar-chart.svg");
+@mixin icon--bar-chart--black {
+  background-image: url("../icons/icon--bar-chart--black.svg");
+}
+@mixin icon--bar-chart--white {
+  background-image: url("../icons/icon--bar-chart--white.svg");
+}
+@mixin icon--bar-chart--red {
+  background-image: url("../icons/icon--bar-chart--red.svg");
 }
 
-%icon--bubble-map {
-  @extend %icon;
-  background-image: url("../icons/icon--bubble-map.svg");
+
+@mixin icon--bubble-map--black {
+  background-image: url("../icons/icon--bubble-map--black.svg");
+}
+@mixin icon--bubble-map--white {
+  background-image: url("../icons/icon--bubble-map--white.svg");
+}
+@mixin icon--bubble-map--red {
+  background-image: url("../icons/icon--bubble-map--red.svg");
 }
 
-%icon--from_left {
-  @extend %icon;
-  background-image: url("../icons/icon--from_left.svg");
+@mixin icon--column-chart--black {
+  background-image: url("../icons/icon--column-chart--black.svg");
+}
+@mixin icon--column-chart--white {
+  background-image: url("../icons/icon--column-chart--white.svg");
+}
+@mixin icon--column-chart--red {
+  background-image: url("../icons/icon--column-chart--red.svg");
 }
 
-%icon--from_right {
-  @extend %icon;
-  background-image: url("../icons/icon--from_right.svg");
+
+@mixin icon--close--black {
+  background-image: url("../icons/icon--close--black.svg");
+}
+@mixin icon--close--white {
+  background-image: url("../icons/icon--close--white.svg");
+}
+@mixin icon--close--red {
+  background-image: url("../icons/icon--close--red.svg");
 }
 
-%icon--funnel {
-  @extend %icon;
-  background-image: url("../icons/icon--funnel.svg");
+
+@mixin icon--from_left--black {
+  background-image: url("../icons/icon--from_left--black.svg");
+}
+@mixin icon--from_left--white {
+  background-image: url("../icons/icon--from_left--white.svg");
+}
+@mixin icon--from_left--red {
+  background-image: url("../icons/icon--from_left--red.svg");
 }
 
-%icon--line-graph {
-  @extend %icon;
-  background-image: url("../icons/icon--line-graph.svg");
+
+
+@mixin icon--from_right--black {
+  background-image: url("../icons/icon--from_right--black.svg");
+}
+@mixin icon--from_right--white {
+  background-image: url("../icons/icon--from_right--white.svg");
+}
+@mixin icon--from_right--red {
+  background-image: url("../icons/icon--from_right--red.svg");
 }
 
-%icon--minus {
-  @extend %icon;
-  background-image: url("../icons/icon--minus.svg");
+
+@mixin icon--funnel--black {
+  background-image: url("../icons/icon--funnel--black.svg");
+}
+@mixin icon--funnel--white {
+  background-image: url("../icons/icon--funnel--white.svg");
+}
+@mixin icon--funnel--red {
+  background-image: url("../icons/icon--funnel--red.svg");
 }
 
-%icon--plus {
-  @extend %icon;
-  background-image: url("../icons/icon--plus.svg");
+
+
+@mixin icon--line-graph--black {
+  background-image: url("../icons/icon--line-graph--black.svg");
+}
+@mixin icon--line-graph--white {
+  background-image: url("../icons/icon--line-graph--white.svg");
+}
+@mixin icon--line-graph--red {
+  background-image: url("../icons/icon--line-graph--red.svg");
 }
 
-%icon--stacked-area {
-  @extend %icon;
-  background-image: url("../icons/icon--stacked-area.svg");
+
+@mixin icon--minus--black {
+  background-image: url("../icons/icon--minus--black.svg");
+}
+@mixin icon--minus--white {
+  background-image: url("../icons/icon--minus--white.svg");
+}
+@mixin icon--minus--red {
+  background-image: url("../icons/icon--minus--red.svg");
 }
 
-%icon--table {
-  @extend %icon;
-  background-image: url("../icons/icon--table.svg");
+
+@mixin icon--plus--black {
+  background-image: url("../icons/icon--plus--black.svg");
+}
+@mixin icon--plus--white {
+  background-image: url("../icons/icon--plus--white.svg");
+}
+@mixin icon--plus--red {
+  background-image: url("../icons/icon--plus--red.svg");
 }
 
-%icon--treemap {
-  @extend %icon;
-  background-image: url("../icons/icon--treemap.svg");
+
+@mixin icon--stacked-area--black {
+  background-image: url("../icons/icon--stacked-area--black.svg");
+}
+@mixin icon--stacked-area--white {
+  background-image: url("../icons/icon--stacked-area--white.svg");
+}
+@mixin icon--stacked-area--red {
+  background-image: url("../icons/icon--stacked-area--red.svg");
 }
 
-%icon--zoom_in {
-  @extend %icon;
-  background-image: url("../icons/icon--zoom_in.svg");
+
+@mixin icon--table--black {
+  background-image: url("../icons/icon--table--black.svg");
+}
+@mixin icon--table--white {
+  background-image: url("../icons/icon--table--white.svg");
+}
+@mixin icon--table--red {
+  background-image: url("../icons/icon--table--red.svg");
 }
 
-%icon--zoom_out {
-  @extend %icon;
-  background-image: url("../icons/icon--zoom_out.svg");
+
+@mixin icon--treemap--black {
+  background-image: url("../icons/icon--treemap--black.svg");
 }
+@mixin icon--treemap--white {
+  background-image: url("../icons/icon--treemap--white.svg");
+}
+@mixin icon--treemap--red {
+  background-image: url("../icons/icon--treemap--red.svg");
+}
+
+
+@mixin icon--zoom_in--black {
+  background-image: url("../icons/icon--zoom_in--black.svg");
+}
+@mixin icon--zoom_in--white {
+  background-image: url("../icons/icon--zoom_in--white.svg");
+}
+@mixin icon--zoom_in--red {
+  background-image: url("../icons/icon--zoom_in--red.svg");
+}
+
+
+@mixin icon--zoom_out--black {
+  background-image: url("../icons/icon--zoom_out--black.svg");
+}
+@mixin icon--zoom_out--white {
+  background-image: url("../icons/icon--zoom_out--white.svg");
+}
+@mixin icon--zoom_out--red {
+  background-image: url("../icons/icon--zoom_out--red.svg");
+}
+
+%icon {
+  @include icon;
+}
+
+
+%icon--bar-chart--black {
+  @extend %icon;
+  @include icon--bar-chart--black;
+}
+%icon--bar-chart--white {
+  @extend %icon;
+  @include icon--bar-chart--white;
+}
+%icon--bar-chart--red {
+  @extend %icon;
+  @include icon--bar-chart--red;
+}
+
+
+%icon--bubble-map--black {
+  @extend %icon;
+  @include icon--bubble-map--black;
+}
+%icon--bubble-map--white {
+  @extend %icon;
+  @include icon--bubble-map--white;
+}
+%icon--bubble-map--red {
+  @extend %icon;
+  @include icon--bubble-map--red;
+}
+
+%icon--column-chart--black {
+  @extend %icon;
+  @include icon--column-chart--black;
+}
+%icon--column-chart--white {
+  @extend %icon;
+  @include icon--column-chart--white;
+}
+%icon--column-chart--red {
+  @extend %icon;
+  @include icon--column-chart--red;
+}
+
+
+%icon--close--black {
+  @extend %icon;
+  @include icon--close--black;
+  border-radius: 50%;
+}
+%icon--close--white {
+  @extend %icon;
+  @include icon--close--white;
+  border-radius: 50%;
+}
+%icon--close--red {
+  @extend %icon;
+  @include icon--close--red;
+  border-radius: 50%;
+}
+
+
+
+
+%icon--from_left--black {
+  @extend %icon;
+  @include icon--from_left--black;
+}
+%icon--from_left--white {
+  @extend %icon;
+  @include icon--from_left--white;
+}
+%icon--from_left--red {
+  @extend %icon;
+  @include icon--from_left--red;
+}
+
+
+
+%icon--from_right--black {
+  @extend %icon;
+  @include icon--from_right--black;
+}
+%icon--from_right--white {
+  @extend %icon;
+  @include icon--from_right--white;
+}
+%icon--from_right--red {
+  @extend %icon;
+  @include icon--from_right--red;
+}
+
+
+
+%icon--funnel--black {
+  @extend %icon;
+  @include icon--funnel--black;
+}
+%icon--funnel--white {
+  @extend %icon;
+  @include icon--funnel--white;
+}
+%icon--funnel--red {
+  @extend %icon;
+  @include icon--funnel--red;
+}
+
+
+%icon--line-graph--black {
+  @extend %icon;
+  @include icon--line-graph--black;
+}
+%icon--line-graph--white {
+  @extend %icon;
+  @include icon--line-graph--white;
+}
+%icon--line-graph--red {
+  @extend %icon;
+  @include icon--line-graph--red;
+}
+
+
+%icon--minus--black {
+  @extend %icon;
+  @include icon--minus--black;
+}
+%icon--minus--white {
+  @extend %icon;
+  @include icon--minus--white;
+}
+%icon--minus--red {
+  @extend %icon;
+  @include icon--minus--red;
+}
+
+
+%icon--plus--black {
+  @extend %icon;
+  @include icon--plus--black;
+}
+%icon--plus--white {
+  @extend %icon;
+  @include icon--plus--white;
+}
+%icon--plus--red {
+  @extend %icon;
+  @include icon--plus--red;
+}
+
+
+
+%icon--stacked-area--black {
+  @extend %icon;
+  @include icon--stacked-area--black;
+}
+%icon--stacked-area--white {
+  @extend %icon;
+  @include icon--stacked-area--white;
+}
+%icon--stacked-area--red {
+  @extend %icon;
+  @include icon--stacked-area--red;
+}
+
+
+%icon--table--black {
+  @extend %icon;
+  @include icon--table--black;
+}
+%icon--table--white {
+  @extend %icon;
+  @include icon--table--white;
+}
+%icon--table--red {
+  @extend %icon;
+  @include icon--table--red;
+}
+
+
+%icon--treemap--black {
+  @extend %icon;
+  @include icon--treemap--black;
+}
+%icon--treemap--white {
+  @extend %icon;
+  @include icon--treemap--white;
+}
+%icon--treemap--red {
+  @extend %icon;
+  @include icon--treemap--red;
+}
+
+
+
+%icon--zoom_in--black {
+  @extend %icon;
+  @include icon--zoom_in--black;
+}
+%icon--zoom_in--white {
+  @extend %icon;
+  @include icon--zoom_in--white;
+}
+%icon--zoom_in--red {
+  @extend %icon;
+  @include icon--zoom_in--red;
+}
+
+
+%icon--zoom_out--black {
+  @extend %icon;
+  @include icon--zoom_out--black;
+}
+%icon--zoom_out--white {
+  @extend %icon;
+  @include icon--zoom_out--white;
+}
+%icon--zoom_out--red {
+  @extend %icon;
+  @include icon--zoom_out--red;
+}
+
 
 .icon {
   @extend %icon;
 }
 
-.icon--bar-chart {
-  @extend %icon--bar-chart;
+.theme--dark {
+  .icon--bar-chart {
+    @extend %icon--bar-chart--white;
+  }
+  .icon--bubble-map {
+    @extend %icon--bubble-map--white;
+  }
+  .icon--column-chart {
+    @extend %icon--column-chart--white;
+  }
+  .icon--close {
+    @extend %icon--close--white;
+  }
+  .icon--from_left {
+    @extend %icon--from_left--white;
+  }
+  .icon--from_right {
+    @extend %icon--from_right--white;
+  }
+  .icon--funnel {
+    @extend %icon--funnel--white;
+  }
+  .icon--line-graph {
+    @extend %icon--line-graph--white;
+  }
+  .icon--minus {
+    @extend %icon--minus--white;
+  }
+  .icon--plus {
+    @extend %icon--plus--white;
+  }
+  .icon--stacked-area {
+    @extend %icon--stacked-area--white;
+  }
+  .icon--table {
+    @extend %icon--table--white;
+  }
+  .icon--treemap {
+    @extend %icon--treemap--white;
+  }
+  .icon--zoom_in {
+    @extend %icon--zoom_in--white;
+  }
+  .icon--zoom_out {
+    @extend %icon--zoom_out--white;
+  }
+
 }
 
-.icon--bubble-map {
-  @extend %icon--bubble-map;
-}
-
-.icon--from_left {
-  @extend %icon--from_left;
-}
-
-.icon--from_right {
-  @extend %icon--from_right;
-}
-
-.icon--funnel {
-  @extend %icon--funnel;
-}
-
-.icon--line-graph {
-  @extend %icon--line-graph;
-}
-
-.icon--minus {
-  @extend %icon--minus;
-}
-
-.icon--plus {
-  @extend %icon--plus;
-}
-
-.icon--stacked-area {
-  @extend %icon--stacked-area;
-}
-
-.icon--table {
-  @extend %icon--table;
-}
-
-.icon--treemap {
-  @extend %icon--treemap;
-}
-
-.icon--zoom_in {
-  @extend %icon--zoom_in;
-}
-.icon--zoom_out {
-  @extend %icon--zoom_out;
+.theme--light {
+  .icon--bar-chart {
+    @extend %icon--bar-chart--black;
+  }
+  .icon--bubble-map {
+    @extend %icon--bubble-map--black;
+  }
+  .icon--column-chart {
+    @extend %icon--column-chart--black;
+  }
+  .icon--close {
+    @extend %icon--close--black;
+  }
+  .icon--from_left {
+    @extend %icon--from_left--black;
+  }
+  .icon--from_right {
+    @extend %icon--from_right--black;
+  }
+  .icon--funnel {
+    @extend %icon--funnel--black;
+  }
+  .icon--line-graph {
+    @extend %icon--line-graph--black;
+  }
+  .icon--minus {
+    @extend %icon--minus--black;
+  }
+  .icon--plus {
+    @extend %icon--plus--black;
+  }
+  .icon--stacked-area {
+    @extend %icon--stacked-area--black;
+  }
+  .icon--table {
+    @extend %icon--table--black;
+  }
+  .icon--treemap {
+    @extend %icon--treemap--black;
+  }
+  .icon--zoom_in {
+    @extend %icon--zoom_in--black;
+  }
+  .icon--zoom_out {
+    @extend %icon--zoom_out--white;
+  }
 }
