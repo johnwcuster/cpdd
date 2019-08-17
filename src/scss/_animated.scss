@@ -6,77 +6,120 @@
   right: 0;
   z-index: 11;
   cursor: pointer;
-  background: $dark;
+  @include dark-background;
   opacity: 0.8;
   display: none;
 }
 .mobile-nav-overlay.js_visible {
-  display: block;
+  @include mobile-only {
+
+    display: block;
+  }
 }
 
 .control-panel {
   top: 0;
   z-index: 12;
-  width: $cp_width--mobile;
   height: 100vh;
   will-change: transform;
   transform: translate3d(0,0,0);
   overflow-y: hidden;
   position: absolute;
+  transition: transform 300ms ease-in-out;
+
   @media (max-height: 511px) {
     overflow-y: scroll;
     will-change: scroll-position;
   }
-  @media (max-width: 991px) {
+
+  @include mobile-only {
     overflow-y: scroll;
     will-change: scroll-position;
-  }
-
-
-
-
-  // tweak for really small mobile
-  @include mobile-only {
+    width: $cp_width--mobile;
     max-width: 100vw;
     right: -100vw;
   }
+
   @include desktop-only {
     left:-$cp_width--large;
     width: $cp_width--large;
     overflow-x: hidden;
   }
   @include xl-only {
+    left:-$cp_width--xl;
     width: $cp_width--xl;
   }
+  &.js_visible {
+    transition: transform 300ms ease-in-out;
+    transform-style: preserve-3d;
+
+    @include mobile-only {
+      transform: translate3d(-100vw, 0, 0);
+    }
+
+    @include desktop-only {
+      transform: translate3d($cp_width--large, 0, 0);
+    }
+    @include xl-only {
+      transform: translate3d($cp_width--xl, 0, 0);
+    }
+  }
+  &.control_panel_open--xl,
+  &.control_panel_open--xl.js_visible {
+    @include xl-only {
+      transform: translate3d($cp_width--xl, 0, 0);
+    }
+  }
 }
 
-.control-panel.js_visible {
+.site-header {
+  @include desktop-only {
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    transition: transform 300ms ease-in-out;
 
-  transition: transform 300ms ease-in-out;
-  transform-style: preserve-3d;
-
-  @media (max-width: $mobile_max) {
-    transform: translate3d(-100vw, 0, 0);
-
+    @include text--cp-show;
   }
-  @media (max-width: $cp_width--bp) {
-    width: 100vw;
-    transform: translate3d(-100vw, 0, 0);
+
+  &.is_animated {
+    @include desktop-only {
+      transform: translate3d($cp_width--large,0,0);
+      transition: transform 300ms ease-in-out;
+      @include text--cp-hide;
+    }
+    @include xl-only {
+      transform: translate3d($cp_width--xl,0,0);
+      transition: transform 300ms ease-in-out;
+      @include text--cp-hide;
+    }
   }
-  @media (min-width: $desktop_min) {
-    transform: translate3d($cp_width--large, 0, 0);
+  &.control_panel_open--xl {
+    @include xl-only {
+      transform: translate3d($cp_width--xl,0,0);
+      transition: transform 300ms ease-in-out;
+      @include text--cp-hide;
+    }
+  }
+  &.is_animated.control_panel_open--xl {
+    @include xl-only {
+      transform: translate3d($cp_width--xl,0,0);
+      transition: transform 300ms ease-in-out;
+      @include text--cp-hide;
+    }
   }
 }
 
-@media (min-width: $desktop_min) {
-  // .site-title,
-  .site-header,
+
+@include desktop-only {
+
+  // .site-header,
   .site-footer {
     transform: translate3d(0,0,0);
     will-change: transform;
+    transition: transform 300ms ease-in-out;
   }
   // .site-title.is_animated,
-  .site-header.is_animated,
+  // .site-header.is_animated,
   .site-footer.is_animated {
     transform: translate3d($cp_width--large,0,0);
     transition: transform 300ms ease-in-out;
@@ -87,16 +130,11 @@
     @include desktop-only {
       padding-bottom: 1rem;
     }
-
-    .icon--from_right,
-    .text--hide {
-      display: none;
-    }
   }
 
   .toggle-control-panel:hover {
     @include desktop-only {
-      background: rgba(100,100,100,0.3);
+      // background: rgba(100,100,100,0.3);
       transition: background 300ms ease-in-out;
     }
   }
@@ -107,26 +145,15 @@
     text-align: left;
     padding-left: 5rem;
     padding-right: 0;
-    background: rgba(100,100,100,0.3);
+    // background: rgba(100,100,100,0.3);
 
     border-radius: 2px;
-
-    .text--hide {
-      display: inline;
-    }
-    .icon--from_right {
-      display: block;
-      left: 1rem;
-    }
-    .text--show,
-    .icon--from_left {
-      display: none;
-    }
   }
 }
+
 @include xl-only {
   // .site-title.is_animated,
-  .site-header.is_animated,
+  // .site-header.is_animated,
   .site-footer.is_animated {
     transform: translate3d($cp_width--xl,0,0);
     transition: transform 300ms ease-in-out;
@@ -152,9 +179,10 @@
   top: 0;
   z-index: 12;
   transform: translate3d(0,0,0);
+  transition: transform 300ms ease-in-out;
   will-change: transform;
   height: 100vh;
-  overflow-y: scroll;;
+  overflow-y: scroll;
   @include mobile-only {
     width: $cp_width--mobile;
     right: -$cp_width--mobile;
@@ -204,6 +232,7 @@
 
 // exceptions to the no-id selector convention
 #toggle_export {
+    transition: transform 300ms ease-in-out;
     @include desktop-only {
       transform: translate3d(0,0,0);
       will-change: transform;

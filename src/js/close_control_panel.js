@@ -9,11 +9,20 @@ function closeControlPanel() {
 
     controlPanel.classList.remove("js_visible");
     controlsCloseOverlay.classList.remove("js_visible");
+    chartWrap.classList.remove("control_panel_open");
+
 
     if(document.body.clientWidth >= 992) {
       siteHeader.classList.remove("is_animated");
       siteFooterLogos.classList.remove("is_animated");
       controlsToggle.classList.remove("is_animated");
-      chartWrap.classList.remove("control_panel_open");
+
     }
+    if(document.body.clientwidth>=1344) {
+      chartWrap.classList.remove("control_panel_open--xl");
+      controlPanel.classList.remove("control_panel_open--xl");
+      controlsToggle.classList.remove("control_panel_open--xl");
+      siteHeader.classList.remove("control_panel_open--xl");
+    }
+
 }

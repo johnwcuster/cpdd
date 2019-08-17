@@ -10,10 +10,10 @@
       let elem = e.target;
 
       if (elem.value === "map") {
-        chartLayer.classList.remove("js_visible");
+        chartLayer.classList.remove("js_chart_visible");
         console.log("map visible; map has no overlay");
       } else {
-        chartLayer.classList.add("js_visible");
+        chartLayer.classList.add("js_chart_visible");
         console.log("chart on top; map has overlay");
       }
     }, true);

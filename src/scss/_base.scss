@@ -186,7 +186,10 @@ h1,h2,h3,h4,h5,h6,p,div,span {
     @extend %black-background;
   }
 
-  .control-panel,
+  .control-panel {
+      background: $gradient-top-left--dark--cp;
+  }
+
   .secondary-panel,
   .select-countries .button--select,
   .select-countries .button--deselect {
@@ -325,7 +328,7 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   }
 
   .control-panel {
-    @extend %light-background;
+    background: $gradient-top-left--light--cp;
   }
   .secondary-panel {
     @extend %lighter-background;
@@ -693,6 +696,7 @@ input[type="checkbox"] + label:hover:after {
   .theme-toggle--left {
     left: 0;
     top: 0;
+    @extend %gray-background;
   }
 
   .theme-toggle--left,
@@ -703,6 +707,7 @@ input[type="checkbox"] + label:hover:after {
   .theme-toggle--right{
     right: 0;
     top: 0;
+    @extend %dark-background;
   }
 
   .theme-toggle--right,
@@ -716,9 +721,9 @@ input[type="checkbox"] + label:hover:after {
   }
 
   input[type=radio]:checked + .theme-toggle__label.theme-toggle--left {
-    @extend %black-background;
+    @extend %white-background;
 
-    @extend %white-text;
+    @extend %black-text;
   }
   input[type=radio]:checked + .theme-toggle__label.theme-toggle--left:before {
     // @extend %white-border;

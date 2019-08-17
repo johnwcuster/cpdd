@@ -71,6 +71,10 @@
 
 .chart-layer {
   z-index: 6;
+  display: none;
+  &.js_chart_visible {
+    display: block;
+  }
 
   // FOR TESTING ONLY
   span {
@@ -91,7 +95,9 @@
     overflow-y: scroll;
     will-change: scroll-position;
     position: absolute;
-    border: 1px solid $red5;  // for testing only
+    transition: all 300ms ease-in-out;
+
+
     @include mobile-only {
       padding-left: $h_pad_mobile;
       padding-right: $h_pad_mobile;
@@ -99,6 +105,7 @@
       padding-top: calcRem($f1,12);
       height: calc(100vh - 12rem);
     }
+
     @include desktop-only {
       width: calcVW(42,$grid);
       left: calcVW(20,$grid);
@@ -106,9 +113,34 @@
       height: 100vh;
     }
     @include xl-only {
+      left: calcVW(15,$grid);
+      width: calcVW(47,$grid);
+    }
+
+    &.details_panel_open,
+    &.export_panel_open {
+      @include desktop-only {
+        width: calcVW(27,$grid);
+      }
+      @include xl-only {
+        width: calcVW(36,$grid);
+      }
+    }
+    &.control_panel_open--xl {
+      @include xl-only {
+        left: calcVW(27,$grid);
+        width: calcVW(35,$grid);
+      }
 
     }
+    &.control_panel_open--xl.details_panel_open,
+    &.control_panel_open--xl.export_panel_open--xl {
+      @include xl-only {
+          width: calcVW(24,$grid);
+      }
+    }
   }
+
 
   .chart-object {
 
@@ -120,20 +152,20 @@
 
 .theme--dark {
   &.page-wrap {
-    background: $gray1;
+    background: $gradient-top-left--dark;
 
   }
   .site-header {
     @include desktop-only {
-      background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%)
+      background: $gradient-top-left--dark--header;
     }
   }
 
-  .map-layer::before,
+  // .map-layer::before,
   .chart-layer::before {
     background: $gradient--top--black;
   }
-  .map-layer::after,
+  // .map-layer::after,
   .chart-layer::after {
     background: $gradient--bottom--black;
   }
@@ -144,60 +176,35 @@
   }
 
   .chart-layer__wrap {
-    background-color: $black;
+    // background-color: $black;
     color: $white;
   }
 }
 .theme--light {
   &.page-wrap {
-    background: $gray9;
+    background: $gradient-top-left--light;
   }
   .site-header {
     @include desktop-only {
-      background: linear-gradient(135deg, rgba(180,180,180,0.85) 0%,rgba(180,180,180,0.7) 35%,rgba(180,180,180,0.3) 75%,rgba(180,180,180,0) 100%);
+      background: $gradient-top-left--light--header;
     }
   }
 
-  .map-layer::before,
+  // .map-layer::before,
   .chart-layer::before {
     background: $gradient--top--white;
   }
-  .map-layer::after,
+  // .map-layer::after,
   .chart-layer::after {
     background: $gradient--bottom--white;
   }
 
 
   .chart-layer__overlay {
-    background: rgba(180,180,180,0.7);
+    background: $gradient-top-left--light;
   }
   .chart-layer__wrap {
-    background-color: $white;
+    // background-color: $white;
     color: $black;
   }
-}
-
-// ANIMATIONS FOR MAP & CHART LAYER
-.chart-layer {
-  display: none;
-}
-
-.chart-layer.js_visible {
-  display: block;
-}
-
-.chart-layer__wrap {
-
-}
-
-.chart-layer__wrap.control_panel_open {
-
-}
-
-.chart-layer__wrap.details_panel_open {
-  width: calcVW(27,$grid);
-}
-
-.chart-layer__wrap.control_panel_open.details_panel_open {
-    width: calcVW(27,$grid);
 }

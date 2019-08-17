@@ -6,6 +6,7 @@ function openRightPanel(e) {
 
   const chartWrap = document.getElementById("chart_wrap"),
     controlPanel = document.getElementById("control_panel"),
+    controlsToggle = document.getElementById("toggle_control_panel"),
     rightPanel = document.getElementById("table_details_panel"),
     siteFooterLogos = document.getElementById("site_footer_logos"),
     siteHeader = document.getElementById("site_header"),
@@ -19,6 +20,7 @@ function openRightPanel(e) {
     controlPanel.classList.remove("is_animated");
     controlPanel.classList.remove("js_toggled");
     controlPanel.classList.remove("js_visible");
+    controlsToggle.classList.remove("is_animated");
     siteHeader.classList.remove("is_animated");
     siteFooterLogos.classList.remove("is_animated");
   }

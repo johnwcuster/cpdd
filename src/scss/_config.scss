@@ -1,6 +1,7 @@
 // Break Points (mobile up)
-$desktop_min: 992px;
 $mobile_max: 991px;
+$desktop_min: 992px;
+$desktop_max: 1343px;
 $xl:  1344px;
 
 $grid: 64;
@@ -71,6 +72,14 @@ $red: #B3122A;
 
 $overlay--dark:  rgba(0,0,0,0.6);
 $overlay--black:  rgba(0,0,0,0.8);
+
+$gradient-top-left--dark: linear-gradient(135deg, rgba(34, 34, 34,1) 0%,rgba(34, 34, 34,0.9) 50%,rgba(34, 34, 34,0.8) 75%,rgba(34, 34, 34,0.7) 100%);
+$gradient-top-left--dark--header: linear-gradient(150deg, rgba(34, 34, 34,0.8) 0%,rgba(34, 34, 34,0.6) 50%,rgba(34, 34, 34,0.4) 75%,rgba(34, 34, 34,0.2) 100%);
+$gradient-top-left--dark--cp: linear-gradient(150deg, rgba(34, 34, 34,1) 0%,rgba(34, 34, 34,0.75) 45%,rgba(34, 34, 34,0.1) 60%,rgba(34, 34, 34,0.0) 100%);
+
+$gradient-top-left--light: linear-gradient(135deg, rgba(238, 238, 238,1) 0%,rgba(238, 238, 238,0.75) 50%,rgba(238, 238, 238,0.5) 75%,rgba(238, 238, 238,0.5) 100%);
+$gradient-top-left--light--header: linear-gradient(150deg, rgba(238, 238, 238,0.8) 0%,rgba(238, 238, 238,0.75) 50%,rgba(238, 238, 238,0.7) 75%,rgba(238, 238, 238,0.6) 100%);
+$gradient-top-left--light--cp: linear-gradient(150deg, rgba(238, 238, 238,1) 0%,rgba(238, 238, 238,0.75) 45%,rgba(238, 238, 238,0.1) 60%,rgba(238, 238, 238,0.0) 100%);
 
 $gradient--top--black:  linear-gradient(180deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%);
 $gradient--bottom--black: linear-gradient(0deg, rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.85) 35%,rgba(0,0,0,0.3) 75%,rgba(0,0,0,0) 100%);
