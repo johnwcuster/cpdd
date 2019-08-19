@@ -9,7 +9,7 @@
     exportPanel = document.getElementsByName("export_type");
 
   for(let i=0; i<exportPanel.length; i++) {
-    exportPanel[i].addEventListener("input", showDataOptions, true);
+    exportPanel[i].addEventListener("click", showDataOptions, true);
   }
 
   exportToggle.addEventListener("click", openExports, true);
@@ -46,7 +46,7 @@
   function showDataOptions(e) {
     let elem = e.target;
 
-    if (elem.value === "1") {
+    if (elem.id === "export_dataset") {
       exportDataOptions.classList.add("js_toggled");
     } else {
       exportDataOptions.classList.remove("js_toggled");

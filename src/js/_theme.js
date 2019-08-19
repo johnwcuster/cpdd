@@ -6,22 +6,22 @@
 
   if(document.body.clientWidth >= 992) {
     for(let i=0; i<themeSelect.length; i++) {
-      themeSelect[i].addEventListener("input", toggleTheme, true);
+      themeSelect[i].addEventListener("click", toggleTheme, true);
     }
   }
   if(document.body.clientWidth < 991) {
     for(let i=0; i<themeSelect2.length; i++) {
-      themeSelect2[i].addEventListener("input", toggleTheme, true);
+      themeSelect2[i].addEventListener("click", toggleTheme, true);
     }
   }
 
   function toggleTheme(e) {
     let elem = e.target;
-    if (elem.value === "0") {
+    if (elem.id === "dark") {
       pageWrap.classList.add("theme--dark");
       pageWrap.classList.remove("theme--light")
     }
-    if (elem.value === "1") {
+    if (elem.id === "light") {
       pageWrap.classList.add("theme--light");
       pageWrap.classList.remove("theme--dark");
     }

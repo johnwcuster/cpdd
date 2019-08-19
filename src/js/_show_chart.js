@@ -6,10 +6,10 @@
   viewSelect = document.getElementsByName("views");
 
   for(let i=0; i<viewSelect.length; i++) {
-    viewSelect[i].addEventListener("input", function(e){
+    viewSelect[i].addEventListener("click", function(e){
       let elem = e.target;
 
-      if (elem.value === "map") {
+      if (elem.id === "map_toggle") {
         chartLayer.classList.remove("js_chart_visible");
         console.log("map visible; map has no overlay");
       } else {

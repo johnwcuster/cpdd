@@ -40,7 +40,7 @@
     exportPanel = document.getElementsByName("export_type");
 
   for(let i=0; i<exportPanel.length; i++) {
-    exportPanel[i].addEventListener("input", showDataOptions, true);
+    exportPanel[i].addEventListener("click", showDataOptions, true);
   }
 
   exportToggle.addEventListener("click", openExports, true);
@@ -77,7 +77,7 @@
   function showDataOptions(e) {
     let elem = e.target;
 
-    if (elem.value === "1") {
+    if (elem.id === "export_dataset") {
       exportDataOptions.classList.add("js_toggled");
     } else {
       exportDataOptions.classList.remove("js_toggled");
@@ -90,7 +90,7 @@
   const pdTypeSelect = document.getElementsByName("pd_type");
 
   for(let i=0; i<pdTypeSelect.length; i++) {
-    pdTypeSelect[i].addEventListener("input", showSubTypes, true);
+    pdTypeSelect[i].addEventListener("click", showSubTypes, true);
   }
 }());
 
@@ -105,7 +105,7 @@ function showSubTypes(e) {
     visitsTypeOption = document.getElementById("13_diplomacy_type");
 
 
-  if (elem.value === "21") {
+  if (elem.id === "21_diplomacy_type") {
     financeTypeOption.classList.add("js_toggled");
     financeListItem.classList.add("js_toggled");
     financeSubTypeList.classList.add("js_toggled");
@@ -114,7 +114,7 @@ function showSubTypes(e) {
     visitsListItem.classList.remove("js_toggled");
     visitsSubTypeList.classList.remove("js_toggled");
   }
-  if (elem.value === "13") {
+  if (elem.id === "13_diplomacy_type") {
     visitsTypeOption.classList.add("js_toggled");
     visitsListItem.classList.add("js_toggled");
     visitsSubTypeList.classList.add("js_toggled");
@@ -122,8 +122,8 @@ function showSubTypes(e) {
     financeListItem.classList.remove("js_toggled");
     financeSubTypeList.classList.remove("js_toggled");
   }
-  if (elem.value !== "21" && elem.value !== "13") {
-    console.log("not 21 or 13?  " + elem.value);
+  if (elem.id !== "21_diplomacy_type" && elem.id !== "13_diplomacy_type") {
+    console.log("not 21 or 13?  " + elem.id);
     financeTypeOption.classList.remove("js_toggled");
     financeListItem.classList.remove("js_toggled");
     financeSubTypeList.classList.remove("js_toggled");
@@ -141,10 +141,10 @@ function showSubTypes(e) {
   viewSelect = document.getElementsByName("views");
 
   for(let i=0; i<viewSelect.length; i++) {
-    viewSelect[i].addEventListener("input", function(e){
+    viewSelect[i].addEventListener("click", function(e){
       let elem = e.target;
 
-      if (elem.value === "map") {
+      if (elem.id === "map_toggle") {
         chartLayer.classList.remove("js_chart_visible");
         console.log("map visible; map has no overlay");
       } else {
@@ -163,22 +163,22 @@ function showSubTypes(e) {
 
   if(document.body.clientWidth >= 992) {
     for(let i=0; i<themeSelect.length; i++) {
-      themeSelect[i].addEventListener("input", toggleTheme, true);
+      themeSelect[i].addEventListener("click", toggleTheme, true);
     }
   }
   if(document.body.clientWidth < 991) {
     for(let i=0; i<themeSelect2.length; i++) {
-      themeSelect2[i].addEventListener("input", toggleTheme, true);
+      themeSelect2[i].addEventListener("click", toggleTheme, true);
     }
   }
 
   function toggleTheme(e) {
     let elem = e.target;
-    if (elem.value === "0") {
+    if (elem.id === "dark") {
       pageWrap.classList.add("theme--dark");
       pageWrap.classList.remove("theme--light")
     }
-    if (elem.value === "1") {
+    if (elem.id === "light") {
       pageWrap.classList.add("theme--light");
       pageWrap.classList.remove("theme--dark");
     }

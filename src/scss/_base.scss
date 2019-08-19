@@ -95,17 +95,17 @@ h1,h2,h3,h4,h5,h6,p,div,span {
 
 }
 
-.text--slideout-primary {
+.text--slideout-primary,
+.text--slideout-secondary,
+.text--slideout-tertiary,
+.text--help {
   @extend %italic;
 }
 
-.text--slideout-secondary {
-  @extend %italic;
+.text--help {
+  font-size: calcRem($f0,1);
 }
 
-.text--slideout-tertiary {
-  @extend %italic;
-}
 
 .text--panel-label,
 .text--link-label {
@@ -122,8 +122,6 @@ h1,h2,h3,h4,h5,h6,p,div,span {
 .text--link-subheading {
   display: block;
 }
-
-
 
 
 ///////////////////////////////
@@ -197,10 +195,21 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   }
 
 
+  .button--cta:hover .icon--from_right {
+    @extend %icon--from_right--red;
+  }
+
+  .button--cta:hover .icon--from_left {
+    @extend %icon--from_left--red;
+  }
+
 
   .control-panel__link:after,
   .select-countries__label,
-  .toggle-option__input:checked + .toggle-option__label:before {
+  .toggle-option__input:checked + .toggle-option__label:before,
+  .toggle-control-panel,
+  .button--cta.button--export,
+  .button--cta.button--details {
     @extend %white-border;
   }
 
@@ -210,7 +219,10 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   .toggle-option__label:before {
     @extend %gray-border;
   }
-  input[type="radio"]:checked + .select-view__label {
+  input[type="radio"]:checked + .select-view__label,
+  .toggle-control-panel:hover,
+  .button--cta:hover,
+  .button--close.button--icon:hover {
     @extend %bright-red-border;
   }
 
@@ -342,13 +354,27 @@ h1,h2,h3,h4,h5,h6,p,div,span {
     @extend %black-border;
   }
 
+  .button--cta:hover .icon--from_right,
+  .toggle-control-panel.is_animated:hover .icon--from_right {
+    @extend %icon--from_right--red;
+  }
+
+  .button--cta:hover .icon--from_left,
+  .toggle-control-panel:hover .icon--from_left {
+    @extend %icon--from_left--red;
+  }
+
   .icon--close,
-  .toggle-option__input:checked + .toggle-option__label:before  {
+  .toggle-option__input:checked + .toggle-option__label:before,
+  .toggle-control-panel,
+  .button--cta {
     @extend %red-border;
   }
 
   .icon--close:hover,
-  input[type="radio"]:checked + .select-view__label {
+  input[type="radio"]:checked + .select-view__label,
+  .toggle-control-panel:hover,
+  .button--cta:hover {
     @extend %bright-red-border;
   }
 
@@ -601,11 +627,10 @@ input[type="checkbox"] + label:hover:after {
       position: absolute;
       top: 0;
       right: 0;
+
       .icon--from_left {
         display: none;
       }
-
-
     }
 
     @include desktop-only {
@@ -614,7 +639,7 @@ input[type="checkbox"] + label:hover:after {
       text-transform: none;
       margin-top: calcRem(1,$f1);
       width: calcVW(3,$cols);
-      border-top: 2px solid $gray5;
+      border-top: 2px solid;
       padding-top: $font_size_1;
       padding-right: calcRem($f1,5);
 
@@ -696,7 +721,7 @@ input[type="checkbox"] + label:hover:after {
   .theme-toggle--left {
     left: 0;
     top: 0;
-    @extend %gray-background;
+    @extend %light-background;
   }
 
   .theme-toggle--left,
@@ -721,9 +746,9 @@ input[type="checkbox"] + label:hover:after {
   }
 
   input[type=radio]:checked + .theme-toggle__label.theme-toggle--left {
-    @extend %white-background;
+    @extend %black-background;
 
-    @extend %black-text;
+    @extend %white-text;
   }
   input[type=radio]:checked + .theme-toggle__label.theme-toggle--left:before {
     // @extend %white-border;
@@ -742,22 +767,37 @@ input[type="checkbox"] + label:hover:after {
 
 }
 
-.button--cta.align--top-right {
-  // @include bright-red-border;
-  padding-left: calcRem($f1,2);
-  padding-right: calcRem($f1,5);
+.button--cta.button--export,
+.button--cta.button--details {
   z-index: 10;
-  @include desktop-only {
-    position: absolute;
-    top: $v_pad_desktop;
-    right: $h_pad_desktop;
-  }
+  position: absolute;
+  right: $h_pad_desktop;
+  // border-top: none;
+  // border-right: none;
+  // border-bottom: none;
+  border: none;
   .icon--from_right {
     position: absolute;
     top: -7px;
     right: calcRem(1,$f1);
   }
 }
+
+.button--cta.button--export {
+  @include desktop-only {
+    top: $v_pad_desktop;
+    // padding-left: calcRem($f1,2);
+    padding-left: 0;
+    padding-right: calcRem($f1,5);
+  }
+}
+.button--cta.button--details {
+  top: calcRem(5,$f1);
+  // padding-left: calcRem($f1,1);
+  padding-left: 0;
+  padding-right: calcRem($f1,5);
+}
+
 
 .control-panel {
   // see _animated.scss for positioning & size
@@ -1564,9 +1604,11 @@ input[type="checkbox"] + label:hover:after {
 
 
 .details-panel {
-  height: 100%;
-  min-height: 100vh;
-  overflow-y: scroll;
+  @include desktop-only {
+    height: 100%;
+    min-height: 100vh;
+    overflow-y: scroll;
+  }
   position: relative;
 
   .button--close {

@@ -3,7 +3,7 @@
   const pdTypeSelect = document.getElementsByName("pd_type");
 
   for(let i=0; i<pdTypeSelect.length; i++) {
-    pdTypeSelect[i].addEventListener("input", showSubTypes, true);
+    pdTypeSelect[i].addEventListener("click", showSubTypes, true);
   }
 }());
 
@@ -18,7 +18,7 @@ function showSubTypes(e) {
     visitsTypeOption = document.getElementById("13_diplomacy_type");
 
 
-  if (elem.value === "21") {
+  if (elem.id === "21_diplomacy_type") {
     financeTypeOption.classList.add("js_toggled");
     financeListItem.classList.add("js_toggled");
     financeSubTypeList.classList.add("js_toggled");
@@ -27,7 +27,7 @@ function showSubTypes(e) {
     visitsListItem.classList.remove("js_toggled");
     visitsSubTypeList.classList.remove("js_toggled");
   }
-  if (elem.value === "13") {
+  if (elem.id === "13_diplomacy_type") {
     visitsTypeOption.classList.add("js_toggled");
     visitsListItem.classList.add("js_toggled");
     visitsSubTypeList.classList.add("js_toggled");
@@ -35,8 +35,8 @@ function showSubTypes(e) {
     financeListItem.classList.remove("js_toggled");
     financeSubTypeList.classList.remove("js_toggled");
   }
-  if (elem.value !== "21" && elem.value !== "13") {
-    console.log("not 21 or 13?  " + elem.value);
+  if (elem.id !== "21_diplomacy_type" && elem.id !== "13_diplomacy_type") {
+    console.log("not 21 or 13?  " + elem.id);
     financeTypeOption.classList.remove("js_toggled");
     financeListItem.classList.remove("js_toggled");
     financeSubTypeList.classList.remove("js_toggled");

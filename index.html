@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>China Dashboard Concept</title>
-  <link rel="stylesheet" href="dist/style.css?cb=1565962722882">
+  <link rel="stylesheet" href="dist/style.css?cb=1566218148806">
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
 </head>
@@ -16,8 +16,24 @@
         <h1 id="site_title" class="site-title">China's Public Diplomacy in East Asia and Pacific</h1>
 
         <div id="chart_header" class="chart-header">
+          <!-- Template: DYNAMIC -->
+          <!-- {{pd_type}} -->
           <h2 id="chart_title" class="chart-header__heading">Official Finance With Diplomatic Intent</h2>
+          <!-- Template: DYNAMIC -->
+          <!-- {{start_year}} - {{end_year}} -->
           <p id="chart_subtitle" class="chart-header__subheading">2000-2015</p>
+          <!-- Template: DYNAMIC -->
+          <!--
+          %if finance%
+            %if all subtypes %
+              <p class="chart-header__label">(USD 2014)</p>
+            % else %
+            <p class="chart-header__label">FILTERS APPLIED</p>
+            <p class="chart-header__label">(USD 2014)</p>
+            % endif %
+          %endif%
+
+          -->
           <p id="chart_label" class="chart-header__label">(USD 2014)</p>
         </div>
 
@@ -41,10 +57,21 @@
         </a>
     </header>
 
-    <a id="toggle_export" class="button button--cta align--top-right hide-on-mobile" href="#export_options">
+    <a id="toggle_export" class="button button--cta button--export align--top-right hide-on-mobile" href="#export_options">
       <span class="text--cta">Export</span>
       <span class="icon icon--from_right"></span>
     </a>
+    <!-- Template: DYNAMIC -->
+    <!--
+    %if treemap || table || bar_chart %
+      <a style="display: none">
+    %%else %
+    -->
+    <a id="open_right_panel" href="#" class="button button--cta button--details hide-on-mobile">
+      <span class="text--cta">Country List</span>
+      <span class="icon icon--from_right"></span>
+    </a>
+
     <div id="control_panel" class="control-panel control_panel_open--xl" aria-hidden="false" aria-labelledby="toggle_control_panel">
       <a id="close_control_panel" href="#toggle_control_panel" class="close-control-panel">
         <span class="hide-on-desktop text--close-slideout">Close</span>
@@ -64,7 +91,7 @@
             </div>
           </div>
         </li>
-        <li class="control-panel__item">
+        <li class="control-panel__item hide-on-mobile">
           <a id="toggle_view_select" class="control-panel__link" href="#select_view">
             <span class="text--link-label">View</span>
             <span id="view_text" class="text--link-heading">Bubble Map</span>
@@ -74,7 +101,9 @@
         <li class="control-panel__item">
           <a id="toggle_type_select" class="control-panel__link" href="#select_types">
             <span class="text--link-label">Instrument</span>
+            <!-- Template: DYNAMIC -->
             <span id="pd_type_text" class="text--link-heading">Official Finance</span>
+            <!-- Template: DYNAMIC -->
             <span id="pd_type_filter_text" class="text--link-subheading">All Financial Flows</span>
             <span class="icon icon--funnel"></span>
           </a>
@@ -82,6 +111,7 @@
         <li class="control-panel__item">
           <a id="toggle_country_select" class="control-panel__link" href="#select_countries">
             <span class="text--link-label">Countries</span>
+            <!-- Template: DYNAMIC -->
             <span id="countries_text" class="text--link-heading">All Countries</span>
             <span class="icon icon--funnel"></span>
           </a>
@@ -333,7 +363,7 @@
       </form>
     </div>
 
-    <div id="select_view" class="secondary-panel select-view">
+    <div id="select_view" class="secondary-panel select-view hide-on-mobile">
       <a id="close_view_select" href="#toggle_view_select" class="button button--close">Close</a>
 
       <form class="select-view__form secondary-panel__inner">
@@ -437,6 +467,8 @@
             <li id="export_data_options" class="export-options__item has_subtypes">
               <fieldset class="export-options__fieldset fieldset--subtypes">
                 <legend class="export-options__legend legend--subtypes text--legend">Which Data?</legend>
+                <!-- Template: DYNAMIC -->
+                <p class="text--help"> TO DO:  Put tool tip text here.</p>
                 <ul class="export-options__sub-list">
 
                   <li class="export-options__sub-item">
@@ -454,6 +486,8 @@
 
               <fieldset class="export-options__fieldset fieldset--subtypes">
                 <legend class="export-options__legend legend--subtypes text--legend">In which format?</legend>
+                <!-- Template: DYNAMIC -->
+                <p class="text--help"> TO DO:  Put tool tip text here.</p>
                 <ul class="export-options__sub-list">
                   <li class="export-options__sub-item">
                     <input id="export_csv" type="radio" value="0" name="file_format" checked="" class="export-options__input">
@@ -473,12 +507,15 @@
     </div>
 
 
-    <div id="table_details_panel" class="details-panel ">
+
+    <div id="table_details_panel" class="details-panel">
       <a id="close_right_panel" class="button button--close button--icon">
         <span class="icon-text">Close</span>
         <span class="icon icon--close"></span>
       </a>
       <div class="details-panel__fade">
+        <!-- Template: DYNAMIC -->
+        <!-- Example below is given for clicking on the "eye" of a table -->
         <div id="details_wrap" class="details-panel__scroll">
           <h4 class="details-panel__heading">Project Id:</h4>
           <p class="details-panel__text text--table-details">32016</p>
@@ -634,24 +671,28 @@
 
     </footer>
 
-    <div id="map_layer" class="map-layer">
+    <div id="map_layer" class="map-layer hide-on-mobile">
       <span>This will be full width & height, and go under all of the (left and right) menus</span>
       <span>It will wrap both the country borders and the bubbles</span>
       <span>Ideally, the country borders will continue to be visible even for other chart views. (The chart div below will have an overlay that makes this unselectable.)</span>
 
       <a href="#nowhere">TEST MAP LINK!</a>
     </div>
-    <div id="chart_layer" class="chart-layer">
+    <div id="chart_layer" class="chart-layer hide-on-mobile">
       <div id="chart_background_overlay" class="chart-layer__overlay">
         <!--
         <span>This layer will add a gradient over a map or background image</span>
         <span>This layer will sit on top of the map, but will still fit under the menus.</span>
         -->
       </div>
+      <!-- Template: DYNAMIC -->
       <div id="chart_wrap" class="chart-layer__wrap control_panel_open--xl">
         <div id="chart_object" class="chart-object">
+          <!-- content below is just placeholder to test scrolling  -->
+          <!-- replace with actual content -->
+
           <span>Put bar charts and tables in this div (or a div with the same auxiliary class for scroll).</span>
-          <a id="open_right_panel" href="#">table toggle</a>
+
 
           <p>TESTING SCROLL CONTENT</p>
 
@@ -695,9 +736,6 @@
           <p>Mauris lectus nisl, efficitur ac eleifend eget, rhoncus in lacus. Curabitur quis nisl elit. Suspendisse dignissim nulla ac tellus auctor, sed eleifend nibh venenatis. Pellentesque sit amet metus sit amet dolor vulputate aliquet non a nunc. Donec finibus erat non velit scelerisque, ut maximus leo fringilla. Nunc consectetur convallis purus, quis faucibus nibh pulvinar id. Donec nulla erat, tristique eu orci sit amet, lacinia interdum nibh. Pellentesque vitae urna dictum, rhoncus lorem vitae, volutpat mauris. Nunc bibendum varius tellus eget placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sit amet urna interdum, feugiat orci nec, venenatis tortor. Proin facilisis erat ac enim viverra dictum. Nunc tincidunt viverra mi non varius. Etiam commodo, lorem ut tristique laoreet, ante mi ullamcorper dui, eget vulputate ipsum velit quis sapien. Curabitur vel tortor placerat, lacinia massa vel, hendrerit arcu. Maecenas egestas tempus mauris lobortis vehicula.
           </p>
 
-
-
-
         </div>
         </div>
       </div>
@@ -707,7 +745,7 @@
     <div id="control_panel_overlay" class="mobile-nav-overlay"></div>
   </div>
 
-  <script src="dist/all.js?cb=1565962722882"></script>
+  <script src="dist/all.js?cb=1566218148806"></script>
 </body>
 
 </html>
