@@ -363,6 +363,10 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   .toggle-control-panel:hover .icon--from_left {
     @extend %icon--from_left--red;
   }
+  .toggle-control-panel:hover.is_animated .icon--from_left {
+    display: none;
+  }
+
 
   .icon--close,
   .toggle-option__input:checked + .toggle-option__label:before,
@@ -771,7 +775,7 @@ input[type="checkbox"] + label:hover:after {
 .button--cta.button--details {
   z-index: 10;
   position: absolute;
-  right: $h_pad_desktop;
+  top: $v_pad_desktop;
   // border-top: none;
   // border-right: none;
   // border-bottom: none;
@@ -785,15 +789,16 @@ input[type="checkbox"] + label:hover:after {
 
 .button--cta.button--export {
   @include desktop-only {
-    top: $v_pad_desktop;
+    right: $h_pad_desktop;
     // padding-left: calcRem($f1,2);
     padding-left: 0;
     padding-right: calcRem($f1,5);
   }
 }
 .button--cta.button--details {
-  top: calcRem(5,$f1);
+  // top: calcRem(5,$f1);
   // padding-left: calcRem($f1,1);
+  right: calcVW(11,$grid);
   padding-left: 0;
   padding-right: calcRem($f1,5);
 }

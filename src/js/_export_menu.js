@@ -1,6 +1,7 @@
 // export_menu.js
 (function(){
   const chartWrap = document.getElementById("chart_wrap"),
+    detailsPanelOpen = document.getElementById("open_right_panel"),
     exportDataOptions = document.getElementById("export_data_options"),
     exportToggle = document.getElementById("toggle_export"),
     exportToggle2 = document.getElementById("toggle_export_mobile"),
@@ -21,6 +22,7 @@
     e.stopPropagation();
     exportOptions.classList.add("is_animated");
     exportToggle.classList.remove("is_animated");
+    detailsPanelOpen.classList.add("export_panel_open");
     closeRightPanel(e);
     checkChartWidth();
   }
@@ -28,6 +30,7 @@
     e.preventDefault();
     e.stopPropagation();
     exportOptions.classList.remove("is_animated");
+    detailsPanelOpen.classList.remove("export_panel_open");
     closeRightPanel(e);
   }
 

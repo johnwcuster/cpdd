@@ -1,0 +1,188 @@
+/* ReactTable styling */
+
+// I don't think that you need this much specificity
+// body .page-wrap .table-container .table-wrapper .table-panel .ReactTable {
+.rt-table {
+
+  .table-title {
+    @extend %bold;
+    font-size: $font_size_2;
+    @include gray-text;
+  }
+
+  h5 {
+    @extend %bold;
+    font-size: $font_size_1;
+  }
+
+  // START [[THIS MIGHT BREAK LAYOUT]]
+  .rt-tr {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .text--number {
+        text-align: right;
+    }
+    .text--year {
+      text-align: center;
+    }
+  }
+  // END [[THIS MIGHT BREAK LAYOUT]]
+  .rt-th {
+      padding-top: calcRem($f1, 0.5);
+      padding-right: calcVW(1,$grid);
+      padding-bottom: calcRem($f1, 0.5);
+      padding-left: calcRem($f1, 0.25);
+
+      border-bottom: 1px solid;
+
+      input {
+        text-align: left;
+      }
+      h5 {
+        padding-right: calcVW(2,$grid);
+      }
+  }
+
+  .rt-td {
+      padding-top: calcRem($f1, 0.5);
+      padding-right: calcVW(3,$grid);
+      padding-bottom: calcRem($f1, 0.5);
+      padding-left: calcRem($f1, 0.5);
+
+      border-bottom: 1px solid;
+  }
+
+  input {
+    border: 1px solid;
+    border-radius: 2px;
+
+    padding-top: calcRem($f1, 0.25);
+    padding-right: calcRem($f1, 0.5);
+    padding-bottom: calcRem($f1, 0.25);
+    padding-left: calcRem($f1, 0.5);
+  }
+
+  input:focus {
+    @extend %link--focus;
+  }
+
+  // .-header .rt-tr .rt-th {
+  //   border: 1px solid #777777;
+  //   border-bottom: 1px solid red;
+  //   height: 3rem;
+  //   padding-top: 0.75rem;
+  //   font-size: 1rem;
+  //
+  //   .rt-resizeable-header-content .rt-resizer {
+  //     vertical-align: middle;
+  //   }
+  // }
+
+  // .-filters .rt-tr .rt-th {
+  //   input {
+  //     // background-color: #bbbbbb;
+  //     height: 2rem;
+  //   }
+  // }
+
+  // .rt-tbody .rt-td {
+  //   border-bottom: 1px solid #777777;
+  // }
+}
+
+
+.pagination-bottom,
+.-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  button {
+    @extend %button;
+  }
+
+  button:disabled,
+  button:disabled:hover {
+    @include gray-text;
+    @include gray-border;
+    text-decoration: none;
+    cursor: default;
+  }
+}
+
+// .pagination-bottom .-pagination {
+//   .-previous {
+//     button {
+//       border: 1px solid #ffffff;
+//       color: #ffffff;
+//       border-radius: 0;
+//     }
+//   }
+//
+//   .-center {
+//     .-pageInfo .-pageJump input {
+//       color: #000000;
+//     }
+//   }
+//   .-next {
+//     button {
+//       border: 1px solid #ffffff;
+//       color: #ffffff;
+//       border-radius: 0;
+//     }
+//   }
+// }
+// }
+
+
+/* Theming for table */
+.theme--dark {
+  .rt-table {
+    @extend %light-border;
+    @extend %white-text;
+
+    button,
+    input {
+      @extend %dark-background;
+      @extend %gray-border;
+    }
+
+    button:hover,
+    input:hover {
+      @extend %white-border;
+    }
+  }
+  .pagination-bottom {
+    button {
+      @extend %dark-background;
+      @extend %white-text;
+    }
+  }
+}
+
+.theme--light {
+  .rt-table {
+    @extend %dark-border;
+    @extend %dark-text;
+
+    button,
+    input {
+      @extend %light-background;
+      @extend %gray-border;
+    }
+    // button:hover,
+    // input:hover {
+    //   @extend %bright-red-border;
+    // }
+  }
+  .pagination-bottom {
+    button {
+      @extend %light-background;
+      @extend %black-text;
+    }
+  }
+}
