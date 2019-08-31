@@ -46,7 +46,7 @@ function jsTask(){
 // Cache busting task
 var cbString = new Date().getTime();
 function cacheBustTask(){
-    return src(['index.html'])
+    return src(['index.html', 'index2.html'])
         .pipe(replace(/\?cb=\d+/g, '?cb=' + cbString))
         .pipe(dest('.'));
 }
