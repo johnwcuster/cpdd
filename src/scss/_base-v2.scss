@@ -73,6 +73,7 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   @extend %button--select;
 }
 
+.button--update,
 .button--download {
   @extend %bright-red-background;
   border: none;
@@ -81,7 +82,26 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   padding-left: calcVW(1,$grid);
   padding-right: calcVW(1,$grid);
 }
+.button--update {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
 
+.button.is_disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+  text-decoration: none;
+  border-color: $gray3;
+  color: $gray4;
+  background: $gray9;
+
+}
 
 .close-panel {
 
@@ -148,6 +168,7 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   .text--slideout-primary,
   .text--cta,
   .select-view__text.line1,
+  .left-flyout
    {
     @extend %white-text;
   }
@@ -159,7 +180,7 @@ h1,h2,h3,h4,h5,h6,p,div,span {
     @extend %light-text;
   }
 
-  .control_panel__heading,
+
   .text--link-subheading,
   .text--panel-label,
   .select-types p,
@@ -180,7 +201,8 @@ h1,h2,h3,h4,h5,h6,p,div,span {
 
 
 
-  .details-panel {
+  .details-panel,
+  .left-flyout {
     @extend %black-background;
   }
 
@@ -304,11 +326,12 @@ h1,h2,h3,h4,h5,h6,p,div,span {
   .site-title,
   .text--legend,
   .text--slideout-tertiary,
-  .details-panel__heading {
+  .details-panel__heading,
+  .left-flyout {
     @extend %dark-text;
   }
 
-  .control_panel__heading,
+
   .text--link-subheading,
   .text--panel-label,
   .select-types p,
@@ -335,7 +358,8 @@ h1,h2,h3,h4,h5,h6,p,div,span {
     @extend %red-text;
   }
 
-  .details-panel {
+  .details-panel,
+  .left-flyout {
     @extend %white-background;
   }
 
@@ -534,144 +558,449 @@ input[type="checkbox"] + label:hover:after {
 // END_ELEMENTS
 ///////////////////////////////
 
+// NEW ELEMENTS
+///////////////////////////////
+.toggles-left-flyout,
+.toggles-right-flyout,
+.mobile-menu-toggle {
+  text-transform: uppercase;
+  margin-right: 14px;
+  @include laptop-width {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  @include desktop-only {
+    margin-left: 8px;
+    padding: 6px 14px;
+    padding-right: 14px;
+    margin-right: 0;
+  }
+}
+.toggles-right-flyout {
+  @include desktop-only {
+    padding-left: 14px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-left: 2px solid;
+  }
+}
+
+.toggles-right-flyout,
+.toggles-left-flyout, {
+  @include pre-laptop-width {
+    width: 100%;
+    display: block;
+    padding-top: calcRem($f1,0.5);
+    padding-bottom: calcRem($f1, 0.5);
+    margin-top: calcRem($f1,0.5);
+    margin-bottom: calcRem($f1, 0.5);
+    border-bottom: 1px solid $gray5;
+  }
+}
+.toggles-left-flyout {
+  @include laptop-width {
+    width: 100%;
+    display: block;
+    padding-left: 0;
+    margin-left: 0;
+    padding-right: 0;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+  }
+}
+.toggles-right-flyout:hover,
+.toggles-left-flyout:hover {
+  @include laptop-width {
+    text-decoration: underline;
+  }
+}
+
+
+
+.mobile-menu-toggle::after {
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  content: '';
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  left: 2px;
+  position: relative;
+  top: 0;
+  margin-left: calcRem($f1,1);
+  transform: rotate(135deg);
+  vertical-align: top;
+
+}
+
+
+.toggles-right-flyout::before,
+.toggles-left-flyout::after, {
+  @include desktop-only {
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    content: '';
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    left: 2px;
+    position: relative;
+    transform: rotate(-45deg);
+    vertical-align: top;
+  }
+}
+
+
+.toggles-right-flyout:hover::before,
+.toggles-left-flyout:hover::after {
+  border-color: $red6;
+}
+
+.toggles-right-flyout::before {
+  @include desktop-only {
+    top: 5px;
+    left: 0;
+    transform: rotate(-135deg);
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+.toggles-left-flyout::after {
+  @include desktop-only {
+    top: 3px;
+    right: 0;
+    transform: rotate(45deg);
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+
+// .toggles-right-flyout:hover,
+// .toggles-left-flyout:hover {
+//   @include desktop-only {
+//     text-decoration: underline;
+//     background-color: $red6;
+//     border-color: transparent;
+//     color: $white;
+//   }
+// }
+
+
+
 ///////////////////////////////
 // COMPONENTS
 .page-wrap {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  @include laptop-width {
+    height: 100vh;
+    @include laptop-height {
+      overflow: hidden;
+    }
+  }
 }
 
 // All of the outermost items are absolutely positioned
 .site-header {
   z-index: 10;
-  @include mobile-only {
+  width: 100%;
+  padding-top: calcRem(1, $f1);
+  padding-bottom: calcRem(1, $f1);
+
+  @include pre-laptop-width {
+    padding-top: calcRem($f1,9);
     padding-left: $h_pad_mobile;
     padding-right: $h_pad_mobile;
-    display: flex;
-    flex-wrap: wrap;
+    overflow: hidden;
   }
-
-  @include desktop-only {
-      max-width: $cp_width--large;
-      left: $h_pad_desktop;
+  @include laptop-width {
+    height: calcRem($f1,4);
+    overflow-y: visible;
+    padding-left: $h_pad_desktop;
+    padding-right: $h_pad_desktop;
   }
+  .top-bar {
+    width: 100%;
+    @extend %flex-wrap;
+    @extend %flex-justify-between;
+    @include laptop-width {
+      @include border-bottom;
+    }
+    .site-title {
+      @include font-size-2;
+      margin-bottom: calcRem($f1,1);
+    }
+    .mobile-menu-toggle {
+      @include laptop-width {
+        display: none;
+      }
+    }
+    .right-controls-wrap {
+      padding-top: calcRem($f1,0.5);
+      padding-bottom: calcRem($f1,0.5);
+      @include pre-laptop-width {
+        width: 100%;
+      }
+      @include laptop-width {
+        padding-top: calcRem($f1,0.25);
+      }
+      @include desktop-only {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+  }// end top bar
 
-  @include xl-only {
-    max-width: $cp_width--xl;
-  }
-
-  .site-title {
-    @extend %bold;
-    font-size: $font_size_2;
-    padding-top: calcRem(1,$f1);
-    padding-bottom: calcRem(1,$f1);
-    margin-bottom: calcRem(1,$f1);
-
-    @include mobile-only {
-      border: none;
-      max-width: calcVW(12,$cols);
+  .left-controls-wrap {
+    @include pre-laptop-width {
+      margin-top: calcRem($f1,1);
+    }
+    @include laptop-width {
+      position: absolute;
+      top: calcRem($f1,7);
+      z-index: 1;
     }
     @include desktop-only {
-      border-bottom: 2px solid;
-      @include gray-border;
+      top: calcRem($f1,5);
     }
-  }
-  .chart-header {
-    padding-bottom: calcRem(1,$f1);
-    @include mobile-only {
-      order: 2;
-      margin-top: calcRem($f2,1);
+
+    .left-menu {
+      @include laptop-width {
+          width: calcVW(12, $grid);
+
+          @include laptop-height {
+              position: absolute;
+              top: calcRem(10,$f1);
+          }
+      }
+      @include desktop-only {
+        width: calcVW(10, $grid);
+      }
+      @include xl-only {
+        top: 0;
+        width: calcVW(8, $grid);
+      }
+      #toggle_view_select,
+      #toggle_years_select,
+      #toggle_more_select {
+        @include pre-laptop-width {
+          display: none;
+        }
+      }
     }
-  }
-  .chart-header__heading {
-    font-size: $font_size_2;
-  }
 
-  .chart-header__subheading {
-    font-size: $font_size_1;
-  }
+    .left-menu__heading {
+      @extend %bright-red-text;
+      text-transform: uppercase;
+      @extend %bold;
+      line-height: calcRem(1,$f2);
+      border-bottom: 2px solid $gray4;
+      padding-bottom: 7px;
+      margin-bottom: 7px;
 
-  .chart-header__label {
-    @extend %gray-text;
-    font-size: $font_size_1;
-  }
+    }
 
-  // .fine-print-wrap {
-  //   @extend %flex-wrap;
-  //   @extend %flex-justify-between;
-  //   @include mobile-only {
-  //     width: 100%;
-  //   }
-  //   @include desktop-only {
-  //     width: calcVW(3,$cols);
-  //     margin-top: calcRem($f2,1);
-  //     padding-bottom:  calcRem($f1,0.25); // to match up borders
-  //   }
-  //
-  // }
-  //
-  // .fine-print {
-  //   font-size: $font_size_0;
-  //   line-height: $font_size_1;
-  //
-  //   a {
-  //     text-transform: uppercase;
-  //   }
-  // }
+    .left-menu__list {
 
-  .toggle-control-panel {
-    box-shadow: none;
-    outline: none;
-    overflow: visible;
+    }
 
-    @include mobile-only {
-      padding-right: calcRem($f1,4);
+    .list-menu__item {
+
+    }
+
+    .toggles-left-flyout {
+
+    }
+    .menu--years,
+    .menu--more {
+      .close-x {
+        @include pre-laptop-width {
+          display: none;
+        }
+      }
+    }
+
+    .left-flyout {
+      display: block;
       position: absolute;
       top: 0;
-      right: 0;
+      min-height: 100%;
+      z-index: 2;
+      border-radius: 4px;
+      padding-left: calcRem($f1,0.5);
+      padding-right: calcRem($f1,0.5);
+      padding-bottom: calcRem($f1,1);
 
-      .icon--from_left {
-        display: none;
+      @include pre-laptop-width {
+        position: relative;
+        width: 100%;
+        height: auto;
+        background: none;
       }
-    }
 
-    @include desktop-only {
-      display: inline-block;
-      text-align: right;
-      text-transform: none;
-      margin-top: calcRem(1,$f1);
-      width: calcVW(3,$cols);
-      border-top: 2px solid;
-      padding-top: $font_size_1;
-      padding-right: calcRem($f1,5);
 
-      .icon--from_left {
+      .close-x {
         position: absolute;
-        top: 7px;
-        right: 1rem;
+        right: calcRem($f1,0.5);
+        top: calcRem($f1,0.5);
       }
-    }
-    @include xl-only {
-      min-width: calcRem($f1,12);
-      width: calcVW(2,$cols);
-    }
 
-    .text--slideout-primary,
-    .text--slideout-secondary {
-      @media(max-width: 767px) {
+      .icon-text {
         display: none;
       }
+
+      .icon--close {
+        display: block;
+        border: 2px solid;
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .panel-heading {
+        @extend %bold;
+        text-transform: uppercase;;
+        margin-top: calcRem($f1,3);
+
+        padding-bottom: calcRem($f1,1);
+        border-bottom: 1px solid;
+        margin-bottom: calcRem($f1,1);
+      }
+
     }
 
-    .icon--from_right {
-      position: absolute;
-      top: 7px;
-      left: 0;
+    .chart-header {
+      padding-bottom: calcRem(1,$f1);
+      @include pre-laptop-width {
+        order: 2;
+        margin-top: calcRem($f2,1);
+        width: 100%;
+      }
+      @include laptop-width {
+        position: absolute;
+        top: 0;
+        left: calcVW(14, $grid);
+        width: calcVW(48, $grid);
+        border-left: 2px solid;
+        padding-left: calcVW(1,$grid);
+        @include laptop-height {
+          width: calcVW(15, $grid);
+          left: 0;
+          border-left: 0;
+          padding-left: 0;
+        }
+      }
+      @include desktop-only {
+        left: calcVW(11,$grid);
+        width: calcVW(32, $grid);
+      }
+
+      @include xl-only {
+        left: calcVW(9, $grid);
+        width: calcVW(11, $grid);
+        border-left: 2px solid;
+        padding-left: calcVW(1,$grid);
+      }
+    }
+    .chart-header__heading {
+      font-size: $font_size_2;
     }
 
+    .chart-header__subheading {
+      font-size: $font_size_1;
+    }
 
+    .chart-header__label {
+      @extend %gray-text;
+      font-size: $font_size_1;
+    }
+  } // end left controls
+} // end site header
+.control-panel__series-toggle {
+  @extend %flex-wrap;
+  @extend %flex-justify-between;
+  @extend %flex-align-center;
+  width: 100%;
+  padding: $font_size_1;
+  padding-bottom: 0;
+
+  @include laptop-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.control-panel__toggle-option {
+  width: 50%;
+  display: block;
+  height: 2.5rem;
+}
+
+
+
+.toggle-option__input {
+  opacity: 0;
+  border: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.toggle-option__label {
+  padding: 0.5rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  @include mobile-only {
+    font-size: calcRem(1,$f0);
+  }
+  @include desktop-only {
+    font-size: calcRem($f1,1);
+  }
+
+  &:hover {
+    @include desktop-only {
+      text-decoration: underline;
+    }
+  }
+}
+.toggle-option__label:before {
+  border: 2px solid;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.toggle-option--left,
+.toggle-option--left:before {
+  border-radius: 8px 0 0 8px;
+}
+.toggle-option--right,
+.toggle-option--right:before {
+  border-radius: 0 8px 8px 0;
+}
+
+
+// don't put the dot in these sections
+input[type=radio] + .toggle-option__label:after,
+input[type=radio]:checked + .toggle-option__label:after {
+  display: none;
+}
+
+.button--cta {
+  @include mobile-only {
+    position: absolute;
+    top: calcRem($f1,3);
   }
 }
 
@@ -801,297 +1130,6 @@ input[type="checkbox"] + label:hover:after {
   right: calcVW(11,$grid);
   padding-left: 0;
   padding-right: calcRem($f1,5);
-}
-
-
-.control-panel {
-  // see _animated.scss for positioning & size
-  padding: $v_pad_mobile $h_pad_mobile;
-  @include mobile-only {
-    padding-bottom: calcVH(16,$grid);
-  }
-
-  @include desktop-only {
-    padding: 1rem $cp_pad--large 10rem 0;
-    top: 0;
-  }
-
-
-  .close-control-panel {
-    @extend %button--close-panel;
-    text-align: right;
-
-    @media (min-width: $desktop_min) {
-      top: $main_heading_top--mobile;
-      right: $cp_pad--large;
-      border-width: 0;
-      padding: 0;
-      text-transform: none;
-    }
-
-  }
-
-  .close-control-panel:hover {
-
-
-  }
-
-  .text--close-slideout {
-    @extend %uppercase;
-  }
-
-  .control_panel__heading {
-    font-size: $font_size_2;
-    @extend %uppercase;
-    @include mobile-only {
-      top: 4rem;
-    }
-    @include desktop-only {
-      left: $h_pad_desktop;
-      padding-top: calcRem($f2,1);
-      padding-bottom: 2px; // to make the border line up
-      margin-bottom: calcRem($f1,1);
-    }
-  }
-
-  .control-panel__list {
-    @include mobile-only {
-      margin-top: $panel_top_space--mobile;
-    }
-  }
-  .control-panel__item {
-    @include mobile-only {
-      min-height: calcRem($f1,3);
-    }
-
-    &.has_theme_toggle {
-      height: calcRem($f1,6);
-      padding-top: calcRem($f1,3);
-    }
-  }
-  .theme-toggle--mobile {
-    display: table;
-    vertical-align: middle;
-  }
-
-  .control-panel__item__inner,
-  .control-panel__link {
-    width: 100%;
-    display: block;
-    border-top: 1px solid;
-    padding: $font_size_1 0;
-
-    // special case
-    @include desktop-only {
-      .text--link-label,
-      .text--link-heading,
-      .text--link-subheading,
-      .text--panel-label {
-        left: $h_pad_desktop;
-      }
-    }
-
-  }
-  // .control-panel__link {
-  //   padding-bottom: $font_size_1;
-  // }
-
-  .control-panel__link:after {
-    content: "";
-    display: block;
-    width: 0;
-    position: absolute;
-    top: 0;
-    border-top: 1px solid;
-  }
-
-  .control-panel__link:hover {
-    @include desktop-only {
-      text-decoration: none;
-    }
-
-  }
-
-  .control-panel__link:hover:after {
-    @include desktop-only {
-      width: 100%;
-      transition: width 200ms ease-in-out;
-    }
-
-  }
-
-  .control-panel__link .icon {
-    position: absolute;
-    top: 6px;
-    right: 0;
-  }
-
-  /* PROTOTYPE ONLY */
-  .year-toggle-wrap {
-    @extend %flex-wrap;
-    @extend %flex-justify-between;
-    @extend %flex-align-center;
-
-    @include desktop-only {
-      padding-left: $h_pad_desktop;
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-
-    /* PROTOTYPE ONLY */
-    .year-toggle-wrap__inner {
-      text-align: center;
-      width: 54px;
-
-      @include desktop-only {
-        .text--link-heading {
-          left: 0;
-        }
-      }
-
-    }
-    /* PROTOTYPE ONLY */
-    .year-toggle {
-      border: 1px solid $white;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      text-align: center;
-      vertical-align: middle;
-      margin: $font_size_0 2px;
-      font-size: $font_size_1;
-    }
-
-    /* PROTOTYPE ONLY */
-    .range-wrap {
-      display: block;
-      width: calc(100% - 144px);
-      margin-left: 72px;
-      margin-right: 72px;
-      height: 32px;
-      position: absolute;
-      vertical-align: middle;
-
-      @media (min-width: $desktop_min) {
-        width: calc(100% - 182px)
-      }
-
-    }
-    /* PROTOTYPE ONLY */
-    .range-scale {
-      width: 100%;
-      height: 4px;
-      background-color: $gray5;
-      position: absolute;
-      left: 0;
-      top: 14px;
-    }
-
-    /* PROTOTYPE ONLY */
-    .range-marker {
-      display: block;
-      width: 100% * 14/15;
-      border-left :2px solid $red6;
-      border-right :2px solid $red6;
-      height: 20px;
-      position: absolute;
-      left: 0;
-      top: 6px; // 32-20
-      padding-top: 6px;
-      padding-bottom: 6px;
-      vertical-align: middle;
-    }
-    /* PROTOTYPE ONLY */
-    .range-highlight {
-      background-color: $white;
-      height: 100%;
-      width: 100%;
-      display: block;
-    }
-  }
-  .control-panel__item-divider {
-    border-bottom: 4px solid $gray1;
-
-    @media (min-width: $desktop_min) {
-      border-width: 1px;
-    }
-
-  }
-
-  .control-panel__series-toggle {
-    @extend %flex-wrap;
-    @extend %flex-justify-between;
-    @extend %flex-align-center;
-    width: 100%;
-    padding: $font_size_1;
-    padding-bottom: 0;
-
-    @include desktop-only {
-      padding-left: $h_pad_desktop;
-      padding-right: 0;
-    }
-
-  }
-
-  .control-panel__toggle-option {
-    width: 50%;
-    display: block;
-    height: 2.5rem;
-  }
-
-
-
-  .toggle-option__input {
-    opacity: 0;
-    border: 0;
-    transition: opacity 0.2s ease-in-out;
-  }
-
-  .toggle-option__label {
-    padding: 0.5rem;
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    text-align: center;
-    &:hover {
-      @include desktop-only {
-        text-decoration: underline;
-      }
-    }
-  }
-  .toggle-option__label:before {
-    border: 2px solid;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .toggle-option--left,
-  .toggle-option--left:before {
-    border-radius: 8px 0 0 8px;
-  }
-  .toggle-option--right,
-  .toggle-option--right:before {
-    border-radius: 0 8px 8px 0;
-  }
-
-
-  // don't put the dot in these sections
-  input[type=radio] + .toggle-option__label:after,
-  input[type=radio]:checked + .toggle-option__label:after {
-    display: none;
-  }
-
-  .button--cta {
-    @include mobile-only {
-      position: absolute;
-      top: calcRem($f1,3);
-    }
-  }
-
 }
 
 .secondary-panel {
@@ -1728,15 +1766,20 @@ input[type="checkbox"] + label:hover:after {
   @extend %flex-wrap;
   @extend %flex-align-center;
   position: absolute;
-  bottom: calcRem(1,$f1);
-  @include mobile-only {
-      padding: $v_pad_mobile $h_pad_mobile;
-  }
 
-
-  @include mobile-only {
+  @include pre-laptop-width {
+    position: absolute;
+    top: 0;
     width: 100%;
     z-index: 10;
+    padding-left: $h_pad_mobile;
+    padding-top: $v_pad_mobile;
+    padding-bottom: $v_pad_mobile;
+    border-bottom: 1px solid;
+  }
+  @include laptop-width {
+
+      bottom: calcRem(1,$f1);
   }
 
   @include desktop-only {
@@ -1764,7 +1807,10 @@ input[type="checkbox"] + label:hover:after {
     }
   }
   .ad-logo-wrap {
-    @include mobile-only {
+    @include pre-laptop-width {
+      width: 15rem;
+    }
+    @include laptop-width {
       width: 12rem;
     }
 

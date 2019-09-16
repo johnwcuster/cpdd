@@ -15,9 +15,63 @@
   @media (max-width: $desktop_max) { @content; }
 }
 
+// new media queries
+@mixin laptop-width {
+  @media (min-width: $laptop_min_width) { @content; }
+}
+
+@mixin laptop-height {
+  @media (min-height: $laptop_min_height) { @content; }
+}
+
+@mixin pre-laptop-width {
+  @media (max-width: $mobile_max_width2) { @content; }
+}
+
+@mixin pre-laptop-height {
+  @media (max-height: $mobile_max_height2) { @content; }
+}
 
 
-// nested in .site-header in _animations.scss
+@mixin border-bottom--thin {
+  border-bottom: 1px solid;
+}
+@mixin border-top--thin {
+  border-top: 1px solid;
+}
+
+@mixin border-bottom {
+  border-bottom: 2px solid;
+}
+@mixin border-top {
+  border-top: 2px solid;
+}
+
+@mixin border-bottom--thick {
+  border-bottom: 4px solid;
+}
+@mixin border-top--thick {
+  border-top: 4px solid;
+}
+
+
+@mixin font-size-0 {
+  font-size: $font_size_0;
+}
+
+@mixin font-size-1 {
+  font-size: $font_size_1;
+}
+@mixin font-size-2 {
+  font-size: $font_size_2;
+}
+
+
+
+
+
+// DEPRECIATED
+// nested in .site-header in _animations.scss /// TODO: UPDATE THIS
 // if control panel is open
 @mixin text--cp-show {
   .toggle-control-panel {
@@ -25,7 +79,7 @@
     padding-right: 5rem;
     padding-left: 0;
   }
-  
+
   .text--show,
   .icon--from_left {
     display: inline;
@@ -37,7 +91,7 @@
   }
 }
 
-
+// DEPRECIATED
 // nested in .site-header in _animations.scss
 // if control panel is open
 @mixin text--cp-hide {

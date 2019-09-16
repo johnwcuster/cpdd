@@ -1,5 +1,6 @@
 // theme.js
 (function (){
+
   const pageWrap = document.getElementById("page_wrap"),
     themeSelect = document.getElementsByName("theme"),
     themeSelect2 = document.getElementsByName("theme2");
@@ -27,5 +28,5 @@
     }
   }
 
-
+  
 }());

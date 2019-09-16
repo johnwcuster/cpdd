@@ -27,10 +27,12 @@
         label.classList.add("show_keyboard_focus");
       }
   }, true);
+  
 }());
 
 // export_menu.js
 (function(){
+
   const chartWrap = document.getElementById("chart_wrap"),
     detailsPanelOpen = document.getElementById("open_right_panel"),
     exportDataOptions = document.getElementById("export_data_options"),
@@ -44,34 +46,58 @@
     exportPanel[i].addEventListener("click", showDataOptions, true);
   }
 
-  exportToggle.addEventListener("click", openExports, true);
-  exportToggle2.addEventListener("click", openExports, true);
-  exportClose.addEventListener("click", closeExports, true);
+  if(exportToggle) {
+      exportToggle.addEventListener("click", openExports, true);
+  }
+  if(exportToggle2) {
+    exportToggle2.addEventListener("click", openExports, true);
+  }
+  if(exportClose) {
+      exportClose.addEventListener("click", closeExports, true);
+  }
+
+
 
   function openExports(e) {
     e.preventDefault();
     e.stopPropagation();
-    exportOptions.classList.add("is_animated");
-    exportToggle.classList.remove("is_animated");
-    detailsPanelOpen.classList.add("export_panel_open");
+    if(exportOptions) {
+        exportOptions.classList.add("is_animated");
+    }
+    if(exportToggle) {
+      exportToggle.classList.remove("is_animated");
+    }
+    if(detailsPanelOpen) {
+      detailsPanelOpen.classList.add("export_panel_open");
+    }
+
     closeRightPanel(e);
     checkChartWidth();
   }
   function closeExports(e) {
     e.preventDefault();
     e.stopPropagation();
-    exportOptions.classList.remove("is_animated");
-    detailsPanelOpen.classList.remove("export_panel_open");
+
+    if(exportOptions) {
+      exportOptions.classList.remove("is_animated");
+    }
+    if(detailsPanelOpen) {
+      detailsPanelOpen.classList.remove("export_panel_open");
+    }
+
+
     closeRightPanel(e);
   }
 
 
   function checkChartWidth(e) {
     if(document.body.clientWidth >=992) {
-      if(exportOptions.classList.contains("is_animated")) {
-        chartWrap.classList.add("export_panel_open");
-      } else {
-        chartWrap.classList.remove("export_panel_open");
+      if(exportOptions) {
+        if(exportOptions.classList.contains("is_animated")) {
+          chartWrap.classList.add("export_panel_open");
+        } else {
+          chartWrap.classList.remove("export_panel_open");
+        }
       }
     }
   }
@@ -79,17 +105,43 @@
 
   function showDataOptions(e) {
     let elem = e.target;
-
-    if (elem.id === "export_dataset") {
-      exportDataOptions.classList.add("js_toggled");
-    } else {
-      exportDataOptions.classList.remove("js_toggled");
+    if(exportDataOptions) {
+      if (elem.id === "export_dataset") {
+        exportDataOptions.classList.add("js_toggled");
+      } else {
+        exportDataOptions.classList.remove("js_toggled");
+      }
     }
   }
+  
+}());
+
+(function(){
+  console.log("mobile_menu");
+  const mobileToggle = document.getElementById("mobile_menu"),
+    siteHeader = document.getElementById("site_header"),
+    menu1 = document.getElementById("right_controls_toggles"),
+    menu2 = document.getElementById("control_panel2"),
+    menu3 = document.getElementById("select_years"),
+    menu4 = document.getElementById("select_more");
+
+    if(mobileToggle) {
+      mobileToggle.addEventListener("click", toggleMobileMenu, true);
+    }
+    function toggleMobileMenu(e) {
+      console.log("toggleMobileMenu");
+      mobileToggle.classList.toggle("js_mobile_toggled");
+      siteHeader.classList.toggle("js_mobile_toggled");
+      menu1.classList.toggle("js_mobile_toggled");
+      menu2.classList.toggle("js_mobile_toggled");
+      menu3.classList.toggle("js_mobile_toggled");
+      menu4.classList.toggle("js_mobile_toggled");
+    }
 }());
 
 // select_subtypes.js
 (function(){
+
   const pdTypeSelect = document.getElementsByName("pd_type");
 
   for(let i=0; i<pdTypeSelect.length; i++) {
@@ -126,7 +178,7 @@ function showSubTypes(e) {
     financeSubTypeList.classList.remove("js_toggled");
   }
   if (elem.id !== "21_diplomacy_type" && elem.id !== "13_diplomacy_type") {
-    console.log("not 21 or 13?  " + elem.id);
+    
     financeTypeOption.classList.remove("js_toggled");
     financeListItem.classList.remove("js_toggled");
     financeSubTypeList.classList.remove("js_toggled");
@@ -134,32 +186,86 @@ function showSubTypes(e) {
     visitsListItem.classList.remove("js_toggled");
     visitsSubTypeList.classList.remove("js_toggled");
   }
+
 }
 
 // show_chart.js
 (function(){
+  console.log("show_chart.js")
   const mapLayer = document.getElementById("map_layer"),
   chartLayer = document.getElementById("chart_layer"),
   maptoggle = document.getElementById("map_toggle"),
   viewSelect = document.getElementsByName("views");
 
-  for(let i=0; i<viewSelect.length; i++) {
-    viewSelect[i].addEventListener("click", function(e){
-      let elem = e.target;
+  const barChart = document.getElementById("bar_chart"),
+    colChart = document.getElementById("column_chart"),
+    lineGraph = document.getElementById("line_graph"),
+    stackedArea = document.getElementById("stacked_area"),
+    table = document.getElementById("table");
 
-      if (elem.id === "map_toggle") {
-        chartLayer.classList.remove("js_chart_visible");
-        console.log("map visible; map has no overlay");
-      } else {
-        chartLayer.classList.add("js_chart_visible");
-        console.log("chart on top; map has overlay");
-      }
-    }, true);
+  const charts = document.getElementsByClassName("chart-type");
+
+  for(let i=0; i<viewSelect.length; i++) {
+    viewSelect[i].addEventListener("click", chartSelect, true);
 }
+
+
+
+function chartSelect(e) {
+
+  let target = e.target,
+    target_id = target.id;
+    console.log(target_id);
+
+    for(let i=0; i<charts.length; i++) {
+      chart = charts[i];
+      chart.classList.remove("js_chart_visible");
+    }
+
+    if (target_id === "map_toggle") {
+      if(chartLayer) {
+        chartLayer.classList.remove("js_chart_visible");
+      }
+    }
+    if (target_id === "bar_toggle") {
+      if(barChart) {
+        chartLayer.classList.add("js_chart_visible");
+        barChart.classList.add("js_chart_visible");
+      }
+    }
+    if (target_id === "column_toggle") {
+      if(colChart) {
+        chartLayer.classList.add("js_chart_visible");
+        colChart.classList.add("js_chart_visible");
+
+      }
+    }
+    if (target_id === "line_toggle") {
+      if(lineGraph) {
+        chartLayer.classList.add("js_chart_visible");
+        lineGraph.classList.add("js_chart_visible");
+      }
+    }
+    if (target_id === "area_toggle") {
+      if(stackedArea) {
+        chartLayer.classList.add("js_chart_visible");
+        stackedArea.classList.add("js_chart_visible");
+      }
+    }
+    if (target_id === "table_toggle") {
+      if(table) {
+        chartLayer.classList.remove("js_chart_visible");
+        table.classList.add("js_chart_visible");
+      }
+    }
+}
+
+
 }());
 
 // theme.js
 (function (){
+
   const pageWrap = document.getElementById("page_wrap"),
     themeSelect = document.getElementsByName("theme"),
     themeSelect2 = document.getElementsByName("theme2");
@@ -187,26 +293,31 @@ function showSubTypes(e) {
     }
   }
 
-
+  
 }());
 
 // toggle_control_panel.js
-
+/*
 (function(){
+
   const controlsClose = document.getElementById("close_control_panel"),
   controlsCloseOverlay = document.getElementById("control_panel_overlay"),
   controlsToggle = document.getElementById("toggle_control_panel");
 
-  if(document.body.clientWidth < 992) {
-    controlsClose.addEventListener("click", toggleControlPanel, true);
-    controlsCloseOverlay.addEventListener("click", closeControlPanel, true);
-  }
+  if(controlsClose && controlsCloseOverlay && controlsToggle) {
 
-  controlsToggle.addEventListener("click", toggleControlPanel, true);
+    if(document.body.clientWidth < 992) {
+      controlsClose.addEventListener("click", toggleControlPanel, true);
+      controlsCloseOverlay.addEventListener("click", closeControlPanel, true);
+    }
+
+    controlsToggle.addEventListener("click", toggleControlPanel, true);
+  }
 
 }());
 
 function toggleControlPanel(e) {
+
   e.preventDefault();
   e.stopPropagation();
 
@@ -220,18 +331,25 @@ function toggleControlPanel(e) {
     siteHeader = document.getElementById("site_header");
 
   if(document.body.clientWidth < 1344) {
+    if(controlPanel) {
       controlPanel.classList.toggle("js_visible");
+    }
   }
 
 
   if(document.body.clientWidth < 992) {
-    controlsCloseOverlay.classList.toggle("js_visible");
+    if(controlsCloseOverlay) {
+        controlsCloseOverlay.classList.toggle("js_visible");
+    }
   }
 
   if(document.body.clientWidth >= 992) {
 
     if(document.body.clientWidth <1344) {
-      controlsToggle.classList.toggle("is_animated");
+      if(controlsToggle) {
+        controlsToggle.classList.toggle("is_animated");
+      }
+
       siteHeader.classList.toggle("is_animated");
       chartWrap.classList.toggle("control_panel_open");
       chartWrap.classList.remove("details_panel_open");
@@ -239,9 +357,11 @@ function toggleControlPanel(e) {
       exportToggle.classList.remove("is_animated");
     }
     if(document.body.clientWidth >= 1344) {
+      if(controlPanel && controlsToggle) {
+        controlPanel.classList.toggle("control_panel_open--xl");
+        controlsToggle.classList.toggle("control_panel_open--xl");
+      }
       chartWrap.classList.toggle("control_panel_open--xl");
-      controlPanel.classList.toggle("control_panel_open--xl");
-      controlsToggle.classList.toggle("control_panel_open--xl");
       siteHeader.classList.toggle("control_panel_open--xl");
     }
 
@@ -250,6 +370,7 @@ function toggleControlPanel(e) {
     }
   }
 }
+*/
 
 // toggle_countries_menu.js
 (function(){
@@ -273,19 +394,150 @@ function toggleCountriesPanel(e) {
 }
 
 // _toggle_details_panel.js
+/*
 (function (){
-  const rightPanelClose = document.getElementById("close_right_panel"),
+  const  rightPanelOpen = document.getElementById("open_right_panel"),
+  rightPanelClose = document.getElementById("close_right_panel"),
   topRightButton = document.getElementById("toggle_export");
 
-  rightPanelClose.addEventListener("click",closeRightPanel, true);
-  topRightButton.addEventListener("click",closeRightPanel, true);
+  if(rightPanelClose) {
+    rightPanelClose.addEventListener("click",closeRightPanel, true);
+  }
+  if(topRightButton) {
+    topRightButton.addEventListener("click",closeRightPanel, true);
+  }
+  if(rightPanelOpen) {
+    rightPanelOpen.addEventListener("click", openRightPanel, true);
+  }
+}());
+*/
 
-  // FOR PROTOTYPE ONLY
-  const open_right_panel = document.getElementById("open_right_panel");
-  open_right_panel.addEventListener("click", openRightPanel, true);
-  // END PROTOTYPE ONLY
+// toggle_more_menu
+(function(){
+  const moreClose = document.getElementById("close_more_select"),
+  moreToggle = document.getElementById("toggle_more_select");
+
+  if(moreToggle) {
+    moreToggle.addEventListener("click", toggleMorePanel, true);
+  }
+  if(moreClose) {
+      moreClose.addEventListener("click", toggleMorePanel, true);
+  }
+
 
 }());
+
+function toggleMorePanel(e) {
+  console.log("toggleMorePanel(e) initiated");
+  e.preventDefault();
+  e.stopPropagation();
+
+  const morePanel = document.getElementById("select_more");
+
+  morePanel.classList.toggle("js_visible");
+
+}
+
+(function(){
+  const rightTogglesWrap = document.getElementById("right_controls_toggles"),
+    openExportToggle = document.getElementById("open_export"),
+    openGraphDetailsToggle = document.getElementById("open_graph_details"),
+    openHelpToggle = document.getElementById("open_help"),
+    closeExportToggle = document.getElementById("close_export_options"),
+    closeGraphDetailsToggle = document.getElementById("close_graph_details"),
+    closeTableDetailsToggle = document.getElementById("close_table_details"),
+    closeHelpToggle = document.getElementById("close_help"),
+    helpPanel = document.getElementById("help_panel"),
+    exportPanel = document.getElementById("export_options"),
+    tableDetailsPanel = document.getElementById("table_details_panel"),
+    graphDetailsPanel = document.getElementById("graph_details_panel"),
+    chartWrap = document.getElementById("chart_wrap");
+
+    const openToggles = document.getElementsByClassName("toggles-right-flyout");
+    const rightPanels = document.getElementsByClassName("right-flyout-panel");
+    const tableToggles = document.getElementsByClassName("js_table_toggle");
+
+    if(openToggles) {
+      for (let i=0; i<openToggles.length; i++) {
+        let openToggle = openToggles[i];
+        openToggle.addEventListener("click", open_right_panel2, true);
+      }
+    }
+    if(tableToggles) {
+      for(let i=0; i<tableToggles.length; i++) {
+        let tableToggle = tableToggles[i];
+        tableToggle.addEventListener("click", open_right_panel2, true);
+      }
+    }
+    if(closeExportToggle) {
+      closeExportToggle.addEventListener("click", close_right_panel2, true);
+    }
+    if(closeGraphDetailsToggle) {
+      closeGraphDetailsToggle.addEventListener("click", close_right_panel2, true);
+    }
+    if(closeTableDetailsToggle) {
+      closeTableDetailsToggle.addEventListener("click", close_right_panel2, true);
+    }
+    if(closeHelpToggle) {
+      closeHelpToggle.addEventListener("click", close_right_panel2, true);
+    }
+
+    function open_right_panel2(e){
+      let this_event = e,
+        target = this_event.target,
+        target_id = target.id;
+
+      // call close_right_panel2() in order to:
+        // clear flyouts that might be open
+        // view hidden toggles
+      close_right_panel2(this_event);
+
+      // animate the chart wrap & toggles wrap
+      chartWrap.classList.add("right_panel_open");
+      rightTogglesWrap.classList.add("right_panel_open");
+
+      // open the right panel and hide the right toggle
+
+      if(target_id === openExportToggle.id) {
+        openExportToggle.classList.add("right_panel_open");
+        exportPanel.classList.add("right_panel_open");
+      }
+      if(target_id === openGraphDetailsToggle.id) {
+        openGraphDetailsToggle.classList.add("right_panel_open");
+        graphDetailsPanel.classList.add("right_panel_open");
+      }
+      if(target_id === openHelpToggle.id) {
+        openHelpToggle.classList.add("right_panel_open");
+        helpPanel.classList.add("right_panel_open");
+      }
+      if(target.classList.contains("js_table_toggle")) {
+        openGraphDetailsToggle.classList.add("right_panel_open");
+        tableDetailsPanel.classList.add("right_panel_open");
+      }
+    }
+    function close_right_panel2(e){
+      let this_event = e,
+        target = this_event.target,
+        target_id = target.id;
+
+      // clear the toggles
+      for(let i=0;i<openToggles.length; i++) {
+        let openToggle = openToggles[i];
+        openToggle.classList.remove("right_panel_open");
+      }
+
+      // clear the flyouts
+      for(let i=0; i<rightPanels.length; i++) {
+        let panel = rightPanels[i];
+        panel.classList.remove("right_panel_open");
+      }
+
+      if(!target.classList.contains("toggles-right-flyout")) {
+        chartWrap.classList.remove("right_panel_open");
+        rightTogglesWrap.classList.remove("right_panel_open");
+      }
+    }
+})();
 
 // toggle_types_menu
 (function(){
@@ -327,6 +579,31 @@ function toggleViewsPanel(e) {
   closeControlPanel();
 }
 
+// toggle_types_menu
+(function(){
+  const yearClose = document.getElementById("close_year_select"),
+  yearsToggle = document.getElementById("toggle_years_select");
+
+  if(yearsToggle) {
+    yearsToggle.addEventListener("click", toggleYearsPanel, true);
+  }
+  if(yearClose) {
+    yearClose.addEventListener("click", toggleYearsPanel, true);
+  }
+  
+
+}());
+
+function toggleYearsPanel(e) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const yearsPanel = document.getElementById("select_years");
+
+  yearsPanel.classList.toggle("js_visible");
+
+}
+
 // close_control_panel.js
 function closeControlPanel() {
     const chartWrap = document.getElementById("chart_wrap"),
@@ -336,43 +613,65 @@ function closeControlPanel() {
       siteFooterLogos = document.getElementById("site_footer_logos"),
       siteHeader = document.getElementById("site_header");
 
-    controlPanel.classList.remove("js_visible");
-    controlsCloseOverlay.classList.remove("js_visible");
+    if(controlPanel && controlsCloseOverlay) {
+        controlPanel.classList.remove("js_visible");
+        controlsCloseOverlay.classList.remove("js_visible");
+    }
+
+
     chartWrap.classList.remove("control_panel_open");
 
 
     if(document.body.clientWidth >= 992) {
+      if(controlsToggle) {
+        controlsToggle.classList.remove("is_animated");
+      }
       siteHeader.classList.remove("is_animated");
       siteFooterLogos.classList.remove("is_animated");
-      controlsToggle.classList.remove("is_animated");
-
     }
     if(document.body.clientwidth>=1344) {
+      if(controlPanel && controlsToggle) {
+        controlPanel.classList.remove("control_panel_open--xl");
+        controlsToggle.classList.remove("control_panel_open--xl");
+      }
       chartWrap.classList.remove("control_panel_open--xl");
-      controlPanel.classList.remove("control_panel_open--xl");
-      controlsToggle.classList.remove("control_panel_open--xl");
       siteHeader.classList.remove("control_panel_open--xl");
     }
 
 }
 
 // close_right_panel.js
+/*
 function closeRightPanel(e) {
   e.preventDefault();
   e.stopPropagation();
 
   const chartWrap = document.getElementById("chart_wrap"),
     rightPanel = document.getElementById("table_details_panel"),
-    topRightButton = document.getElementById("toggle_export");
+    topRightButton = document.getElementById("toggle_export"),
+    // rightPanelToggleWrap = document.getElementById("right_controls_toggles");
+
+    // rightPanelToggles = document.getElementsByClassName("toggles-right-flyout");
+
+
 
   rightPanel.classList.remove("is_animated");
   topRightButton.classList.remove("is_animated");
   chartWrap.classList.remove("details_panel_open");
+  rightPanelToggleWrap.classList.remove("right_panel_open");
+
+  for(let i=0; i<rightPanelToggles.length; i++) {
+      let toggle = rightPanelToggles[i];
+      toggle.classList.remove("right_panel_open");
+  }
 }
+*/
 
 // open_right_panel.js
-
+/*
 function openRightPanel(e) {
+  let activeToggle = e.target;
+  console.log(activeToggle.id);
   e.preventDefault();
   e.stopPropagation();
 
@@ -382,18 +681,32 @@ function openRightPanel(e) {
     rightPanel = document.getElementById("table_details_panel"),
     siteFooterLogos = document.getElementById("site_footer_logos"),
     siteHeader = document.getElementById("site_header"),
-    topRightButton = document.getElementById("toggle_export");
+    topRightButton = document.getElementById("toggle_export"),
+    rightPanelToggleWrap = document.getElementById("right_controls_toggles");
+
+    rightPanelToggles = document.getElementsByClassName("toggles-right-flyout");
+
+    for(let i=0; i<rightPanelToggles.length; i++) {
+        let toggle = rightPanelToggles[i];
+        toggle.classList.remove("right_panel_open");
+    }
+    activeToggle.classList.add("right_panel_open");
 
   rightPanel.classList.add("is_animated");
   topRightButton.classList.add("is_animated");
   chartWrap.classList.add("details_panel_open");
+  rightPanelToggleWrap.classList.add("right_panel_open");
 
   if(document.body.clientWidth < 1344) {
-    controlPanel.classList.remove("is_animated");
-    controlPanel.classList.remove("js_toggled");
-    controlPanel.classList.remove("js_visible");
-    controlsToggle.classList.remove("is_animated");
+    if(controlPanel && controlsToggle) {
+      controlPanel.classList.remove("is_animated");
+      controlPanel.classList.remove("js_toggled");
+      controlPanel.classList.remove("js_visible");
+      controlsToggle.classList.remove("is_animated");
+    }
     siteHeader.classList.remove("is_animated");
     siteFooterLogos.classList.remove("is_animated");
+
   }
 }
+*/

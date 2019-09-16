@@ -1,5 +1,6 @@
 // select_subtypes.js
 (function(){
+
   const pdTypeSelect = document.getElementsByName("pd_type");
 
   for(let i=0; i<pdTypeSelect.length; i++) {
@@ -36,7 +37,7 @@ function showSubTypes(e) {
     financeSubTypeList.classList.remove("js_toggled");
   }
   if (elem.id !== "21_diplomacy_type" && elem.id !== "13_diplomacy_type") {
-    console.log("not 21 or 13?  " + elem.id);
+    
     financeTypeOption.classList.remove("js_toggled");
     financeListItem.classList.remove("js_toggled");
     financeSubTypeList.classList.remove("js_toggled");
@@ -44,4 +45,5 @@ function showSubTypes(e) {
     visitsListItem.classList.remove("js_toggled");
     visitsSubTypeList.classList.remove("js_toggled");
   }
+
 }

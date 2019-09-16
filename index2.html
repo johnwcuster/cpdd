@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>China Dashboard Concept</title>
-  <link rel="stylesheet" href="dist/style2.css?cb=1567270164620">
+  <link rel="stylesheet" href="dist/style2.css?cb=1568233923280">
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
 </head>
@@ -13,8 +13,116 @@
   <div id="page_wrap" class="page-wrap theme--dark">
 
     <header id="site_header" class="site-header control_panel_open--xl">
+      <!-- Top Bar -->
+      <div class="top-bar">
         <h1 id="site_title" class="site-title">China's Public Diplomacy in East Asia and Pacific</h1>
-
+        <a id="mobile_menu" class="button triangle-down mobile-menu-toggle">Menu</a>
+        <div id="right_controls_toggles" class="right-controls-wrap">
+          <a id="open_help" href="#" class="toggles-right-flyout toggle--help">
+            Help
+          </a>
+          <a id="open_graph_details" href="#" class="toggles-right-flyout toggle--details">
+            Details
+          </a>
+          <a id="open_export" href="#" class="toggles-right-flyout toggle--export">
+            Export
+          </a>
+        </div>
+      </div>
+      <!-- Left Controls -->
+      <div class="left-controls-wrap">
+        <div id="control_panel2" class="left-menu">
+          <h3 class="left-menu__heading">Change</h3>
+          <ul class="left-menu__list">
+            <li class="left-menu__item">
+              <a id="toggle_view_select" class="toggles-left-flyout" href="#select_view">Chart</a>
+            </li>
+            <li class="left-menu__item">
+              <a id="toggle_country_select" class="toggles-left-flyout" href="#select_countries">Countries</a>
+            </li>
+            <li class="left-menu__item">
+              <a id="toggle_type_select" class="toggles-left-flyout" href="#select_types">Measure</a>
+            </li>
+            <li class="left-menu__item">
+              <a id="toggle_years_select" class="toggles-left-flyout" href="#select_years">Years</a>
+            </li>
+            <li class="left-menu__item">
+              <a id="toggle_more_select" class="toggles-left-flyout" href="#select_more">More...</a>
+            </li>
+          </ul>
+          <div id="select_years" class="menu--years left-flyout">
+            <a id="close_year_select" href="#" class="close-x">
+              <span class="icon-text">Close</span>
+              <span class="icon icon--close"></span>
+            </a>
+            <h4 class="panel-heading">Change Years</h4>
+            <span style="display: block; width: 100%; text-align: center;">
+              <div class="year_range_div">
+                <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-align-items-xs-center">
+                  <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true">
+                    <div class="MuiInputBase-root MuiInput-root MuiInput-underline year_range_min_input MuiInputBase-marginDense">
+                      <input class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense" type="number" step="1" min="2000" max="2016" value="2016">
+                    </div>
+                  </div>
+                  <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true">
+                    <span class="MuiSlider-root year_range_slider">
+                      <span class="MuiSlider-rail"></span>
+                      <span class="MuiSlider-track" style="left: 100%; width: 0%;"></span>
+                      <input type="hidden" value="2016,2016">
+                      <span class="MuiSlider-thumb MuiSlider-active" tabindex="0" role="slider" data-index="0" aria-orientation="horizontal" aria-valuemax="2016" aria-valuemin="2000" aria-valuenow="2016" style="left: 100%;"></span>
+                      <span class="MuiSlider-thumb" tabindex="0" role="slider" data-index="1" aria-orientation="horizontal" aria-valuemax="2016" aria-valuemin="2000" aria-valuenow="2016" style="left: 100%;"></span>
+                    </span>
+                  </div>
+                  <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true">
+                    <div class="MuiInputBase-root MuiInput-root MuiInput-underline year_range_max_input MuiInputBase-marginDense">
+                      <input class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense" type="number" step="1" min="2000" max="2016" value="2016">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+            <button class="button button--update is_disabled">Update Chart</button>
+          </div>
+          <div id="select_more" class="menu--more left-flyout">
+            <a id="close_more_select" href="#" class="close-x">
+              <span class="icon-text">Close</span>
+              <span class="icon icon--close"></span>
+            </a>
+            <h4 class="panel-heading">More Options</h4>
+            <span class="text--panel-label">Series</span>
+            <div class="control-panel__series-toggle">
+              <div class="control-panel__toggle-option">
+                <input id="annualized" type="radio" value="0" name="series1" class="toggle-option__input" checked="">
+                <label for="annualized" class="toggle-option__label toggle-option--left">Annualized</label>
+              </div>
+              <div class="control-panel__toggle-option">
+                <input id="cumulative" type="radio" value="1" name="series1" class="toggle-option__input">
+                <label for="cumulative" class="toggle-option__label toggle-option--right">Cumulative</label>
+              </div>
+            </div>
+            <div class="control-panel__series-toggle">
+              <div class="control-panel__toggle-option">
+                <input id="absolute" type="radio" value="0" name="series2" class="toggle-option__input" checked="">
+                <label for="absolute" class="toggle-option__label toggle-option--left">Absolute</label>
+              </div>
+              <div class="control-panel__toggle-option">
+                <input id="per_capita" type="radio" value="1" name="series2" class="toggle-option__input" >
+                <label for="per_capita" class="toggle-option__label toggle-option--right">Per Capita</label>
+              </div>
+            </div>
+            <span class="text--panel-label">Theme</span>
+            <div class="theme-toggle">
+              <div class="theme-toggle__option">
+                <input id="dark" type="radio" value="0" name="theme" class="theme-toggle__input" checked="">
+                <label for="dark" class="theme-toggle__label theme-toggle--left">Dark</label>
+              </div>
+              <div class="theme-toggle__option second-option">
+                <input id="light" type="radio" value="1" name="theme" class="theme-toggle__input">
+                <label for="light" class="theme-toggle__label theme-toggle--right">Light</label>
+              </div>
+            </div>
+          </div>
+        </div>
         <div id="chart_header" class="chart-header">
           <!-- Template: DYNAMIC -->
           <!-- {{pd_type}} -->
@@ -32,136 +140,12 @@
             <p class="chart-header__label">(USD 2014)</p>
             % endif %
           %endif%
-
           -->
           <p id="chart_label" class="chart-header__label">(USD 2014)</p>
         </div>
-
-        <div class="theme-toggle hide-on-mobile">
-          <div class="theme-toggle__option">
-            <input id="dark" type="radio" value="0" name="theme" class="theme-toggle__input" checked="">
-            <label for="dark" class="theme-toggle__label theme-toggle--left">Dark</label>
-          </div>
-          <div class="theme-toggle__option second-option">
-            <input id="light" type="radio" value="1" name="theme" class="theme-toggle__input">
-            <label for="light" class="theme-toggle__label theme-toggle--right">Light</label>
-          </div>
-        </div>
-
-        <a id="toggle_control_panel" class="toggle-control-panel control_panel_open--xl" aria-expanded="false" aria-controls="control_panel" role="button" tabindex="0">
-          <span class="text--slideout-primary hide-on-mobile">Control Panel</span><br/>
-          <span class="text--slideout-secondary text--show hide-on-mobile">Show</span>
-          <span class="text--slideout-secondary text--hide hide-on-mobile">Hide</span>
-          <span class="toggle-control-panel__icon icon icon--from_left"></span>
-          <span class="toggle-control-panel__icon icon icon--from_right"></span>
-        </a>
+      </div>
     </header>
-    <!-- Template: DYNAMIC -->
-    <!--
-    %if treemap || table || bar_chart %
-      <a style="display: none">
-    %%else %
-    -->
-    <a id="open_right_panel" href="#" class="button button--cta button--details hide-on-mobile">
-      <span class="text--cta">Details</span>
-      <span class="icon icon--from_right"></span>
-    </a>
-    <a id="toggle_export" class="button button--cta button--export align--top-right hide-on-mobile" href="#export_options">
-      <span class="text--cta">Export</span>
-      <span class="icon icon--from_right"></span>
-    </a>
 
-
-    <div id="control_panel" class="control-panel control_panel_open--xl" aria-hidden="false" aria-labelledby="toggle_control_panel">
-      <a id="close_control_panel" href="#toggle_control_panel" class="close-control-panel">
-        <span class="hide-on-desktop text--close-slideout">Close</span>
-
-      </a>
-      <h3 class="control_panel__heading">Control Panel</h3>
-      <ul class="control-panel__list">
-        <li class="control-panel__item hide-on-desktop has_theme_toggle">
-          <div class="theme-toggle theme-toggle--mobile hide-on-desktop">
-            <div class="theme-toggle__option">
-              <input id="dark2" type="radio" value="0" name="theme2" class="theme-toggle__input" checked="">
-              <label for="dark2" class="theme-toggle__label theme-toggle--left">Dark</label>
-            </div>
-            <div class="theme-toggle__option second-option">
-              <input id="light2" type="radio" value="1" name="theme2" class="theme-toggle__input">
-              <label for="light2" class="theme-toggle__label theme-toggle--right">Light</label>
-            </div>
-          </div>
-        </li>
-        <li class="control-panel__item hide-on-mobile">
-          <a id="toggle_view_select" class="control-panel__link" href="#select_view">
-            <span class="text--link-label">View</span>
-            <span id="view_text" class="text--link-heading">Bubble Map</span>
-            <span id="view_icon" class="icon icon--bubble-map"></span>
-          </a>
-        </li>
-        <li class="control-panel__item">
-          <a id="toggle_type_select" class="control-panel__link" href="#select_types">
-            <span class="text--link-label">Instrument</span>
-            <!-- Template: DYNAMIC -->
-            <span id="pd_type_text" class="text--link-heading">Official Finance</span>
-            <!-- Template: DYNAMIC -->
-            <span id="pd_type_filter_text" class="text--link-subheading">All Financial Flows</span>
-            <span class="icon icon--funnel"></span>
-          </a>
-        </li>
-        <li class="control-panel__item">
-          <a id="toggle_country_select" class="control-panel__link" href="#select_countries">
-            <span class="text--link-label">Countries</span>
-            <!-- Template: DYNAMIC -->
-            <span id="countries_text" class="text--link-heading">All Countries</span>
-            <span class="icon icon--funnel"></span>
-          </a>
-        </li>
-        <li class="control-panel__item">
-          <!-- ADD SPNNER / RANGE PICKER -->
-          <div class="control-panel__item__inner">
-            <span class="text--panel-label">Years</span>
-            <span style="display: block; width: 100%; text-align: center;">Hold for UI widget </span>
-          </div>
-        </li>
-        <li class="control-panel__item">
-          <div class="control-panel__item__inner">
-            <span class="text--panel-label">Series</span>
-
-            <div class="control-panel__series-toggle">
-              <div class="control-panel__toggle-option">
-                <input id="annualized" type="radio" value="0" name="series1" class="toggle-option__input" checked="">
-                <label for="annualized" class="toggle-option__label toggle-option--left">Annualized</label>
-              </div>
-              <div class="control-panel__toggle-option">
-                <input id="cumulative" type="radio" value="1" name="series1" class="toggle-option__input">
-                <label for="cumulative" class="toggle-option__label toggle-option--right">Cumulative</label>
-              </div>
-            </div>
-
-            <div class="control-panel__series-toggle">
-              <div class="control-panel__toggle-option">
-                <input id="absolute" type="radio" value="0" name="series2" class="toggle-option__input" checked="">
-                <label for="absolute" class="toggle-option__label toggle-option--left">Absolute</label>
-              </div>
-              <div class="control-panel__toggle-option">
-                <input id="per_capita" type="radio" value="1" name="series2" class="toggle-option__input" >
-                <label for="per_capita" class="toggle-option__label toggle-option--right">Per Capita</label>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="control-panel__item hide-on-desktop">
-          <div class="control-panel__item__inner">
-            <span class="text--panel-label">Export</span>
-            <a id="toggle_export_mobile" class="button button--cta align--top-right hide-on-desktop" href="#export_options">
-              <span class="text--cta">Export Options</span>
-              <span class="icon icon--from_right"></span>
-            </a>
-          </div>
-        </li>
-
-      </ul>
-    </div>
 
     <div id="select_types" class="secondary-panel select-types" aria-hidden="true" aria-labelledby="toggle_type_select">
       <a id="close_type_select" href="#toggle_type_select" class="button button--close">Close</a>
@@ -433,11 +417,23 @@
               </label>
             </li>
           </ul>
-        </fieldset
+        </fieldset>
       </form>
     </div>
 
-    <div id="export_options" class="details-panel export-options">
+    <div id = "help_panel" class="details-panel help-panel right-flyout-panel">
+      <a id="close_help" class="button button--close button--icon">
+        <span class="icon-text">Close</span>
+        <span class="icon icon--close"></span>
+      </a>
+      <div class="details-panel__fade">
+        <div class="details-panel__scroll">
+          <h4 class="">Help Panel</h4>
+        </div>
+      </div>
+    </div>
+
+    <div id="export_options" class="details-panel export-options right-flyout-panel">
       <a id="close_export_options" class="button button--close button--icon">
         <span class="icon-text">Close</span>
         <span class="icon icon--close"></span>
@@ -504,8 +500,8 @@
       </div>
     </div>
 
-    <div id="table_details_panel" class="details-panel">
-      <a id="close_right_panel" class="button button--close button--icon">
+    <div id="table_details_panel" class="details-panel right-flyout-panel">
+      <a id="close_table_details" class="button button--close button--icon">
         <span class="icon-text">Close</span>
         <span class="icon icon--close"></span>
       </a>
@@ -636,7 +632,7 @@
       </div>
     </div>
 
-    <div id="graph_details_panel" class="details-panel ">
+    <div id="graph_details_panel" class="details-panel right-flyout-panel">
       <a id="close_graph_details" class="button button--close button--icon">
         <span class="icon-text">Close</span>
         <span class="icon icon--close"></span>
@@ -648,6 +644,255 @@
         <div id="details_wrap" class="details-panel__scroll">
           <span>Hold for graph selection table</span>
         </div>
+      </div>
+    </div>
+
+
+
+    <div id="map_layer" class="map-layer hide-on-mobile">
+    </div>
+    <div id="chart_layer" class="chart-layer hide-on-mobile">
+      <div id="chart_background_overlay" class="chart-layer__overlay">
+
+      </div>
+      <!-- Template: DYNAMIC -->
+      <div id="chart_wrap" class="chart-layer__wrap control_panel_open--xl">
+        <div id="chart_object" class="chart-object">
+          <div id="bar_chart" class="chart-type">
+            <p>Bar chart</p>
+          </div>
+          <div id="column_chart" class="chart-type">
+            <p>Column chart</p>
+          </div>
+          <div id="line_graph" class="chart-type">
+            <p>Line graph</p>
+          </div>
+          <div id="stacked_area" class="chart-type">
+            <p>stacked area</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="table" class="table-layer chart-type" >
+
+      <div class="table-layer__wrap">
+
+          <div>
+              <div class="table-panel">
+                <a href="#" class="js_table_toggle">EYEBALL</a>
+                <a href="#" class="js_table_toggle">EYEBALL</a>
+                <a href="#" class="js_table_toggle">EYEBALL</a>
+                <a href="#" class="js_table_toggle">EYEBALL</a>
+                <!--
+                  Do you still need .table-title or will this be replaced by #chart_header above?
+                -->
+                  <!-- <p class="table-title">Elite-to-Elite Diplomacy: Government Visits</p> -->
+                  <div class="table-subtitle"></div>
+                  <div class="ReactTable data-results -striped -highlight">
+                      <div class="rt-table" role="grid">
+
+                          <div class="rt-thead -header" style="min-width: 300px;">
+                              <div class="rt-tr" role="row">
+                                  <div class="rt-th rt-resizable-header -cursor-pointer" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
+                                      <div class="rt-resizable-header-content">
+                                          <h5>Recipient Country</h5></div>
+                                      <div class="rt-resizer"></div>
+                                  </div>
+                                  <div class="rt-th rt-resizable-header -cursor-pointer" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
+                                      <div class="rt-resizable-header-content">
+                                          <!-- NOTE use of .text--year, which aligns this heading with its columns data type -->
+                                          <h5 class="text--year">Year</h5></div>
+                                      <div class="rt-resizer"></div>
+                                  </div>
+                                  <div class="rt-th rt-resizable-header -cursor-pointer" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
+                                      <div class="rt-resizable-header-content">
+                                        <!-- NOTE use of .text--number, which aligns this heading with its columns data type -->
+                                          <h5 class="text--number">Government Visits</h5></div>
+                                      <div class="rt-resizer"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="rt-thead -filters" style="min-width: 300px;">
+                              <div class="rt-tr" role="row">
+                                  <div class="rt-th" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
+                                      <input type="text" value="" style="width: 100%;">
+                                  </div>
+                                  <div class="rt-th" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
+                                      <input type="text" value="" style="width: 100%;">
+                                  </div>
+                                  <div class="rt-th" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
+                                      <input type="text" value="" style="width: 100%;">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="rt-tbody" style="min-width: 300px;">
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -odd" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2000</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">46</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -even" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2001</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">49</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -odd" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2002</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">15</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -even" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <div class="text--year">2003</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                        <!-- change class to .text--number -->
+                                          <div class="text--number">13</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -odd" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2004</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                        <!-- change class to .text--number -->
+                                          <div class="text--number">9</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -even" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2005</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">20</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -odd" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2006</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">14</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -even" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2007</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">7</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -odd" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2008</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">21</div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="rt-tr-group" role="rowgroup">
+                                  <div class="rt-tr -even" role="row">
+                                      <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--year -->
+                                          <div class="text--year">2009</div>
+                                      </div>
+                                      <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
+                                          <!-- change class to .text--number -->
+                                          <div class="text--number">23</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="pagination-bottom">
+                          <div class="-pagination">
+                              <div class="-previous">
+                                  <button type="button" disabled="" class="-btn">Previous</button>
+                              </div>
+                              <div class="-center">
+                                <span class="-pageInfo">
+                                  Page
+                                  <div class="-pageJump">
+                                    <input type="number" value="1">
+                                  </div>
+                                  of
+                                  <span class="-totalPages">45</span>
+                                </span>
+                              <span class="select-wrap -pageSizeOptions">
+                                <select>
+                                  <option value="5">5 rows</option>
+                                  <option value="10">10 rows</option>
+                                  <option value="20">20 rows</option>
+                                  <option value="25">25 rows</option>
+                                  <option value="50">50 rows</option>
+                                  <option value="100">100 rows</option>
+                                </select>
+                              </span>
+                            </div>
+                            <div class="-next">
+                              <button type="button" class="-btn">Next</button>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="-loading">
+                          <div class="-loading-inner">Loading...</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
 
@@ -665,241 +910,11 @@
         <p class="fine-print">Source:  <a class="source-link" href="https://www.aiddata.org/china-public-diplomacy">AidData.org/china-public-diplomacy</a></p>
 
     </footer>
-
-    <div id="map_layer" class="map-layer hide-on-mobile">
-    </div>
-    <div id="chart_layer" class="chart-layer hide-on-mobile">
-      <div id="chart_background_overlay" class="chart-layer__overlay">
-
-      </div>
-      <!-- Template: DYNAMIC -->
-      <div id="chart_wrap" class="chart-layer__wrap control_panel_open--xl">
-        <div id="chart_object" class="chart-object">
-          <div class="table-container">
-            <div class="table-wrapper">
-                <div>
-                    <div class="table-panel">
-                      <!--
-                        Do you still need .table-title or will this be replaced by #chart_header above?
-                      -->
-                        <!-- <p class="table-title">Elite-to-Elite Diplomacy: Government Visits</p> -->
-                        <div class="table-subtitle"></div>
-                        <div class="ReactTable data-results -striped -highlight">
-                            <div class="rt-table" role="grid">
-
-                                <div class="rt-thead -header" style="min-width: 300px;">
-                                    <div class="rt-tr" role="row">
-                                        <div class="rt-th rt-resizable-header -cursor-pointer" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
-                                            <div class="rt-resizable-header-content">
-                                                <h5>Recipient Country</h5></div>
-                                            <div class="rt-resizer"></div>
-                                        </div>
-                                        <div class="rt-th rt-resizable-header -cursor-pointer" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
-                                            <div class="rt-resizable-header-content">
-                                                <!-- NOTE use of .text--year, which aligns this heading with its columns data type -->
-                                                <h5 class="text--year">Year</h5></div>
-                                            <div class="rt-resizer"></div>
-                                        </div>
-                                        <div class="rt-th rt-resizable-header -cursor-pointer" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
-                                            <div class="rt-resizable-header-content">
-                                              <!-- NOTE use of .text--number, which aligns this heading with its columns data type -->
-                                                <h5 class="text--number">Government Visits</h5></div>
-                                            <div class="rt-resizer"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rt-thead -filters" style="min-width: 300px;">
-                                    <div class="rt-tr" role="row">
-                                        <div class="rt-th" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
-                                            <input type="text" value="" style="width: 100%;">
-                                        </div>
-                                        <div class="rt-th" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
-                                            <input type="text" value="" style="width: 100%;">
-                                        </div>
-                                        <div class="rt-th" role="columnheader" tabindex="-1" style="flex: 100 0 auto; width: 100px;">
-                                            <input type="text" value="" style="width: 100%;">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="rt-tbody" style="min-width: 300px;">
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -odd" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2000</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">46</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -even" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2001</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">49</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -odd" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2002</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">15</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -even" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <div class="text--year">2003</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                              <!-- change class to .text--number -->
-                                                <div class="text--number">13</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -odd" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2004</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                              <!-- change class to .text--number -->
-                                                <div class="text--number">9</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -even" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2005</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">20</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -odd" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2006</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">14</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -even" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2007</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">7</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -odd" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2008</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">21</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="rt-tr-group" role="rowgroup">
-                                        <div class="rt-tr -even" role="row">
-                                            <div class="rt-td" role="gridcell" style="white-space: unset; flex: 100 0 auto; width: 100px;">Australia</div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--year -->
-                                                <div class="text--year">2009</div>
-                                            </div>
-                                            <div class="rt-td" role="gridcell" style="flex: 100 0 auto; width: 100px;">
-                                                <!-- change class to .text--number -->
-                                                <div class="text--number">23</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pagination-bottom">
-                                <div class="-pagination">
-                                    <div class="-previous">
-                                        <button type="button" disabled="" class="-btn">Previous</button>
-                                    </div>
-                                    <div class="-center">
-                                      <span class="-pageInfo">
-                                        Page
-                                        <div class="-pageJump">
-                                          <input type="number" value="1">
-                                        </div>
-                                        of
-                                        <span class="-totalPages">45</span>
-                                      </span>
-                                    <span class="select-wrap -pageSizeOptions">
-                                      <select>
-                                        <option value="5">5 rows</option>
-                                        <option value="10">10 rows</option>
-                                        <option value="20">20 rows</option>
-                                        <option value="25">25 rows</option>
-                                        <option value="50">50 rows</option>
-                                        <option value="100">100 rows</option>
-                                      </select>
-                                    </span>
-                                  </div>
-                                  <div class="-next">
-                                    <button type="button" class="-btn">Next</button>
-                                  </div>
-                                </div>
-                            </div>
-                            <div class="-loading">
-                                <div class="-loading-inner">Loading...</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+    
     <div id="control_panel_overlay" class="mobile-nav-overlay"></div>
   </div>
 
-  <script src="dist/all.js?cb=1567270164620"></script>
+  <script src="dist/all.js?cb=1568233923280"></script>
 </body>
 
 </html>
