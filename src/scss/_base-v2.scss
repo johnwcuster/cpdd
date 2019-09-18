@@ -40,12 +40,12 @@ h1,h2,h3,h4,h5,h6,p,div,span {
 
 
 .hide-on-mobile {
-  @include mobile-only {
+  @include pre-laptop-width {
     display: none;
   }
 }
 .hide-on-desktop {
-  @include desktop-only {
+  @include laptop-width {
     display: none;
   }
 }

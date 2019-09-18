@@ -451,7 +451,8 @@ function toggleMorePanel(e) {
     exportPanel = document.getElementById("export_options"),
     tableDetailsPanel = document.getElementById("table_details_panel"),
     graphDetailsPanel = document.getElementById("graph_details_panel"),
-    chartWrap = document.getElementById("chart_wrap");
+    chartWrap = document.getElementById("chart_wrap"),
+    zoomContols = document.getElementById("zoom_controls");
 
     const openToggles = document.getElementsByClassName("toggles-right-flyout");
     const rightPanels = document.getElementsByClassName("right-flyout-panel");
@@ -495,6 +496,9 @@ function toggleMorePanel(e) {
       // animate the chart wrap & toggles wrap
       chartWrap.classList.add("right_panel_open");
       rightTogglesWrap.classList.add("right_panel_open");
+      if(zoomContols) {
+        zoomContols.classList.add("right_panel_open");
+      }
 
       // open the right panel and hide the right toggle
 
@@ -524,6 +528,11 @@ function toggleMorePanel(e) {
       for(let i=0;i<openToggles.length; i++) {
         let openToggle = openToggles[i];
         openToggle.classList.remove("right_panel_open");
+      }
+
+      // clear the zoomContols
+      if(zoomContols) {
+        zoomContols.classList.remove("right_panel_open");
       }
 
       // clear the flyouts

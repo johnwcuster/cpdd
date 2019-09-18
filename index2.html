@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>China Dashboard Concept</title>
-  <link rel="stylesheet" href="dist/style2.css?cb=1568233923280">
+  <link rel="stylesheet" href="dist/style2.css?cb=1568837233980">
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
 </head>
@@ -650,11 +650,22 @@
 
 
     <div id="map_layer" class="map-layer hide-on-mobile">
+      <div class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" style="width: 100vw; height: 100vh; overflow: hidden;">
+        <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-71px, -39px, 0px); z-index: 400;">
+        </div>
+        <div id="zoom_controls" class="leaflet-control-container">
+          <div class="leaflet-top leaflet-right">
+            <div class="leaflet-control-zoom leaflet-bar leaflet-control">
+              <a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a>
+              <a class="leaflet-control-zoom-out leaflet-disabled" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div id="chart_layer" class="chart-layer hide-on-mobile">
-      <div id="chart_background_overlay" class="chart-layer__overlay">
-
-      </div>
+      <div id="chart_background_overlay" class="chart-layer__overlay"></div>
       <!-- Template: DYNAMIC -->
       <div id="chart_wrap" class="chart-layer__wrap control_panel_open--xl">
         <div id="chart_object" class="chart-object">
@@ -674,7 +685,7 @@
       </div>
     </div>
     <div id="table" class="table-layer chart-type" >
-
+      <div id="table_background_overlay" class="chart-layer__overlay"></div>
       <div class="table-layer__wrap">
 
           <div>
@@ -910,11 +921,11 @@
         <p class="fine-print">Source:  <a class="source-link" href="https://www.aiddata.org/china-public-diplomacy">AidData.org/china-public-diplomacy</a></p>
 
     </footer>
-    
+
     <div id="control_panel_overlay" class="mobile-nav-overlay"></div>
   </div>
 
-  <script src="dist/all.js?cb=1568233923280"></script>
+  <script src="dist/all.js?cb=1568837233980"></script>
 </body>
 
 </html>
