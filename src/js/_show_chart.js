@@ -9,7 +9,7 @@
   const barChart = document.getElementById("bar_chart"),
     colChart = document.getElementById("column_chart"),
     lineGraph = document.getElementById("line_graph"),
-    stackedArea = document.getElementById("stacked_area"),
+    stackedArea = document.getElementById("area_chart"),
     table = document.getElementById("table");
 
   const charts = document.getElementsByClassName("chart-type");
@@ -21,7 +21,6 @@
 
 
 function chartSelect(e) {
-
   let target = e.target,
     target_id = target.id;
     console.log(target_id);
