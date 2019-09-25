@@ -5,45 +5,48 @@
 
 .map-layer,
 .chart-layer,
-.chart-layer__overlay {
+.chart-layer__overlay,
+.table-layer {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
-}
-
-
-
-.map-layer::before,
-.map-layer::after,
-.chart-layer::before,
-.chart-layer::after {
-  content: "";
-  height: calcRem(6,$f2);
-  position: fixed;
   width: 100%;
-  z-index: 1;
+  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 
-.map-layer::before,
-.chart-layer::before {
-  top: 0;
-  position: fixed;
-}
 
-.map-layer::after,
-.chart-layer::after {
-  bottom: 0;
-  position: fixed;
-}
+// .map-layer::before,
+// .map-layer::after,
+// .chart-layer::before,
+// .chart-layer::after {
+//   content: "";
+//   height: calcRem(6,$f2);
+//   position: fixed;
+//   width: 100%;
+//   z-index: 1;
+// }
+
+
+// .map-layer::before,
+// .chart-layer::before {
+//   top: 0;
+//   position: fixed;
+// }
+
+// .map-layer::after,
+// .chart-layer::after {
+//   bottom: 0;
+//   position: fixed;
+// }
 
 
 .map-layer {
@@ -85,60 +88,81 @@
 .chart-layer {
   z-index: 6;
   display: none;
-  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-y: scroll;
+  will-change: scroll-position;
+  position: absolute;
+  transition: all 200ms ease-in-out;
+
   &.js_chart_visible {
     display: block;
   }
   .table-layer__wrap,
   .chart-layer__wrap {
-    overflow-y: scroll;
-    will-change: scroll-position;
-    position: absolute;
-    transition: all 200ms ease-in-out;
     height: 100%;
+    transition: padding 200ms ease-in-out;
 
     @include pre-laptop-width {
       display: none;
     }
     @include laptop-width {
-      left: calcVW(17,$grid);
-      top: calcRem(12,$f1);
-      width: calcVW(45,$grid);
-    }
-    @include desktop-only {
-      left: calcVW(14,$grid);
-      top: calcRem(10,$f1);
-      width: calcVW(48,$grid);
+      padding-left: calcVW(17,$grid);
+      padding-top: calcRem(12,$f1);
+      min-height: calc(100vh - 12rem);
     }
     @include laptop-height {
-      left: calcVW(16, $grid);
-      top: calcRem(6,$f1);
-      width: calcVW(46, $grid);
+      padding-left: calcVW(16, $grid);
+      padding-top: calcRem(6,$f1);
     }
+    @include desktop-only {
+      padding-left: calcVW(18,$grid);
+      padding-top: calcRem(10,$f1);
+    }
+
     @include xl-only {
-      left: calcVW(12,$grid);
-      top: calcRem(12,$f1);
-      width: calcVW(50, $grid);
+      padding-left: calcVW(14,$grid);
+      padding-top: calcRem(12,$f1);
     }
 
     &.right_panel_open {
       @include desktop-only {
-        width: calcVW(30,$grid);
+        padding-right: calcVW(16,$grid);
       }
       @include xl-only {
-        width: calcVW(39,$grid);
+        padding-right: calcVW(12,$grid);
       }
     }
   }
   .chart-object {
     width: 100%;
-    overflow-x: scroll;
-    min-height: 800px;
+    max-width: 100%;
     height: auto;
     display: block;
+
+    @include laptop-width {
+      min-height: calc(100vh - 12rem);
+    }
+    @include laptop-height {
+      min-height: calc(100vh - 6rem);
+    }
+    @include desktop-only {
+      min-height: calc(100vh - 10rem);
+    }
+    @include xl-only {
+      min-height: calc(100vh - 12rem);
+    }
   }
 }
+.chart-layer {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
 
+.table-layer {
+  overflow-x: scroll;
+}
 
 .chart-type.table-layer {
   @include pre-laptop-width {
@@ -151,6 +175,8 @@
       display: block;
       position: relative;
       width: 100%;
+      height: auto;
+      min-height: 100%;
       left: 0;
       top: 0;
       padding-left: calcVW(4,$grid);
@@ -163,6 +189,8 @@
     @include pre-laptop-width {
       display: block;
       position: relative;
+      width: 100%;
+      height: auto;
     }
   }
 }

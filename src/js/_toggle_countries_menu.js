@@ -16,5 +16,5 @@ function toggleCountriesPanel(e) {
 
   countriesPanel.classList.toggle("js_visible");
 
-  closeControlPanel();
+  // closeControlPanel();
 }

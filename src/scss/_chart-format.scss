@@ -1,0 +1,30 @@
+// this is nested in .chart-layer__wrap .chart-object
+// for positioning & layout of parent divs, see: _layers2.scss
+.chart-type {
+  @include laptop-width {
+    // min-height: calc(100vh - 12rem);
+  }
+  &#bar_chart {
+    min-height: 100%;
+    position: relative;
+    width: 100%;
+    & svg {
+      width: 100%;
+      min-height: 100%;
+      @include laptop-width {
+        padding-left: calcVW(17,$grid);
+        & > g {
+          width: 100%;
+        }
+      }
+
+    }
+  }
+}
+
+.theme--dark {
+
+}
+.theme--light {
+
+}

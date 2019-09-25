@@ -898,13 +898,13 @@ input[type="checkbox"] + label:hover:after {
         }
       }
       @include desktop-only {
-        left: calcVW(11,$grid);
+        left: calcVW(16,$grid);
         width: calcVW(32, $grid);
       }
 
       @include xl-only {
-        left: calcVW(9, $grid);
-        width: calcVW(11, $grid);
+        left: calcVW(12, $grid);
+        width: calcVW(24, $grid);
         border-left: 2px solid;
         padding-left: calcVW(1,$grid);
       }

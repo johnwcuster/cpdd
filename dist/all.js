@@ -295,82 +295,6 @@ function chartSelect(e) {
   
 }());
 
-// toggle_control_panel.js
-/*
-(function(){
-
-  const controlsClose = document.getElementById("close_control_panel"),
-  controlsCloseOverlay = document.getElementById("control_panel_overlay"),
-  controlsToggle = document.getElementById("toggle_control_panel");
-
-  if(controlsClose && controlsCloseOverlay && controlsToggle) {
-
-    if(document.body.clientWidth < 992) {
-      controlsClose.addEventListener("click", toggleControlPanel, true);
-      controlsCloseOverlay.addEventListener("click", closeControlPanel, true);
-    }
-
-    controlsToggle.addEventListener("click", toggleControlPanel, true);
-  }
-
-}());
-
-function toggleControlPanel(e) {
-
-  e.preventDefault();
-  e.stopPropagation();
-
-  const chartWrap = document.getElementById("chart_wrap"),
-    controlsCloseOverlay = document.getElementById("control_panel_overlay"),
-    controlPanel = document.getElementById("control_panel"),
-    controlsToggle = document.getElementById("toggle_control_panel"),
-    exportToggle = document.getElementById("toggle_export"),
-    rightPanel = document.getElementById("table_details_panel"),
-    siteFooterLogos = document.getElementById("site_footer_logos"),
-    siteHeader = document.getElementById("site_header");
-
-  if(document.body.clientWidth < 1344) {
-    if(controlPanel) {
-      controlPanel.classList.toggle("js_visible");
-    }
-  }
-
-
-  if(document.body.clientWidth < 992) {
-    if(controlsCloseOverlay) {
-        controlsCloseOverlay.classList.toggle("js_visible");
-    }
-  }
-
-  if(document.body.clientWidth >= 992) {
-
-    if(document.body.clientWidth <1344) {
-      if(controlsToggle) {
-        controlsToggle.classList.toggle("is_animated");
-      }
-
-      siteHeader.classList.toggle("is_animated");
-      chartWrap.classList.toggle("control_panel_open");
-      chartWrap.classList.remove("details_panel_open");
-      rightPanel.classList.remove("is_animated");
-      exportToggle.classList.remove("is_animated");
-    }
-    if(document.body.clientWidth >= 1344) {
-      if(controlPanel && controlsToggle) {
-        controlPanel.classList.toggle("control_panel_open--xl");
-        controlsToggle.classList.toggle("control_panel_open--xl");
-      }
-      chartWrap.classList.toggle("control_panel_open--xl");
-      siteHeader.classList.toggle("control_panel_open--xl");
-    }
-
-    if(document.body.clientHeight < 640) {
-      siteFooterLogos.classList.toggle("is_animated");
-    }
-  }
-}
-*/
-
 // toggle_countries_menu.js
 (function(){
   const countriesClose = document.getElementById("close_country_select"),
@@ -389,27 +313,8 @@ function toggleCountriesPanel(e) {
 
   countriesPanel.classList.toggle("js_visible");
 
-  closeControlPanel();
+  // closeControlPanel();
 }
-
-// _toggle_details_panel.js
-/*
-(function (){
-  const  rightPanelOpen = document.getElementById("open_right_panel"),
-  rightPanelClose = document.getElementById("close_right_panel"),
-  topRightButton = document.getElementById("toggle_export");
-
-  if(rightPanelClose) {
-    rightPanelClose.addEventListener("click",closeRightPanel, true);
-  }
-  if(topRightButton) {
-    topRightButton.addEventListener("click",closeRightPanel, true);
-  }
-  if(rightPanelOpen) {
-    rightPanelOpen.addEventListener("click", openRightPanel, true);
-  }
-}());
-*/
 
 // toggle_more_menu
 (function(){
@@ -564,7 +469,7 @@ function toggleTypesPanel(e) {
   const typesPanel = document.getElementById("select_types");
 
   typesPanel.classList.toggle("js_visible");
-  closeControlPanel();
+  // closeControlPanel();
 }
 
 // toggle_views_menu.js
@@ -584,7 +489,7 @@ function toggleViewsPanel(e) {
   const viewsPanel = document.getElementById("select_view");
 
   viewsPanel.classList.toggle("js_visible");
-  closeControlPanel();
+  // closeControlPanel();
 }
 
 // toggle_types_menu
@@ -611,110 +516,3 @@ function toggleYearsPanel(e) {
   yearsPanel.classList.toggle("js_visible");
 
 }
-
-// close_control_panel.js
-function closeControlPanel() {
-    const chartWrap = document.getElementById("chart_wrap"),
-      controlsCloseOverlay = document.getElementById("control_panel_overlay"),
-      controlPanel = document.getElementById("control_panel"),
-      controlsToggle = document.getElementById("toggle_control_panel"),
-      siteFooterLogos = document.getElementById("site_footer_logos"),
-      siteHeader = document.getElementById("site_header");
-
-    if(controlPanel && controlsCloseOverlay) {
-        controlPanel.classList.remove("js_visible");
-        controlsCloseOverlay.classList.remove("js_visible");
-    }
-
-
-    chartWrap.classList.remove("control_panel_open");
-
-
-    if(document.body.clientWidth >= 992) {
-      if(controlsToggle) {
-        controlsToggle.classList.remove("is_animated");
-      }
-      siteHeader.classList.remove("is_animated");
-      siteFooterLogos.classList.remove("is_animated");
-    }
-    if(document.body.clientwidth>=1344) {
-      if(controlPanel && controlsToggle) {
-        controlPanel.classList.remove("control_panel_open--xl");
-        controlsToggle.classList.remove("control_panel_open--xl");
-      }
-      chartWrap.classList.remove("control_panel_open--xl");
-      siteHeader.classList.remove("control_panel_open--xl");
-    }
-
-}
-
-// close_right_panel.js
-/*
-function closeRightPanel(e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  const chartWrap = document.getElementById("chart_wrap"),
-    rightPanel = document.getElementById("table_details_panel"),
-    topRightButton = document.getElementById("toggle_export"),
-    // rightPanelToggleWrap = document.getElementById("right_controls_toggles");
-
-    // rightPanelToggles = document.getElementsByClassName("toggles-right-flyout");
-
-
-
-  rightPanel.classList.remove("is_animated");
-  topRightButton.classList.remove("is_animated");
-  chartWrap.classList.remove("details_panel_open");
-  rightPanelToggleWrap.classList.remove("right_panel_open");
-
-  for(let i=0; i<rightPanelToggles.length; i++) {
-      let toggle = rightPanelToggles[i];
-      toggle.classList.remove("right_panel_open");
-  }
-}
-*/
-
-// open_right_panel.js
-/*
-function openRightPanel(e) {
-  let activeToggle = e.target;
-  console.log(activeToggle.id);
-  e.preventDefault();
-  e.stopPropagation();
-
-  const chartWrap = document.getElementById("chart_wrap"),
-    controlPanel = document.getElementById("control_panel"),
-    controlsToggle = document.getElementById("toggle_control_panel"),
-    rightPanel = document.getElementById("table_details_panel"),
-    siteFooterLogos = document.getElementById("site_footer_logos"),
-    siteHeader = document.getElementById("site_header"),
-    topRightButton = document.getElementById("toggle_export"),
-    rightPanelToggleWrap = document.getElementById("right_controls_toggles");
-
-    rightPanelToggles = document.getElementsByClassName("toggles-right-flyout");
-
-    for(let i=0; i<rightPanelToggles.length; i++) {
-        let toggle = rightPanelToggles[i];
-        toggle.classList.remove("right_panel_open");
-    }
-    activeToggle.classList.add("right_panel_open");
-
-  rightPanel.classList.add("is_animated");
-  topRightButton.classList.add("is_animated");
-  chartWrap.classList.add("details_panel_open");
-  rightPanelToggleWrap.classList.add("right_panel_open");
-
-  if(document.body.clientWidth < 1344) {
-    if(controlPanel && controlsToggle) {
-      controlPanel.classList.remove("is_animated");
-      controlPanel.classList.remove("js_toggled");
-      controlPanel.classList.remove("js_visible");
-      controlsToggle.classList.remove("is_animated");
-    }
-    siteHeader.classList.remove("is_animated");
-    siteFooterLogos.classList.remove("is_animated");
-
-  }
-}
-*/

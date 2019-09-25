@@ -15,5 +15,5 @@ function toggleTypesPanel(e) {
   const typesPanel = document.getElementById("select_types");
 
   typesPanel.classList.toggle("js_visible");
-  closeControlPanel();
+  // closeControlPanel();
 }

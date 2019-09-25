@@ -15,5 +15,5 @@ function toggleViewsPanel(e) {
   const viewsPanel = document.getElementById("select_view");
 
   viewsPanel.classList.toggle("js_visible");
-  closeControlPanel();
+  // closeControlPanel();
 }
