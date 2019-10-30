@@ -1,0 +1,132 @@
+
+// TYPESCALE
+@mixin large-type {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@mixin small-type {
+  font-size: 0.875rem;
+  line-height: 1.2
+}
+
+@mixin bold-type {
+  font-weight: 500;
+}
+
+@mixin gray-type {
+  @include theme("dark") {
+    color: $gray6;
+    fill: $gray6;
+  }
+  @include theme("light") {
+    color: $gray4;
+    fill: $gray4;
+  }
+}
+
+@mixin red-type {
+  color: $red5;
+  fill: $red5;
+
+  @include theme("dark") {
+    color: $red6;
+    fill: $red6;
+  }
+  @include theme("light") {
+    color: $red4;
+    fill: $red4;
+  }
+}
+
+@mixin red-type-hover {
+  &:hover {
+    color: $red6;
+    fill: $red6;
+
+    @include theme("dark") {
+      color: $red7;
+      fill: $red7;
+    }
+    @include theme("light") {
+      color: $red5;
+      fill: $red5;
+    }
+  }
+}
+
+@mixin high-contrast-text {
+  @include theme("dark") {
+    background-color: $black;
+    color: $white;
+    fill: $white;
+  }
+  @include theme("light") {
+    background-color: $white;
+    color: $black;
+    fill: $black;
+  }
+}
+
+@mixin white-on-red {
+  @include theme("dark") {
+    background-color: $red5;
+    color: $white;
+    fill: $white;
+    div,
+    span,
+    svg {
+      color: $white;
+      fill: $white;
+    }
+    &:hover {
+      background-color: $red6;
+    }
+    &:hover,
+    &:hover span,
+    &:hover svg {
+      color: $white;
+      fill: $white;
+    }
+  }
+  @include theme("light") {
+    background-color: $red5;
+    color: $white;
+    fill: $white;
+    div,
+    span,
+    svg {
+      color: $white;
+      fill: $white;
+    }
+    &:hover {
+      background-color: $red6;
+    }
+    &:hover,
+    &:hover span,
+    &:hover svg {
+      color: $white;
+      fill: $white;
+    }
+  }
+
+
+}
+
+@mixin red-on-white {
+  color: $red5;
+  fill: $red5;
+  background: $white;
+  div,
+  span,
+  svg {
+    color: $red4;
+    fill: $red4;
+  }
+  &:hover,
+  &:hover span,
+  &:hover svg {
+    color: $red5;
+    fill: $red5;
+  }
+}

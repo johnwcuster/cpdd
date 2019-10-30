@@ -1,0 +1,25 @@
+/// Z-indexes map, gathering all Z layers of the application
+/// @access private
+/// @type Map
+/// @prop {String} key - Layer’s name
+/// @prop {Number} value - Z value mapped to the key
+$z-indexes: (
+  'dialog': 60,
+  'overlay': 50,
+  'menu': 40,
+  'menu-toggle': 41,
+  'header': 30,
+  'table': 20,
+  'chart': 10,
+  'map': 1
+);
+
+/// Get a z-index value from a layer name
+/// @access public
+/// @param {String} $layer - Layer’s name
+/// @return {Number}
+/// @require $z-indexes
+
+@function z($layer) {
+  @return map-get($z-indexes, $layer);
+}

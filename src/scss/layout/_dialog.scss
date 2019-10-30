@@ -1,0 +1,182 @@
+.menu--years {
+  @include flyout-width-narrow;
+
+}
+
+.dialog,
+.dialog--narrow,
+.dialog--wide {
+  @include theme("dark") {
+    background-color: $gray1;
+  }
+  @include theme("light") {
+    background-color: $gray8;
+  }
+  min-height: 100vh;
+
+  @include mq("s") {
+    width: 100%;
+    position: fixed;
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    transition: transform 300ms ease-in-out;
+    right: 100%;
+    z-index: z("dialog");
+    &[data-visible="true"] {
+      transform: translate3d(100%,0,0);
+    }
+  }
+  @include mq("m+") {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: z("dialog");
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  padding: $cell;
+  h1,h2,h3,h4,h5,h6 {
+    @include bold-type;
+    max-width: pxToRem(320);
+    margin-top: pxToRem(14);
+    padding-bottom: $cell;
+  }
+  .dialog-form {
+    @include flex-center-between;
+  }
+
+  .flyout-button-wrap {
+    padding-right: $cell;
+    justify-content: flex-end;
+    max-width: pxToRem(320);
+    padding-bottom: $cell;
+  }
+  fieldset {
+    width: pxToRem(320);
+  }
+  .dialog-info {
+    max-width: pxToRem(288);
+  }
+
+
+}
+
+
+
+.dialog--narrow {
+  // .flyout-button-wrap {
+  //   order: -1;
+  // }
+  @include mq("m+") {
+    width: pxToRem(384);
+    right: pxToRem(-384);
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    transition: transform 300ms ease-in-out;
+    &[data-visible="true"] {
+      transform: translate3d(-24rem,0,0);
+    }
+  }
+  .year-select {
+    margin-top: $cell;
+    padding-top: $cell;
+    padding-bottom: $cell;
+  }
+}
+
+
+.dialog {
+  @include mq("m+") {
+    width: pxToRem(768); // 48rem
+    right: pxToRem(-768);
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    transition: transform 300ms ease-in-out;
+    &[data-visible="true"] {
+      transform: translate3d(-48rem,0,0);
+    }
+
+
+  }
+  &.select-types {
+    fieldset {
+      margin-left: $cell;
+      margin-right: $cell;
+      border: 1px solid;
+      padding: $cell;
+    }
+    legend {
+      padding-left: $cell;
+      padding-right: $cell;
+    }
+
+    li {
+      width: 100%;
+      min-height: $tap-height;
+    }
+  }
+}
+
+.dialog--wide {
+  @include mq("m+") {
+    width: 100%;
+    right: -100vw;
+    transform: translate3d(0,0,0);
+    will-change: transform;
+    transition: transform 400ms ease-in-out;
+    &[data-visible="true"] {
+      transform: translate3d(-100vw,0,0);
+    }
+
+
+
+    form {
+      .button--select,
+      .button--deselect {
+        margin-right: $cell;
+        margin-top: $cell / 2;
+        margin-bottom: $cell / 2;
+      }
+    }
+
+    .select-countries__fieldset {
+      padding-bottom: $cell * 3;
+      @include mq("l") {
+        width: 45vw;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+
+    .select-countries__fieldset.region--one {
+      @include mq("l") {
+          padding-right: $cell;
+      }
+    }
+
+    .select-countries__fieldset.region--two {
+      @include mq("l") {
+          padding-left: $cell;
+      }
+    }
+
+    .select-countries__list {
+      @include mq("l") {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: 40rem; // important
+      }
+    }
+
+    .select-countries__item {
+      flex-grow: 0;
+      @include mq("l") {
+        width: calcVW(12,$grid);
+      }
+
+    }
+
+  }
+}

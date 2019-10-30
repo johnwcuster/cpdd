@@ -1,0 +1,50 @@
+.site-header {
+  padding: $cell;
+  @include theme("dark") {
+      background: $dark-overlay;
+  }
+  @include theme("light") {
+    background: $light-overlay;
+  }
+
+
+  @include mq("m+") {
+    @include flex-wrap;
+    max-width: pxToRem(320);
+    position: absolute;
+    left: calcVW(1,$grid);
+    z-index: z(header);
+  }
+  @include mq("l") {
+    max-width: pxToRem(768);
+  }
+
+  .logo-wrap {
+    width: pxToRem(192);
+    @include mq("l") {
+      margin-left: $cell;
+    }
+    .color-logo {
+      @include theme("dark") {
+        display: none;
+      }
+    }
+    .white-logo {
+      @include theme("light") {
+        display: none;
+      }
+    }
+  }
+  .heading-wrap {
+    @include mq("l") {
+      padding-left: $cell * 2;
+      padding-right: $cell;
+    }
+  }
+}
+.fine-print {
+  @include mq("m+") {
+      position: absolute; bottom: 0.5rem; left: 0.5rem;
+  }
+
+}

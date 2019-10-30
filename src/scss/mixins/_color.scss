@@ -1,0 +1,8 @@
+@mixin red-background {
+  @include theme("dark") {
+    background-color: $red6;
+  }
+  @include theme("light") {
+    background-color: $red5;
+  }
+}

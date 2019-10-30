@@ -1,0 +1,47 @@
+// icon--add--outline
+// icon--apps
+// icon--chevron-down
+// icon--chevron--left
+// icon--chevron--right
+// icon--chevron--up
+// icon--close
+//
+// icon--arrow--right
+// icon--arrow--left
+//
+//
+// icon--dashboard
+// icon--data
+//
+// icon--header--hamburger
+// icon--help
+// icon--help--outline
+// icon--info
+// icon--info--outline
+//
+// icon--menu
+
+@mixin icon {
+  display: block;
+  position: relative; // change back
+  z-index: 1;
+  opacity: 1;
+  // width: 48px;
+  // height: 48px;
+}
+
+%icon {
+  @include icon;
+}
+.icon {
+  @extend %icon;
+  // fill: red;
+}
+
+.icon--menu {
+  @extend %icon;
+  background-image: url("../icons/add-outline.svg");
+  position: relative;
+  left: 0;
+  top: 0;
+}

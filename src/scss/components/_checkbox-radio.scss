@@ -1,0 +1,59 @@
+input[type="checkbox"],
+input[type="radio"] {
+    opacity: 0 !important;
+    transition: opacity 0.2s ease-in-out;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  width: 100%;
+  height: $tap-height;
+  padding-left: 4 * $cell;
+  padding-top: $cell;
+  padding-bottom: $cell;
+  display: table;
+  vertical-align: middle;
+  border-top: 1px solid;
+}
+
+input[type="checkbox"] + label::after,
+input[type="radio"] + label::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: $cell;
+  left: $cell;
+  background-color: transparent;
+  border: 2px solid;
+  opacity: 1;
+}
+input[type="radio"] + label::after {
+  border-radius: 10px;
+}
+
+input[type="checkbox"]:checked + label::after,
+input[type="radio"]:checked + label::after {
+  opacity: 1 !important;
+  @include red-background;
+}
+
+
+
+//// When an icon replaces a checkbox or radio
+  // it covers up the input & pseudo content
+input[type="radio"] + label .icon {
+  position: absolute;
+  left: 1rem;
+  top: $cell / 2;
+  @include theme("dark") {
+    background-color: $gray1;
+  }
+  @include theme("light") {
+    background-color: $gray9;
+  }
+}
+input[type="radio"]:checked + label svg path {
+  @include red-type;
+}

@@ -1,0 +1,119 @@
+%button,
+button, .button {
+  padding-left: $cell;
+  padding-right: $cell;
+  height: 3rem;
+  vertical-align: middle;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.button--menu,
+.button--apply,
+.button--cancel {
+  @extend %button;
+  @include flex-center-between;
+  @include flex-center-between;
+
+}
+
+.button--apply,
+.button--cancel {
+  width: pxToRem(144);
+}
+.button--menu {
+  @extend %button;
+  @include flex-center-between;
+  @include flex-center-between;
+  width: pxToRem(320);
+}
+
+// Needed align height with text
+.button--apply,
+.button--cancel,
+.button--submit {
+  & .icon {
+    height: pxToRem(26);
+  }
+}
+
+.button--apply,
+.button--submit {
+  @include white-on-red;
+}
+
+.button--cancel {
+  @include red-on-white;
+  margin-right: $cell;
+}
+
+.button--select,
+.button--deselect {
+  @include theme("dark") {
+    background-color: $gray4;
+    color: $white;
+  }
+  @include theme("light") {
+    background-color: $gray7;
+    color: $black;
+  }
+}
+
+
+.button--menu,
+.button--export,
+.button--help {
+  @extend %button;
+  @include flex-left-center;
+  @include high-contrast-text;
+
+  @include theme("dark") {
+    color: $white;
+    background-color: $black;
+  }
+  @include theme("light") {
+    @include red-on-white;
+  }
+}
+
+// Align height to text
+.button--export,
+.button--help {
+  @include theme("dark") {
+      border-color: $gray9;
+  }
+  @include theme("light") {
+    border-color: $gray7;
+  }
+  & .icon {
+    height: pxToRem(24);
+  }
+}
+
+
+/* TODO:  MOVE TO LAYOUT/MAIN-MENU */
+.button--menu {
+  @include mq("m") {
+    width: pxToRem(320);
+    padding-left: 2 * $cell;
+    padding-right: 2 * $cell;
+    border-bottom: 2px solid;
+    border-color: $gray5
+  }
+}
+
+.button--export,
+.button--help {
+  width: 50%;
+}
+
+.button--export {
+  border-right: 1px solid;
+}
+.button--help {
+  border-left: 1px solid;
+}

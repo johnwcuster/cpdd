@@ -1,0 +1,118 @@
+.js-tab-container {
+overflow: hidden;
+background: #fff;
+
+  [role=tablist] {
+    @include flex-wrap;
+  }
+
+  [role=tab] {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    height: $tap-height;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-left: $cell;
+    padding-right: $cell;
+    flex-grow: 1;
+    @include theme("dark") {
+      background-color: $gray1;
+      color: $white;
+    }
+    @include theme("light") {
+      background-color: $gray4;
+      &,
+      & div,
+      & span,
+      & svg {
+        color: $white;
+        fill: $white;
+      }
+    }
+    &:hover {
+      text-decoration: underline;
+      background-color: $gray3;
+
+    }
+    &[aria-selected=true] {
+      // @include theme("dark") {
+      //   background-color: $gray4;
+      // }
+      // @include theme("light") {
+      //   background-color: $gray8;
+      // }
+
+      &.red-when-selected{
+        @include theme("dark") {
+          background-color: $red6;
+          &:hover {
+            background-color: $red6;
+          }
+        }
+        @include theme("light") {
+
+          background-color: $red6;
+          &:hover {
+            background-color: $red6;
+          }
+        }
+
+      }
+
+    }
+  }
+
+
+}
+
+// .js-tab-container [role=tablist] {
+// display: flex;
+// margin: 0;
+// padding: 0;
+// box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+// }
+
+// .js-tab-container [role=tab] {
+// position: relative;
+// list-style: none;
+// text-align: center;
+// cursor: pointer;
+// padding: 14px;
+// flex-grow: 1;
+// color: #444;
+// }
+
+// .tab-container [role=tab]:hover {
+// background: #eee;
+// }
+
+// .tab-container [role=tab][aria-selected=true] {
+// color: #000;
+// }
+//
+// .tab-container [role=tab][aria-selected=true]::after {
+// content: "";
+// position: absolute;
+// width: 100%;
+// height: 4px;
+// background: #f44336;
+// left: 0;
+// bottom: 0;
+// }
+//
+// .tab-container main {
+// padding: 0 1em;
+// position: relative;
+// }
+//
+// .tab-container main [role=tabpanel] {
+// display: none;
+// }
+//
+// .tab-container main [role=tabpanel][aria-expanded=true] {
+// display: block;
+// }

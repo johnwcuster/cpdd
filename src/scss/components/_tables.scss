@@ -1,0 +1,15 @@
+.dialog,
+.dialog--wide,
+.dialog--narrow {
+  tr {
+    border-top: 1px solid;
+    height: 2rem;
+    vertical-align: middle;
+    text-align: right;
+    [scope="col"]
+    [scope="row"] {
+      text-align: left;
+    }
+  }
+
+}

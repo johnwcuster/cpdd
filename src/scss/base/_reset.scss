@@ -1,0 +1,41 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  position: relative;
+}
+body {
+  font-family: "Helvetica", "Helvetica Neue", "Arial", "Roboto", sans serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+form,fieldset,legend {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+li, ol {
+  list-style-type: none;
+}
+.page-wrap {
+  overflow-x: hidden;
+}

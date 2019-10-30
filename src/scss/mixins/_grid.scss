@@ -1,0 +1,5 @@
+@mixin flyout-width-narrow {
+  $fixed-width:  pxToRem(320);
+  $var-width: 100 * 1 / 64 + vw;
+  width: calc(#{$fixed-width} + #{$var-width});
+}

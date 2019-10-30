@@ -1,0 +1,48 @@
+// HELPER CLASSES
+// Requires ../mixins/_typography.scss
+
+.bold-type {
+  @include bold-type;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.gray-type {
+  @include gray-type;
+}
+
+.large-type {
+  @include large-type;
+}
+
+.small-type {
+  @include small-type;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.red-type {
+  @include red-type;
+}
+
+.red-type--interactive {
+  @include red-type;
+  @include red-type-hover;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.white-on-red {
+  @include white-on-red;
+}
+
+.heading-label, legend {
+  @include gray-type;
+  text-transform: uppercase;;
+}

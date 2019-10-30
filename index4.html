@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>China Dashboard Concept</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link rel="stylesheet" href="dist/style3.css?cb=1572435495932">
+
+
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+    <div id="page_wrap" class="page-wrap theme--dark">
+
+
+
+      <!-- This is what appears in the top left at a min screen width of 768px
+
+        - at a min width of 1220, the text block slides to the left of the logo
+        - this block has 1 rem of padding
+       -->
+      <header class="site-header">
+        <div class="logo-wrap">
+          <img class="white-logo" src="AidData_Logo--white.png" alt="AidData, A Research Lab at William and Mary">
+          <img class="color-logo" src="AidData_Logo--full_color.png" alt="AidData, A Research Lab at William and Mary">
+        </div>
+
+        <div class="heading-wrap">
+          <h1 id="site_title" class="large-type gray-type">China's Public Diplomacy</h1>
+          <h2 id="chart_title" class="bold-type">Official Finance With Diplomatic Intent</h2>
+          <p id="chart_years">2000 - 2018</p>
+          <p id="chart_units" class="gray-type">Millions of 2018 USD</p>
+          <p id="filter_message" class="red-type uppercase">Filters Applied</p>
+        </div>
+      </header>
+      <!-- menu button is not part of the header -->
+      <div class="menu-wrap">
+        <button id="menu_toggle" class="button--menu" aria-haspopup="true" aria-controls="main_menu"> <!-- Need aria congrols -->
+          <span>Menu</span>
+          <div class="icon">
+            <svg focusable="false" aria-hidden="true" width="12" height="7" fill-rule="evenodd">
+              <path fill-rule="nonzero" d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z"></path>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <!-- Main Menu
+        Max width of 320px
+        Hidden below 768px by default
+        Shown by default at 768px but can be hidden by user
+      -->
+      <div id="main_menu" role="menu" aria-labelledby="menu_toggle" class="main-menu-panel js-tab-container">
+        <ul id="main_menu_tab_1_list" aria-labelledby="menu1_section1" role="none">
+          <li aria-labelledby="menu1_section1" role="none">
+            <h3 id="menu1_section1">View</h3>
+            <ul aria-labelledby="menu1_section1" role="none">
+              <li role="menuitem">
+                <button id="toggle_view_select" aria-hasmodal="true" aria-controls="select_view" data-tofocus="cancel_view_select" data-container="main_menu_tab_1" class="flex-left-center">
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                      <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                    </svg>
+                  </div>
+                  <span>Map & Charts</span>
+                </button>
+              </li>
+              <li role="menuitem">
+                <button id="toggle_series_detail" aria-hasmodal="true" aria-controls="series_detail_panel" data-tofocus="close_chart_details" data-container="main_menu_tab_1"  class="flex-left-center">
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                      <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                    </svg>
+                  </div>
+                  <span>Series Detail</span>
+                </button>
+              </li>
+              <li role="menuitem">
+                <form class="flex-center-between">
+                  <select id="toggle_axis_group" data-container="main_menu_tab1">
+                    <optgroup label="geography">
+                        <option value = "region">Region</option>
+                        <option value = country selected>Country</option>
+                      </optgroup>
+                      <option value="regions">Types</option>
+                      <option value="years">Years</option>
+                  </select>
+                  <select id="toggle_axis_scale" name="series2" data-container="main_menu_tab1">
+                    <option id="absolute" value="absolute">Absolute</option>
+                    <option id="per_capita" value="per_capita">Per Capita</option>
+                  </select>
+                </form>
+              </li>
+            </ul>
+          </li>
+          <li aria-labelledby="menu1_section2">
+            <h3 id="menu1_section2">Filter</h3>
+            <ul aria-labelledby="menu1_section2">
+                <li role="menuitem">
+                  <button id="toggle_type_select" aria-controls="select_types" aria-hasmodal="true" data-container="main_menu_tab1" data-tofocus="cancel_type_select" class="flex-left-center" >
+                    <div class="icon">
+                      <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                        <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                      </svg>
+                    </div>
+                    <span>Measurement</span>
+                    </button>
+                </li>
+                <li role="menuitem">
+                  <button id="toggle_country_select" aria-controls="select_countries" aria-hasmodal="true" data-tofocus="cancel_country_select" data-container="main_menu_tab1" class="flex-left-center" >
+                    <div class="icon">
+                      <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                        <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                      </svg>
+                    </div>
+                    <span>Countries</span>
+                  </button>
+                </li>
+                <li role="menuitem">
+                  <button id="toggle_years_select" aria-controls="select_years" aria-hasmodal="true" data-tofocus="cancel_year_select"  data-container="main_menu_tab1" class="flex-left-center" >
+                    <div class="icon">
+                      <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                        <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                      </svg>
+                    </div>
+                    <span>Years</span>
+                  </button>
+                </li>
+            </ul>
+          </li>
+          <li>
+            <div class="flex-left-center border-top" aria-hidden="true">
+              <div class="toggle-option">
+                <input id="dark" type="radio" value="0" name="theme" class="theme-toggle__input" checked="" data-container="main_menu_tab1" aria-hidden="true">
+                <label for="dark" class="theme-toggle__label theme-toggle--left" aria-hidden="true">Dark</label>
+              </div>
+              <div class="toggle-option">
+                <input id="light" type="radio" value="1" name="theme" class="theme-toggle__input" data-container="main_menu_tab1" aria-hidden="true">
+                <label for="light" class="theme-toggle__label theme-toggle--right" aria-hidden="true">Light</label>
+              </div>
+            </div>
+          </li>
+          <li class="flex-wrap" role="menuitem">
+            <button id="open_export" aria-controls="export_options" aria-hasmodal="true" data-container="main_menu_tab1" class="button--export" >
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                  <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                </svg>
+              </div>
+              <span>Export</span>
+            </button>
+            <button id="open_help" aria-controls="help_panel" aria-hasmodal="true" data-tofocus="help_panel_heading"  data-container="main_menu_tab1" class="button--help">
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="16 0 24 32" >
+                  <path d="M10 16L20 6l1.4 1.4-8.6 8.6 8.6 8.6L20 26z"></path>
+                </svg>
+              </div>
+              <span>Help<span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div id="select_types" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="toggle_type_select" class="dialog select-types" >
+        <form id="select_types_form" aria-labelledby="select_types_heading" class="flex-top-between">
+          <h3 id="select_types_heading">Type of Public Diplomacy</h3>
+          <div class="flyout-button-wrap flex-wrap">
+            <button id="cancel_type_select" aria-controls="select_types" class="button--cancel" data-container="select_types" data-returnfocus="toggle_type_select">
+              <span>Cancel</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+                  <title>Close</title>
+                </svg>
+              </div>
+            </button>
+            <button id="apply_type_select" aria-controls="select_types" class="button--apply" data-container="select_types" data-returnfocus="toggle_type_select">
+              <span>Apply</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M18 6l-1.4 1.4 7.5 7.6H3v2h21.1l-7.5 7.6L18 26l10-10z"></path>
+                  <title>Arrow right</title>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <section class="dialog-info" role="region">
+            <h4 class=" bold-type">Total Engagement</h4>
+            <p class="">To create a measure of engagement, we normalized the four variables (sister cities, high-level visits, CIs, and financial diplomacy) across time to a scale of 0-10. We then combined their scores, giving equal weight to each type of public diplomacy. To create the diversity score, we took the normalized scores of the four public diplomacy types for each country, and calculated the distance between what we would expect for a well-balanced portfolio, where each type of public diplomacy accounts for 25% of the total engagement.</p>
+          </section>
+          <ul class="select-types__list list--types">
+            <li id="finance_list_item" class="select-types__item item--types ">
+              <input id="21_diplomacy_type" type="radio" value="21" name="pd_type" class="select-types__input input--main-option" data-container="select_types" checked>
+              <label for="21_diplomacy_type" class="select-types__label label--main-option">Official Finance</label>
+            </li>
+            <li class="select-types__item item--types">
+              <fieldset id="finance_subtypes" class="select-types__fieldset fieldset--subtypes">
+                <legend class="select-types__legend legend--subtypes text--legend">Types of Official Finance</legend>
+                <ul class="select-types__list list--subtype">
+                  <li class="select-types__item item--subtype">
+                    <input id="debt_relief_sector" type="checkbox" value="debt" class="select-types__input input--sub-option" checked="" data-container="select_types">
+                    <label for="debt_relief_sector" class="select-types__label label--sub-option">Debt Relief</label>
+                  </li>
+                  <li class="select-types__item item--subtype">
+                    <input id="budget_support_sector" type="checkbox" value="budget" class="select-types__input input--sub-option" checked="" data-container="select_types">
+                    <label for="budget_support_sector" class="select-types__label label--sub-option">Budget Support</label>
+                  </li>
+                  <li class="select-types__item item--subtype">
+                    <input id="human_assist_sector" type="checkbox" value="assist" class="select-types__input input--sub-option" checked="" data-container="select_types">
+                    <label for="human_assist_sector" class="select-types__label label--sub-option">Humanitarian Assistance</label>
+                  </li>
+                  <li class="select-types__item item--subtype">
+                    <input id="infra_invest_sector" type="checkbox" value="invest" class="select-types__input input--sub-option" checked="" data-container="select_types">
+                    <label for="infra_invest_sector" class="select-types__label label--sub-option">Infrastructure Investment</label>
+                  </li>
+                </ul>
+              </fieldset>
+            </li>
+            <li class="select-types__item item--types">
+              <input id="22_diplomacy_type" type="radio" value="22" name="pd_type" class="select-types__input input--main-option" data-container="select_types">
+              <label for="22_diplomacy_type" class="select-types__label label--main-option">Confucius Institutes (counts only)</label>
+            </li>
+            <li class="select-types__item item--types">
+              <input id="23_diplomacy_type" type="radio" value="23" name="pd_type" class="select-types__input input--main-option" data-container="select_types">
+              <label for="23_diplomacy_type" class="select-types__label label--main-option">Sister Cities (counts only)</label>
+            </li>
+            <li id="visits_list_item" class="select-types__item item--types">
+              <input id="13_diplomacy_type" type="radio" value="13"name="pd_type" class="select-types__input input--main-option" data-container="select_types">
+              <label for="13_diplomacy_type" class="select-types__label label--main-option">Total Elite Visits (counts only)</label>
+              <fieldset id="visits_subtypes" class="select-types__fieldset fieldset--subtypes">
+                <legend class="select-types__legend legend--subtypes text--legend">Types of Visits</legend>
+                <ul class="select-types__list list--subtype">
+                  <li class="select-types__item item--subtype">
+                    <input id="11_diplomacy_type" type="checkbox" name="diplomacy-type-sub-option" value="11" class="select-types__input input--sub-option" checked="" data-container="select_types">
+                    <label class="select-types__label label--sub-option" for="11_diplomacy_type">Government Visits</label>
+                  </li>
+                  <li class="select-types__item item--subtype">
+                    <input id="12_diplomacy_type" type="checkbox" name="diplomacy-type-sub-option" value="12" class="select-types__input input--sub-option" checked="" data-container="select_types">
+                    <label class="select-types__label label--sub-option" for="12_diplomacy_type">Military Visits</label>
+                  </li>
+                </ul>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div id="select_countries" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="select_countries_heading" class="dialog--wide select-countries">
+        <form id="select_countries_form" class="flex-wrap" aria-labeledby="select_countries_heading">
+          <div class="flex-center-between full-width">
+            <h3 id="select_countries_heading">Select Countries</h3>
+            <div class="flyout-button-wrap flex-wrap">
+              <button id="cancel_country_select" class="button--cancel" aria-controls="select_countries" data-returnfocus="toggle_country_select"  data-container="select_countries">
+                <span>Cancel</span>
+                <div class="icon">
+                  <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                    <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+                    <title>Close</title>
+                  </svg>
+                </div>
+              </button>
+              <button id="apply_country_select" class="button--apply" aria-controls="select_countries" data-returnfocus="toggle_country_select" data-container="select_countries">
+                <span>Apply</span>
+                <div class="icon">
+                  <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                    <path d="M18 6l-1.4 1.4 7.5 7.6H3v2h21.1l-7.5 7.6L18 26l10-10z"></path>
+                    <title>Arrow right</title>
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="full-width flex-wrap">
+            <button type="button" class="button button--select" data-container="select_countries">Select All</button>
+            <button type="button" class="button button--deselect" data-container="select_countries">Deselect All</button>
+          </div>
+          <fieldset class="select-countries__fieldset region--one">
+            <legend class="select-countries__legend text--legend">East Asia</legend>
+            <div class="flex-wrap">
+              <button type="button" class="button button--select" data-container="select_countries">Select All</button>
+              <button type="button" class="button button--deselect" data-container="select_countries">Deselect All</button>
+            </div>
+            <ul class="select-countries__list">
+              <li class="select-countries__item">
+                <input id="Brunei_country_checkbox" name="7" type="checkbox" class="select-countries__input"  checked="" data-container="select_countries">
+                <label for="Brunei_country_checkbox" class="select-countries__label">Brunei</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Cambodia_country_checkbox" name="2" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Cambodia_country_checkbox" class="select-countries__label">Cambodia</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Indonesia_country_checkbox" name="5" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Indonesia_country_checkbox" class="select-countries__label">Indonesia</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Japan_country_checkbox" name="23" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Japan_country_checkbox" class="select-countries__label">Japan</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Korea, Dem. Rep._country_checkbox" name="16" type="checkbox" class="select-countries__input"checked="" data-container="select_countries">
+                <label for="Korea, Dem. Rep._country_checkbox" class="select-countries__label">Korea (North)</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Korea, Rep._country_checkbox" name="25" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Korea, Rep._country_checkbox" class="select-countries__label">Korea (South)</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Laos_country_checkbox" name="6" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Laos_country_checkbox" class="select-countries__label">Laos</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Malaysia_country_checkbox" name="11" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Malaysia_country_checkbox" class="select-countries__label">Malaysia</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Mongolia_country_checkbox" name="10" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Mongolia_country_checkbox" class="select-countries__label">Mongolia</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Myanmar_country_checkbox" name="9" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Myanmar_country_checkbox" class="select-countries__label">Myanmar (Burma)</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Philippines_country_checkbox" name="14" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Philippines_country_checkbox" class="select-countries__label">Philippines</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Singapore_country_checkbox" name="27" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Singapore_country_checkbox" class="select-countries__label">Singapore</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Thailand_country_checkbox" name="17" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Thailand_country_checkbox" class="select-countries__label">Thailand</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Vietnam_country_checkbox" name="19" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Vietnam_country_checkbox" class="select-countries__label">Vietnam</label>
+              </li>
+            </ul>
+          </fieldset>
+          <fieldset class="select-countries__fieldset region--two">
+            <legend class="select-countries__legend text--legend">Pacific</legend>
+            <div class="flex-wrap">
+              <button type="button" class="button button--select" data-container="select_countries">Select All</button>
+              <button type="button" class="button button--deselect" data-container="select_countries">Deselect All</button>
+            </div>
+            <ul class="select-countries__list">
+              <li class="select-countries__item">
+                <input id="Australia_country_checkbox" name="22" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Australia_country_checkbox" class="select-countries__label">Australia</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Cook Islands_country_checkbox" name="3" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Cook Islands_country_checkbox" class="select-countries__label">Cook Islands</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Fiji_country_checkbox" name="4" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Fiji_country_checkbox" class="select-countries__label">Fiji</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Kiribati_country_checkbox" name="24" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Kiribati_country_checkbox" class="select-countries__label">Kiribati</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Micronesia, Federated States of_country_checkbox" name="26" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Micronesia, Federated States of_country_checkbox" class="select-countries__label">Micronesia</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Nauru_country_checkbox" name="12" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Nauru_country_checkbox" class="select-countries__label">Nauru</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="New Zealand_country_checkbox" name="13" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="New Zealand_country_checkbox" class="select-countries__label">New Zealand</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Papua New Guinea_country_checkbox" name="15" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Papua New Guinea_country_checkbox" class="select-countries__label">Papua New Guinea</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Samoa_country_checkbox" name="21" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Samoa_country_checkbox" class="select-countries__label">Samoa</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Timor-Leste_country_checkbox" name="8" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Timor-Leste_country_checkbox" class="select-countries__label">Timor-Leste</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Tonga_country_checkbox" name="18" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Tonga_country_checkbox" class="select-countries__label">Tonga</label>
+              </li>
+              <li class="select-countries__item">
+                <input id="Vanuatu_country_checkbox" name="20" type="checkbox" class="select-countries__input" checked="" data-container="select_countries">
+                <label for="Vanuatu_country_checkbox" class="select-countries__label">Vanuatu</label>
+              </li>
+            </ul>
+          </fieldset>
+        </form>
+      </div>
+      <div id="select_view" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="select_view_heading"  class="dialog--narrow select-view">
+        <form id="select_view_form" aria-labeledby="select_view_heading" class="dialog-form">
+          <h3 id="select_view_heading">Select Visualization</h3>
+          <div class="flyout-button-wrap flex-wrap">
+            <button id="cancel_view_select" class="button--cancel" aria-controls="select_view" data-returnfocus="toggle_view_select" data-container="select_view">
+              <span>Cancel</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+                  <title>Close</title>
+                </svg>
+              </div>
+            </button>
+            <button id="apply_view_select" class="button--apply" aria-controls="select_view" data-returnfocus="toggle_view_select" data-container="select_view" data-updateview="true">
+              <span>Apply</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M18 6l-1.4 1.4 7.5 7.6H3v2h21.1l-7.5 7.6L18 26l10-10z"></path>
+                  <title>Arrow right</title>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <fieldset class="select-view__fieldset fieldset--main-views">
+            <legend class="select-view__legend text--legend">Data Visualizations</legend>
+            <ul class="select-view__list list--main-views">
+              <li>
+                <input id="map_toggle1" type="radio" value="map" name="views" checked="" data-container="select_view" data-view="map_layer">
+                <label for="map_toggle1" id="map_toggle">
+                  <span>Bubble Map</span>
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                      <path d="M30 30H4a2 2 0 0 1-2-2V2h2v26h26z"></path>
+                      <path d="M10 16a2 2 0 1 1-2 2 2 2 0 0 1 2-2m0-2a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm11-8a4 4 0 1 1-4 4 4 4 0 0 1 4-4m0-2a6 6 0 1 0 6 6 6 6 0 0 0-6-6zm3.5 17a1.5 1.5 0 1 1-1.5 1.5 1.5 1.5 0 0 1 1.5-1.5m0-2a3.5 3.5 0 1 0 3.5 3.5 3.5 3.5 0 0 0-3.5-3.5z"></path>
+                    </svg>
+                </label>
+              </li>
+              <li>
+                <input id="bar_toggle1" type="radio" value="bar" name="views" data-container="select_view" data-view="chart_layer">
+                <label for="bar_toggle1" id="bar_toggle">
+                  <span>Bar Chart</span>
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                      <path d="M27 28V6h-8v22h-4V14H7v14H4V2H2v26a2 2 0 0 0 2 2h26v-2zm-14 0H9V16h4zm12 0h-4V8h4z"></path>
+                    </svg>
+                  </div>
+                </label>
+              </li>
+              <li>
+                <input id="column_toggle1" type="radio" value="bar" name="views" data-container="select_view" data-view="chart_layer">
+                <label for="column_toggle1" id="column_toggle">
+                  <span>Column Chart</span>
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                      <path d="M27 28V6h-8v22h-4V14H7v14H4V2H2v26a2 2 0 0 0 2 2h26v-2zm-14 0H9V16h4zm12 0h-4V8h4z"></path>
+                    </svg>
+                  </div>
+                </label>
+              </li>
+              <li>
+                <input id="line_toggle1" type="radio" value="line" name="views" data-container="select_view" data-view="chart_layer">
+                <label for="line_toggle1" id="line_toggle">
+                  <span>Line Graph</span>
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                      <path d="M4.67 28l6.39-12 7.3 6.49a2 2 0 0 0 1.7.47 2 2 0 0 0 1.42-1.07L27 10.9l-1.82-.9-5.49 11-7.3-6.49a2 2 0 0 0-1.68-.51 2 2 0 0 0-1.42 1L4 25V2H2v26a2 2 0 0 0 2 2h26v-2z"></path>
+                    </svg>
+                  </div>
+                </label>
+              </li>
+              <li>
+                <input id="area_toggle1" type="radio" value="area" name="views" data-container="select_view" data-view="chart_layer">
+                <label for="area_toggle1" id="area_toggle">
+                  <span>Stacked Area</span>
+                  <div class="icon" style="top: 0.75rem;">
+                    <svg focusable="false" aria-hidden="true"  preserveAspectRatio="xMidYMid meet" width="32" height="32" viewBox="0 0 32 32"  fill-rule="evenodd" >
+                      <path d="M0 0v24h24V0H0zm22.1 7l-7.2 8.9-9.2-3.8c-.2-.1-.4 0-.6.1L1 16.6V7h21.1zm.9 16H1v-4.9l4.6-5 9.2 3.8c.2.1.4 0 .6-.1L23 7.5V23zm0-17H1V1h22v5z"></path>
+                    </svg>
+                  </div>
+
+                </label>
+              </li>
+              <li>
+                <input id="table_toggle1" type="radio" value="table" name="views" data-container="select_view" data-view="table_layer">
+                <label for="table_toggle1" id="table_toggle">
+                  <span>Table</span>
+                  <div class="icon">
+                    <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                      <path d="M29 5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h22a2 2 0 0 0 2-2zm-2 0v4H5V5zm0 22H5v-4h22zm0-6H5v-4h22zm0-6H5v-4h22z"></path>
+                    </svg>
+                  </div>
+                </label>
+              </li>
+            </ul>
+            <ul class="select-view__list list--more-views">
+              <li class="select-view__item">
+                <input id="treemap_toggle1" type="radio" value="tree" name="views" class="select-view__input" data-container="select_view" data-view="chart_layer">
+                <label for="treemap_toggle1" id="treemap_toggle1" class="select-view__label">
+                  <span>Treemap</span>
+                  <br/>
+                  <span class="small-type italic gray-type">This view is only available for Official Finance.  Selecting this chart will update the type of public diplomacy you have selected as well.</span>
+                  <div class="icon" style="top: 1rem;">
+                    <svg focusable="false" aria-hidden="true" width="32" height="32" viewBox="0 0 32 32" fill-rule="evenodd" >
+                      <path d="M0 0v24h24V0H0zm1 23V7h8v16H1zm22 0H10v-8h13v8zm0-9H10V7h13v7zM1 6V1h22v5H1z"></path>
+                    </svg>
+                  </div>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
+        </form>
+      </div>
+      <div id="select_years" class="menu--years dialog--narrow">
+        <form id="select_years_form">
+          <h3 id="select_years_heading">Select Starting and Ending Years</h3>
+          <div class="flyout-button-wrap flex-wrap">
+            <button id="cancel_year_select" class="button--cancel" aria-controls="select_years" data-returnfocus="toggle_years_select" data-container="select_years">
+              <span>Cancel</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+                </svg>
+              </div>
+            </button>
+            <button id="apply_year_select" class="button--apply" aria-controls="select_years" data-returnfocus="toggle_years_select" data-container="select_years">
+              <span>Apply</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M18 6l-1.4 1.4 7.5 7.6H3v2h21.1l-7.5 7.6L18 26l10-10z"></path>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <span style="display: block; width: 100%; text-align: center;">
+            <div class="year-select">
+              <div class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3 MuiGrid-align-items-xs-center">
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true">
+                  <div class="MuiInputBase-root MuiInput-root MuiInput-underline year_range_min_input MuiInputBase-marginDense">
+                    <input class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense" type="number" step="1" min="2000" max="2016" value="2016" data-container="select_years">
+                  </div>
+                </div>
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true">
+                  <span class="MuiSlider-root year_range_slider">
+                    <span class="MuiSlider-rail"></span>
+                    <span class="MuiSlider-track" style="left: 100%; width: 0%;"></span>
+                    <input type="hidden" value="2016,2016">
+                    <span class="MuiSlider-thumb MuiSlider-active" tabindex="0" role="slider" data-index="0" aria-orientation="horizontal" aria-valuemax="2016" aria-valuemin="2000" aria-valuenow="2016" style="left: 100%;"></span>
+                    <span class="MuiSlider-thumb" tabindex="0" role="slider" data-index="1" aria-orientation="horizontal" aria-valuemax="2016" aria-valuemin="2000" aria-valuenow="2016" style="left: 100%;"></span>
+                  </span>
+                </div>
+                <div class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true">
+                  <div class="MuiInputBase-root MuiInput-root MuiInput-underline year_range_max_input MuiInputBase-marginDense">
+                    <input class="MuiInputBase-input MuiInput-input MuiInputBase-inputMarginDense MuiInput-inputMarginDense" type="number" step="1" min="2000" max="2016" value="2016" data-container="select_years">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </span>
+        </form>
+      </div>
+      <div id="map_layer" class="map-layer">
+        <div class="leaflet-control-container">
+      		<div class="leaflet-top leaflet-left">
+      			<div class="leaflet-control-zoom leaflet-bar leaflet-control">
+              <button id="leflet_zoom_in" class="leaflet-control-zoom-in" title="Zoom in" role="button" aria-label="Zoom in">
+                <div class="icon">
+                  <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                    <path d="M17 15V7h-2v8H7v2h8v8h2v-8h8v-2h-8z"></path>
+                  </svg>
+                </div>
+              </button>
+              <button id="leflet_zoom_out" class="leaflet-control-zoom-out leaflet-disabled" title="Zoom out" role="button" aria-label="Zoom out">
+                <div class="icon">
+                  <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" >
+                    <path d="M16 4A12 12 0 1 1 4 16 12 12 0 0 1 16 4m0-2a14 14 0 1 0 14 14A14 14 0 0 0 16 2z"></path>
+                    <path d="M10 15h12v2H10z"></path>
+                    <title>Subtract alt</title>
+                  </svg>
+                </div>
+              </button>
+      			</div>
+      		</div>
+      	</div>
+        <div class="leaflet-bottom leaflet-left">
+          <div class="leaflet-control-attribution leaflet-control"><a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | Map tiles by <a href="https://www.carto.com/">Carto</a>, under CC BY 3.0</div>
+        </div>
+      </div>
+      <!-- chart: full screen, padded, vertical scroll -->
+      <div id="chart_layer" class="chart-layer">
+        <div id="chart_wrap">
+          <div id="chart_object" style = "background: blue; width: 100%; height: 100%;">
+              <p>Testing chart layer ...</p>
+          </div>
+        </div>
+      </div>
+      <!-- table full screen, padded, vertical and horizontal scroll -->
+      <div id="table_layer" class="table-layer">
+        <div id="table_wrap">
+          <p>Testing table layer ...</p>
+        </div>
+      </div>
+      <div id="table_details_panel" class="dialog--narrow">
+        <button id="close_table_details" class="button button--close button--icon">
+          <span class="icon-text">Close</span>
+          <span class="icon icon--close"></span>
+        </button>
+        <div class = "flyout___top-fade"></div>
+        <div id="details_wrap flyout__scroll">
+
+          <div id="table_row_details">
+          </div>
+
+        </div>
+
+      </div>
+      <div id="series_detail_panel" class= "dialog--narrow">
+        <button id="close_chart_details" aria-controls="series_detail_panel" class="button--cancel" data-container="series_detail_panel" data-returnfocus="toggle_series_detail">
+          <span class="icon-text">Close</span>
+          <div class="icon">
+            <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+              <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+              <title>Close</title>
+            </svg>
+          </div>
+        </button>
+        <div id="flyout_summary" class="flyout__series-summary">
+          <h3 class="heading—-series-summary"> {{{ Details.name }}} </h3>
+          <p class="subheading-—series-summary">
+            <span class="margin-right—char"> {{{ Details.amt }}} </span>
+            <span class="margin-left—char"> {{{ Details.units }}} </span>
+          </p>
+          <p class="label-—series-summary type1"> {{{ Details.label }}}  </p>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Country</th>
+              <th scope="col">2019 USD (M)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Malaysia</th>
+              <td>$13,402</td>
+            </tr>
+            <tr>
+              <th scope="row">Cambodia</th>
+              <td>$9,080</td>
+            </tr>
+            <tr>
+              <th scope="row">Indonesia</th>
+              <td>$8,969</td>
+            </tr>
+            <tr>
+              <th scope="row">Laos</th>
+              <td>$4,716</td>
+            </tr>
+            <tr>
+              <th scope="row">Vietnam</th>
+              <td>$3,746</td>
+            </tr>
+            <tr>
+              <th scope="row">Mongolia</th>
+              <td>$2,263</td>
+            </tr>
+            <tr>
+              <th scope="row">Myanmar</th>
+              <td>$1,876</td>
+            </tr>
+            <tr>
+              <th scope="row">Philippines</th>
+              <td>$1,140</td>
+            </tr>
+            <tr>
+              <th scope="row">Fiji</th>
+              <td>$903</td>
+            </tr>
+            <tr>
+              <th scope="row">Samoa</th>
+              <td>$380</td>
+            </tr>
+            <tr>
+              <th scope="row">Nauru</th>
+              <td>$310</td>
+            </tr>
+            <tr>
+              <th scope="row">Papua New Guinea</th>
+              <td>$277</td>
+            </tr>
+            <tr>
+              <th scope="row">Vanuatu</th>
+              <td>$261</td>
+            </tr>
+            <tr>
+              <th scope="row">Tonga</th>
+              <td>$250</td>
+            </tr>
+            <tr>
+              <th scope="row">Brunei</th>
+              <td>$208</td>
+            </tr>
+            <tr>
+              <th scope="row">Cook Islands</th>
+              <td>$129</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="help_panel" class="dialog--narrow">
+        <div class="flyout__header">
+          <h4 id="help_panel_heading">Help</h4>
+          <button id="close_help" aria-controls="help_panel" class="button--cancel" data-container="help_panel" data-returnfocus="open_help">
+            <span class="icon-text">Close</span>
+            <div class="icon">
+              <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+                <title>Close</title>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+      <!-- export scrollable, no header -->
+      <div id="export_options" class="dialog--narrow">
+        <form id="export_options_form">
+          <div class="flyout-button-wrap flex-wrap">
+            <button id="close_export_options" aria-controls="export_options" class="button--cancel" data-container="export_options" data-returnfocus="open_export">
+              <span>Cancel</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"></path>
+                  <title>Close</title>
+                </svg>
+              </div>
+            </button>
+            <button id="apply_export_options" aria-controls="export_options" class="button--apply" data-container="export_options" data-returnfocus="open_export">
+              <span>Export</span>
+              <div class="icon">
+                <svg focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="32" height="24" viewBox="0 0 24 32" >
+                  <path d="M18 6l-1.4 1.4 7.5 7.6H3v2h21.1l-7.5 7.6L18 26l10-10z"></path>
+                  <title>Arrow right</title>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <div class = "flyout___bottom-fade"></div>
+          <div class="flyout__scroll">
+            <h4 class="">Export Options</h4>
+          </div>
+          <ul class="export-options__list">
+            <li class="export-options__item">
+              <fieldset class="export-options__fieldset">
+                <legend class="export-options__legend">Type</legend>
+                <ul class="export-options__sub-list">
+                  <li class="export-options__sub-item">
+                    <input id="export_image" type="radio" value="0" name="export_type" class="export-options__input" checked="">
+                    <label for="export_image" class="export-options__label">Image (PNG)</label>
+                  </li>
+                  <li class="export-options__sub-item">
+                    <input id="export_dataset" type="radio" value="1" name="export_type" class="export-options__input">
+                    <label for="export_dataset" class="export-options__label">Dataset</label>
+                  </li>
+                </ul>
+              </fieldset>
+            </li>
+            <li id="export_data_options" class="export-options__item has_subtypes">
+              <fieldset class="export-options__fieldset fieldset--subtypes">
+                <legend class="export-options__legend legend--subtypes text--legend">Which Data?</legend>
+                <!-- Template: DYNAMIC -->
+                <p class="text--help"> TO DO:  Put tool tip text here.</p>
+                <ul class="export-options__sub-list">
+
+                  <li class="export-options__sub-item">
+                    <input id="export_all" type="radio" value="0" name="data_scope" checked="" class="export-options__input">
+                    <label for="export_all" class="export-options__label">All</label>
+                  </li>
+                  <li class="export-options__sub-item">
+                    <input id="export_filtered" type="radio" value="1" name="data_scope" class="export-options__input">
+                    <label for="export_filtered" class="export-options__label">Filtered</label>
+                  </li>
+                </ul>
+              </fieldset>
+              <fieldset class="export-options__fieldset fieldset--subtypes">
+                <legend class="export-options__legend legend--subtypes text--legend">In which format?</legend>
+                <!-- Template: DYNAMIC -->
+                <p class="text--help"> TO DO:  Put tool tip text here.</p>
+                <ul class="export-options__sub-list">
+                  <li class="export-options__sub-item">
+                    <input id="export_csv" type="radio" value="0" name="file_format" checked="" class="export-options__input">
+                    <label for="export_csv" class="export-options__label">CSV</label>
+                  </li>
+                  <li class="export-options__sub-item">
+                    <input id="export_xlsx" type="radio" value="1" name="file_format" class="export-options__input">
+                    <label for="export_xlsx" class="export-options__label">XLSX</label>
+                  </li>
+                </ul>
+              </fieldset>
+            </li>
+          </ul>
+          <button type="button" class="button button--download">Download Now</button>
+        </form>
+      </div>
+      <p class="fine-print">Source:  <a class="source-link" href="https://www.aiddata.org/china-public-diplomacy">AidData.org/china-public-diplomacy</a></p>
+    </div>
+    <script src="dist/all.js?cb=1572435495932"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+// DARK & LIGHT THEME
+@mixin theme($theme) {
+
+  @if $theme =="dark" {
+    .theme--#{$theme} & {
+      @content;
+    }
+  }
+  @if $theme =="light" {
+    .theme--#{$theme} & {
+      @content;
+    }
+  }
+  @if $theme != "dark" and $theme != "light" {
+    @error "theme() must be 'dark' or 'light' NOT '#{$theme}'";
+  }
+}
+
+@mixin keyboard-theme($theme) {
+
+  @if $theme =="dark" {
+    .has-keyboard.theme--#{$theme} & {
+      @content;
+    }
+  }
+  @if $theme =="light" {
+    .has-keyboard.theme--#{$theme} & {
+      @content;
+    }
+  }
+  @if $theme != "dark" and $theme != "light" {
+    @error "keyboard-theme() must be 'dark' or 'light' NOT '#{$theme}'";
+  }
+}
+
+@mixin hover-theme($theme) {
+
+  @if $theme =="dark" {
+    .has-hover.theme--#{$theme} & {
+      @content;
+    }
+  }
+  @if $theme =="light" {
+    .has-hover.theme--#{$theme} & {
+      @content;
+    }
+  }
+  @if $theme != "dark" and $theme != "light" {
+    @error "hover-theme() must be 'dark' or 'light' NOT '#{$theme}'";
+  }
+}

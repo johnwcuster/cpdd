@@ -1,0 +1,23 @@
+.theme--dark {
+  background-color: $gray2;
+
+  * {
+    color: $gray9;
+    fill: $gray9;
+  }
+
+  input, select {
+    background-color: $gray2;
+  }
+}
+
+.theme--light {
+  background-color: $gray9;
+
+  color: $gray2;
+  fill: $gray2;
+
+  button, input, select {
+    background-color: $white;
+  }
+}

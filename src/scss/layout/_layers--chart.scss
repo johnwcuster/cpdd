@@ -1,0 +1,25 @@
+.chart-layer {
+  @include mq("s") {
+    display: none;
+  }
+  overflow-x: scroll;
+  overflow-y: scroll;
+  @include mq("m+") {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: z('table');
+    padding-top: pxToRem(168);
+    padding-left: calcVW(1,$grid);
+    padding-right: calcVW(18,64);
+
+    display: none;
+    &.js_chart_visible {
+      display: block;
+    }
+  }
+}

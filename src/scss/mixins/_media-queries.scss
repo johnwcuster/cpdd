@@ -1,0 +1,23 @@
+// MEDIA QUERIES
+@mixin mq($size) {
+  @if $size == "s" {
+      @media (max-width: 767px) {
+        @content;
+      }
+  }
+  @if $size == "m" {
+    @media (min-width: 768px) and (max-width: 959px) {
+      @content;
+    }
+  }
+  @if $size == "m+" {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+  @if $size == "l" {
+    @media (min-width: 960px) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.toggle-option {
+  position: relative;
+  text-transform: uppercase;
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  input + label {
+    padding: $cell;
+    border-top: none;
+    @include hover-and-focus;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+
+
+  input:checked + label {
+    @include theme("dark") {
+      color: $red6;
+    }
+    @include theme("light") {
+      color: $red5;
+    }
+
+    &::after {
+      display: none; // don't display the red dot
+    }
+  }
+
+  &:nth-of-type(2)::before {
+    content: "";
+    border-left: 1px solid;
+    position: absolute;
+    top: $cell;
+    left: 0;
+    height: $cell;
+  }
+}

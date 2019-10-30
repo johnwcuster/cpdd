@@ -1,0 +1,6 @@
+// DARK & LIGHT THEME
+@mixin has-hover() {
+  .has-hover {
+    @content;
+  }
+}

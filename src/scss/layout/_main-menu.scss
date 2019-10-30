@@ -1,0 +1,134 @@
+.menu-wrap {
+  @include mq("m+") {
+    position: absolute;
+    right: calcVW(1,$grid);
+    z-index: z("menu-toggle");
+  }
+}
+
+.main-menu-panel {
+  width: pxToRem(320);
+  @include theme("dark") {
+    background-color: $dark-overlay;
+  }
+  @include theme("light") {
+    background-color: $light-overlay;
+  }
+
+  @include mq("s") {
+    height: 0;
+    will-change: height;
+    transition: height 300ms ease-in-out;
+    &[data-visible="true"] {
+      height: auto;
+      transition: height 300ms ease-in-out;
+    }
+  }
+
+
+  @include mq("m+") {
+    position: absolute;
+    right: calcVW(1,$grid);
+    overflow-y: scroll;
+
+    z-index: z("menu");
+    transform: translate3d(0,0,0);
+    transition: transform 300ms ease-in-out;
+    top: -48rem;
+
+    &[data-visible="true"] {
+      transform: translate3d(0,51rem,0)
+    }
+  }
+
+
+  ul {
+    padding-left: $cell;
+    padding-right: $cell;
+    padding-bottom: $cell;
+
+    ul {
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  // Headings for each of the link lists
+    // currently, only h3 are used
+  h1, h2, h3, h4, h5, h6 {
+    @include gray-type;
+    text-transform: uppercase;
+    height: 2 * $cell;
+    line-height: 2 * $cell; // no accommodation for multi-line heading labels needed
+    margin-top: $cell;
+    border-bottom: 1px solid;
+
+    @include theme("dark") {
+      border-color: $gray4;
+    }
+    @include theme("light") {
+      border-color: $gray7;
+    }
+  }
+
+  // this styles all of the dialog toggles
+  li > button {
+    // display: block;
+    width: 100%;
+    height: $tap-height;
+    vertical-align: middle;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: inherit;
+
+
+    text-decoration: none;
+
+    @include hover-and-focus;
+
+    @include theme("dark") {
+      color: $white;
+      fill: $white;
+    }
+    @include theme("light") {
+      color: $black;
+      fill: $black;
+    }
+    & span,
+    & div,
+    & svg {
+      color: inherit;
+      fill: inherit;
+    }
+
+    // this sets the height of the div wrapper for the "<"
+    & :first-child {
+      height: pxToRem(24);
+    }
+  }
+  li.flex-wrap button {
+    width: 50%;
+    padding-left: $cell;
+    padding-right: $cell;
+  }
+
+
+  // this is for the select elements that don't have a flyout
+  form {
+    height: pxToRem(72);
+  }
+  select {
+    width: pxToRem(120);
+  }
+
+  // this is used above the theme toggle
+  & .border-top {
+    border-top: 1px solid;
+    @include theme("dark") {
+        border-color: $gray4;
+    }
+    @include theme("light") {
+      border-color: $gray7;
+    }
+  }
+}

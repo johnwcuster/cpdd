@@ -1,0 +1,38 @@
+%flex-wrap {
+  @include flex-wrap;
+}
+
+.flex-wrap {
+  @extend %flex-wrap;
+}
+
+%flex-left-center {
+  @extend %flex-wrap;
+  @include align-center;
+}
+
+.flex-left-center {
+  @extend %flex-left-center;
+}
+
+.flex-top-between {
+  @extend %flex-wrap;
+  @include justify-between;
+  @include align-start;
+}
+
+.flex-center-between {
+  @extend %flex-left-center;
+  @include justify-between;
+}
+.full-width {
+  width: 100%;
+}
+
+.page-wrap {
+  min-height: 100vh;
+  @include mq("m+") {
+    height: 100vh;
+    overflow: hidden;
+  }
+}

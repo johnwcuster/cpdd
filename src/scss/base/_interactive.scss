@@ -1,0 +1,89 @@
+button {
+  @include keyboard-theme("dark") {
+    outline: 3px solid transparent !important;
+  }
+  @include keyboard-theme("light") {
+    outline: 3px solid transparent !important;
+  }
+}
+
+///////////////////////////
+//  Conditionally show hover styles
+/////////////////////////
+a:hover,
+button:hover,
+input:hover,
+label:hover {
+  text-decoration: none;
+  cursor: pointer;
+
+  @include hover-theme("dark") {
+    text-decoration: underline;
+  }
+  @include hover-theme("light") {
+    text-decoration: underline;
+  }
+}
+
+
+input[type="checkbox"]:hover + label::before,
+input[type="radio"]:hover + label::before {
+
+}
+
+input[type="checkbox"] + label:hover::after,
+input[type="radio"] + label:hover::before {
+  @include hover-theme("dark") {
+    border-color: $white;
+  }
+  @include hover-theme("light") {
+    border-color: $black;
+  }
+}
+
+
+
+///////////////////////////
+//  Conditionally show keyboard styles
+/////////////////////////
+a:focus,
+button:focus,
+input:focus,
+label:focus,
+input:focus + label {
+  box-shadow: none;
+  outline: none;
+}
+
+a:focus,
+button:focus {
+  @include keyboard-theme("dark") {
+    box-shadow: 0 0 0 3px $red8 !important;
+  }
+  @include keyboard-theme("light") {
+    box-shadow: 0 0 0 3px $red3 !important;
+  }
+}
+
+input:focus + label {
+  // box-shadow: 0 0 0 3px $red5 !important; // from previous code
+
+  @include keyboard-theme("dark") {
+    box-shadow: 0 0 0 3px $red6 !important;
+  }
+  @include keyboard-theme("light") {
+    box-shadow: 0 0 0 3px $red5 !important;
+  }
+
+  &::before {
+    @include keyboard-theme("dark") {
+      outline: 3px solid transparent !important; // For Windows high contrast mode.
+    }
+    @include keyboard-theme("light") {
+      outline: 3px solid transparent !important; // For Windows high contrast mode.
+    }
+  }
+  &::after {
+
+  }
+}

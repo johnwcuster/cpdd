@@ -1,0 +1,23 @@
+@mixin hover-and-focus {
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+      @include theme("dark") {
+        border-color: $white;
+      }
+      @include theme("light") {
+        border-color: $black;
+      }
+    }
+    &:focus {
+      @include theme("dark") {
+        border-color: $white;
+      }
+      @include theme("light") {
+        border-color: $black;
+      }
+      box-shadow: 0 0 1px 3px $red-overlay;
+      box-shadow: 0 0 0 3px -moz-mac-focusring;
+      outline: none;
+    }      
+}

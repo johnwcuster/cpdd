@@ -1,0 +1,20 @@
+.map-layer {
+  @include mq("s") {
+    display: none;
+  }
+  @include mq("m+") {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: z('map');
+
+    display: none;
+    &.js_chart_visible {
+      display: block;
+    }
+  }
+}
